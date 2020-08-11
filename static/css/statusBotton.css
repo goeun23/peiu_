@@ -1,0 +1,46 @@
+
+/* .liData1{  width:18%;}
+.liData2{  width : 18%;}
+.liData3{width:15%;}
+.liData4{width  :} */
+.Hour{
+  width: 0.3425rem;
+ height: 1.5875rem;
+ background-color: #32343C;
+ margin: 0 0.2905rem; 
+ float: left;
+}
+.Hour::after{
+ clear: both;
+}
+.HourBar{width: 0.1225rem;
+ height: 0.3875rem;
+ background-color: #fff;
+ margin: 0 0.3975rem; 
+ float: left;
+ }
+
+.HourBar::after{
+ clear: both;
+}
+.boundray-black{
+ background: black;
+ border-radius: 8px;
+}
+.HourLabel .HourTitle {color:white;float: left;}
+.HourLabel{width:100%;height:1.5rem;}
+.HourLabel-1{width:33%;text-align: left;}
+.HourLabel-2{width:33%;text-align: center;}
+.HourLabel-3{width:33%;text-align: right;}
+.HourLabel::after{clear: both;}
+.H24Title{width:100%;padding: 0 .3rem;}
+.HousBar{width:100%;height:.5rem;}
+
+.HourBar-1{width:33.33%;text-align: left;background: #454}
+.HourBar-2{width:33.33%;text-align: center;background: #999}
+.HourBar-3{width:33.33%;text-align: right;background: #111}
+.SmallHourBar{width:1rem;height:.3rem; background:#999;}
+.noBar{visibility: hidden;}
+.HourActive{background:#ffcc00};
+
+ 

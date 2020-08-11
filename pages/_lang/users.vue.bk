@@ -1,0 +1,1492 @@
+<template>
+	<!-- 본문컨텐츠 영역 -->
+	<div class="dashboard_wrap Users">
+		<div class="dashboard_box">
+			<div class="conts active">
+				<div class="inquiry">
+					<dl class="period">
+						<!-- <p class="btn_inguiry" @click="clickEvt()"><a href="#">조회</a></p> -->
+						<p class="btn_inguiry" @click="createUser()">
+							<a href="#">신규회원</a>
+						</p>
+					</dl>
+				</div>
+			</div>
+		</div>
+		<div class="userContents">
+			<div class="userList">
+				<div id="userTableWrap" class="tableArea_wrap">
+					<div class="table_wrap">
+						<table id="userListTB" class="portal_table data_table center" summary="User List">
+							<caption>인덱스, 아이디, 이름, 권한, 수정, 최근 로그인</caption>
+							<thead>
+								<tr>
+									<th data-sort="string">UserName</th>
+									<th>Email</th>
+									<th>auth</th>
+									<th data-sort="int">RCC</th>
+									<th data-sort="int">DL No.</th>
+									<th>DeviceID</th>
+									<th>법정동 코드</th>
+									<th>위도</th>
+									<th>경도</th>
+									<th>비번 수정</th>
+									<th>권한설정</th>
+									<th>삭제</th>
+								</tr>
+							</thead>
+							<tbody id="userTBbody">
+								<tr v-for="row in rows" v-bind:key="row.idx">
+									<td>{{row.Name}}</td>
+									<td>{{row.Email}}</td>
+									<td>{{row.AuthorityLevel}}</td>
+									<td>{{row.Rcc}}</td>
+									<td>{{row.DLNo}}</td>
+									<td>{{row.deviceID}}</td>
+									<td>{{row.lawCode}}</td>
+									<td>{{row.lat}}</td>
+									<td>{{row.lon}}</td>
+									<td>
+										<button class="btn-small" @click="showSetPwd(row.idx)">수정</button>
+									</td>
+									<td>
+										<button class="btn-small" @click="showSetAuth(row.idx)">수정</button>
+									</td>
+									<!-- <td><button class="btn-small" @click="showInfo(row.idx)">Edit</button></td> -->
+									<td>
+										<button class="btn-small" @click="showDelPopup(row.idx)">삭제</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<div class="pagination" id="demo">
+							<div>Page : {{(offsetUser/limitUser)+1}}</div>
+							<div @click="getPreviouseUser()">Previouse</div>
+							<div @click="getNextUser()">Next</div>
+						</div>
+						<!-- <div id="user_index_native" class="box"></div> -->
+					</div>
+				</div>
+			</div>
+
+			<div class="overlay">
+				<form action method="post">
+					<div class="del_popup_wrap">
+						<p>삭제하면 복구가 불가능 합니다.</p>
+						<p>삭제 하시겠습니까?</p>
+						<div class="text-right">
+							<input class="btn btn-primary" value="Yes" @click="deleteUser()">
+							<input class="btn btn-cancel" value="No" @click="closeDelPopup()">
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="setup_auth_wrap">
+				<div class="setup_auth">
+					<div class="setup_label">Setting Authoritication</div>
+					<div class="setup_table_wrap tableArea_wrap">
+						<table class="data_table center">
+							<caption>링크, 권한</caption>
+							<thead>
+								<tr>
+									<th>Menu</th>
+									<th>권한 여부</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<span>계통 지리정보</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_1" @click="clickAuth(auth_menu_1, 1)">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>지역 현황</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_2" @click="clickAuth(auth_menu_2, 2)">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>계통도</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_3" @click="clickAuth(auth_menu_3, 4)">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>설비운영</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_4" @click="clickAuth(auth_menu_4, 8)">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>계통해석</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_5" @click="clickAuth(auth_menu_5, 16)">
+									</td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td>
+										<span>예측</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_6" @click="clickAuth(auth_menu_6, 32)">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>경제성 분석</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_7" @click="clickAuth(auth_menu_7, 64)">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>통계 조회</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_8" @click="clickAuth(auth_menu_8, 128)">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<span>이력 조회</span>
+									</td>
+									<td>
+										<input type="checkbox" v-model="auth_menu_9" @click="clickAuth(auth_menu_9, 256)">
+									</td>
+								</tr>
+								<!-- <tr>									
+									<td><span>고객 포탈(512)</span></td>
+									<td><input type="checkbox" v-model="auth_menu_10" @click="clickAuth(auth_menu_10, 512)" disabled></td>
+								</tr>-->
+								<tr>
+									<td>
+										<span>마켓</span>
+									</td>
+									<td>
+										<input
+											type="checkbox"
+											v-model="auth_menu_11"
+											@click="clickAuth(auth_menu_11, 1024)"
+											disabled
+										>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="setup_auth_btn_wrap">
+						<button class="btn-small" @click="closeSetUpAuth()">Close</button>
+						<button class="btn-small" @click="saveSetUpAuth()">Save</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 회원가입 시작 -->
+		<div id="userDetail_wrap" class="userDetail_wrap">
+			<div class="userDetail">
+				<div class="detailHeader">
+					<span>Profile</span>
+				</div>
+
+				<table class="data_table center">
+					<colgroup>
+						<col width="30%">
+						<col width="30%">
+						<col width="40%">
+					</colgroup>
+					<tbody>
+						<tr>
+							<th rowspan="4">소유자</th>
+							<td>성명</td>
+							<td>
+								<input
+									id="profile_user_name"
+									v-model="profile_user_name"
+									name="profile_user_name"
+									placeholder="id"
+									required="required"
+									type="text"
+									class="id"
+								>
+							</td>
+						</tr>
+						<tr>
+							<td>주소</td>
+							<td>
+								<input type="text" v-model="profile_user_addr" placeholder="소유자 직장 주소">
+								<button class="btn-small" @click="getAddress('userDetail_wrap')">검색</button>
+							</td>
+						</tr>
+						<tr>
+							<td>연락처</td>
+							<td>
+								<input type="text" v-model="profile_user_phone" placeholder="010-0000-0000">
+							</td>
+						</tr>
+
+						<tr>
+							<td>중개 사업자 등록번호</td>
+							<td>
+								<input type="text" v-model="profile_user_business_number" placeholder="045-59-487-0000">
+							</td>
+						</tr>
+						<tr>
+							<th>소 재 지</th>
+							<td colspan="2">
+								<div class="radioValue">
+									<input type="radio" value="ROAD" name="address_type" v-model="address_type">도로명주소
+									<input type="radio" value="ADDRESS" name="address_type" v-model="address_type">지번주소
+								</div>
+								<input type="text" id="input_addr" placeholder="설비 설치 위치" v-model="address">
+								<button class="btn-small" @click="getAddress('userDetail_wrap')">검색</button>
+							</td>
+						</tr>
+						<tr>
+							<th>법정동코드 *</th>
+							<td colspan="2">
+								<input type="text" class="user_loc_x_y disabled" v-model="userAddrCode" readonly>
+							</td>
+						</tr>
+						<tr>
+							<th>위도/경도 *</th>
+							<td colspan="2">
+								<div class="td_xy_wrap">
+									<input type="text" class="user_loc_x_y" v-model="lat" disabled>
+									<input type="text" class="user_loc_x_y" v-model="lon" disabled>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>RCC *</th>
+							<td colspan="2">
+								<select name id @change="selectRcc()" v-model="selectedRcc">
+									<option v-for="rcc in rccList" :value="rcc.id" :key="rcc.id">{{ rcc.label }}</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<th>서비스명 *</th>
+							<td colspan="2">
+								<input type="radio" v-model="serviceName" value="SC">SC(스케줄링)
+								<input type="radio" v-model="serviceName" value="DR">DR(수요반응)
+								<input type="radio" v-model="serviceName" value="PK">PK(Peak-Cut)
+								<input type="radio" v-model="serviceName" value="FR">FR(주파수)
+							</td>
+						</tr>
+						<tr>
+							<th rowspan="3">설비용량</th>
+							<td>태양광(PV)</td>
+							<td>
+								<input type="text" v-model="profile_user_pv_mount">kW
+							</td>
+						</tr>
+						<tr>
+							<td>ESS</td>
+							<td>
+								<input type="text" v-model="profile_user_ess_mount">kW
+							</td>
+						</tr>
+						<tr>
+							<td>PCS</td>
+							<td>
+								<input type="text" v-model="profile_user_pcs_mount">kW
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<button id="btn_update" class="btn updateBtn" @click="editUser()">Update</button>
+					<button id="btn_save" class="btn saveBtn" @click="saveUser()">Save</button>
+					<button id="btn_close" class="btn" @click="close('userDetail_wrap')">Close</button>
+				</div>
+			</div>
+		</div>
+		<!-- //회원가입 종료 -->
+		<div id="userAddress_list_wrap" class="userAddress_list_wrap">
+			<div class="userAddress_list">
+				<table id="table-addressList" class="data_table center">
+					<thead>
+						<tr>
+							<th>IDX</th>
+							<th>주소1</th>
+							<th>주소2</th>
+							<th>우편번호</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							v-for="address in addressList"
+							v-bind:key="address.idx"
+							style="text-decoration:underline;cursor:pointer;"
+							@click="selectAddr(address)"
+						>
+							<td>{{address.idx}}</td>
+							<td>{{address.road}}</td>
+							<td>{{address.parcel}}</td>
+							<td>{{address.zipcode}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="pagination2" id="demo">
+					<div>Page : {{(offsetAddr/limitAddr)+1}}</div>
+					<div @click="getPreviouseAddr()">Previouse</div>
+					<div @click="getNextAddr()">Next</div>
+				</div>
+				<div id="index_native" class="box"></div>
+				<div>
+					<button id="btn_close" class="btn" @click="close('userAddress_list_wrap')">Close</button>
+				</div>
+			</div>
+		</div>
+		<!-- 비밀번호 수정 -->
+		<div id="userPwd_wrap" class="userAddress_list_wrap">
+			<div class="userAddress_list">
+				<table id="table_pwd" class="data_table center">
+					<tbody>
+						<tr>
+							<th>UserName</th>
+							<td>{{profile_user_name}}</td>
+						</tr>
+						<tr>
+							<th>아이디(Email)</th>
+							<td>{{profile_email}}</td>
+						</tr>
+						<tr>
+							<th>기존비밀번호</th>
+							<td>
+								<input type="password" v-model="profile_pwd">
+							</td>
+						</tr>
+						<!-- <tr>
+							<th>기존비밀번호 확인</th>
+							<td><input type="password" v-model="profile_pwd_confirm"></td>
+						</tr>-->
+						<tr>
+							<th>새로운 비밀번호</th>
+							<td>
+								<input type="password" v-model="profile_pwd_new">
+							</td>
+						</tr>
+						<tr>
+							<th>새로운 비밀번호 확인</th>
+							<td>
+								<input type="password" v-model="profile_pwd_new_confirm">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<button
+					class="btn"
+					@click="updatePwd(profile_email, profile_pwd, profile_pwd_new, profile_pwd_new_confirm)"
+				>Save</button>
+				<button class="btn" @click="close('userPwd_wrap')">Close</button>
+			</div>
+			<div></div>
+		</div>
+	</div>
+	<!-- //본문컨텐츠 영역 -->
+</template>
+<script>  
+
+const Cookie = process.client ? require('js-cookie') : undefined
+
+export default {
+	layout: "users",
+
+	components: {
+	},
+	head: {
+		link: [
+			{ rel: 'stylesheet', href: '/css/jqGrid/ui.jqgrid.css' },
+			{ rel: 'stylesheet', href: 'https://cdn.datatables.net/1.10.19/css/dataTables.material.min.css' }
+			//   {rel : 'stylesheet', href:"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"},
+			//   {rel : 'stylesheet', href:"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"},
+		],
+		script: [
+			// {src:"/scripts/table/paginator.js"},
+			{ src: '//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js' }
+			//   {src : 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'},
+			//   {src : 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'}
+		]
+	},
+	data() {
+		return {
+			selected_idx: 0,
+			selected_data: '',
+			rows: [],
+			profile_user_name: '',
+			profile_email: '',
+			profile_auth: '',
+			profile_pwd: '',
+			profile_pwd_confirm: '',
+			profile_pwd_new: '',
+			profile_pwd_new_confirm: '',
+			profile_user_addr: '',
+			profile_user_phone: '',
+			profile_user_business_number: '',
+			profile_user_pv_mount : '',
+			profile_user_ess_mount : '',
+			profile_user_pcs_mount : '',
+			auth_menu_1: false,
+			auth_menu_2: false,
+			auth_menu_3: false,
+			auth_menu_4: false,
+			auth_menu_5: false,
+			auth_menu_6: false,
+			auth_menu_7: false,
+			auth_menu_8: false,
+			auth_menu_9: false,
+			auth_menu_10: false,
+			auth_menu_11: false,
+			url_account_list: process.env.url_account_list,
+			url_account_delete: process.env.url_account_delete,
+			url_account_update_auth: process.env.url_account_update_auth,
+			url_account_update: process.env.url_account_update,
+			url_account_create: process.env.url_account_create,
+			url_account_update_pwd: process.env.url_account_update_pwd,
+			url_log_func: process.env.url_log_func,
+
+			selected_auth: [],
+			auth_level: 0,
+			err_msg: '',
+			address: '',
+			address_result: '',
+			address_type: '',
+			url_address: process.env.url_address,
+			addressList: [],
+			recvAddrData: [],
+			selectedRcc: '',
+			rccList: [
+				{ id: '1', label: '서울' }, { id: '2', label: '남서울' }, { id: '3', label: '인천' },
+				{ id: '4', label: '경기' }, { id: '5', label: '경기북부' }, { id: '6', label: '강원' },
+				{ id: '7', label: '대전충남' }, { id: '8', label: '충북' }, { id: '9', label: '광주전남' },
+				{ id: '10', label: '전북' }, { id: '11', label: '대구' }, { id: '12', label: '부산울산' },
+				{ id: '13', label: '경남' }, { id: '14', label: '경북' }
+			],
+			areaCode: [
+				{ "0": ["도봉구", "노원구", "강북구", "성북구", "은평구", "중랑구", "동대문구", "종로구", "서대문구", "마포구", "용산구", "중구", "성동구", "광진구"] },
+				{ "1": ["강서구", "양천구", "영등포구", "구로구", "금천구", "동작구", "관악구", "서초구", "강남구", "송파구", "강동구"] },
+				{ "2": ["강화", "김포", "서구", "계양구", "부평구", "부천", "시흥", "남동구", "연수구", "남구", "동구", "중구", "영종도", "웅진군", "백령도"] },
+				{ "3": ["광명", "부천", "안양", "군포", "안산", "의왕", "하남", "성남", "수원", "화성", "오산", "평택", "광주", "용인", "안성", "이천", "여주"] },
+				{ "4": ["연천", "파주", "고양", "동두천", "영주", "의정부", "포천", "가평", "남양주", "구리"] },
+				{ "5": ["고성군", "속초시", "양앙군", "인제군", "양구군", "화천군", "철원군", "춘천시", "홍천군", "횡성군", "평창군", "강릉시", "원주시", "영월군", "정선군", "동해시", "삼척시", "태백시"] },
+				{ "6": ["당진군", "서산시", "태안군", "홍성군", "예산군", "아산시", "천안시", "공주시", "청양군", "보령시", "부여군", "서천군", "논산시", "금산군", "유성구", "대덕구", "동구", "중구", "서구"] },
+				{ "7": ["단양군", "제천시", "충주시", "음성군", "진천군", "증평군", "괴산군", "청주시", "보은군", "옥천군", "영동군"] },
+				{ "8": ["영광군", "장성군", "담양군", "곡성군", "구례군", "광양시", "여수시", "순천시", "화순군", "북구", "동구", "남구", "서구", "광산구", "함평군", "무안군", "나주시", "목포시", "영암군", "진도군", "해남군", "완도군", "강진군", "장흥군", "보성군", "고흥군"] },
+				{ "9": ["군산시", "익산시", "완주군", "무주군", "진안군", "전주시", "김제시", "부안군", "정읍시", "임실군", "장수군", "남원시", "순창군", "고창군"] },
+				{ "10": ["영덕군", "포항시", "영천시", "경주시", "청도시", "경산시", "달성군", "고령군", "성주군", "김천시", "칠곡군", "북구", "동구", "수겅구", "중구", "서구", "달서구", "남구"] },
+				{ "11": ["북구", "중구", "동구", "남구", "울주군", "양산시", "기장군", "김해시", "금전구", "북구", "해운대구", "동래구", "연제구", "수영구", "부산진구", "남구", "동구", "사상구", "중구", "영도구", "서구", "사하구", "강서구"] },
+				{ "12": ["거창군", "함양군", "산청군", "합천군", "창년군", "의령군", "밀양시", "함안군", "창원시", "진해시", "마산시", "진주시", "하동군", "사천시", "남해군", "고성군", "통영시", "거제시"] },
+				{ "13": ["문경시", "상주시", "구미시", "예천군", "의성군", "군위군", "청송군", "안동시", "영주시", "봉화군", "영양군", "울진군", "울릉도", "독도"] },
+			],
+			selectedAreaList: [],
+			deviceID: '',
+			selectedDLLine: '',
+			selectedServicetype: '',
+			lat: '',
+			lon: '',
+			userAddrCode: '',
+			installed_pv: '',
+			installed_pcs: '',
+			installed_ess: '',
+			userListTB: null,
+			offsetUser: 0,
+			limitUser: 10,
+			offsetAddr: 0,
+			limitAddr: 10,
+			recvUserData: [],
+			serviceName: '',
+		}
+	},
+	methods: {
+		verifyNum: function (value, id) {
+			if (isNaN(value) == true) {
+				document.getElementById(id).value = '';
+				alert('숫자만 입력 가능합니다');
+				return;
+			}
+
+			if (value < 0 || value > 5000) {
+				document.getElementById(id).value = '';
+				alert('0이상, 5000 이하만 입력 가능합니다');
+			}
+
+
+		},
+		changeService: function () {
+			this.installed_pv = '';
+			this.installed_pcs = '';
+			this.installed_ess = '';
+			if (this.selectedServicetype == 1) {
+				document.getElementById('installed_pv').classList.remove('disabled');
+				document.getElementById('installed_pcs').classList.remove('disabled');
+				document.getElementById('installed_ess').classList.remove('disabled');
+				document.getElementById('installed_pv').readOnly = false;
+				document.getElementById('installed_pcs').readOnly = false;
+				document.getElementById('installed_ess').readOnly = false;
+
+				document.getElementById('installed_pv').readOnly = false;
+				document.getElementById('installed_pcs').readOnly = false;
+				document.getElementById('installed_ess').readOnly = false;
+
+				document.getElementById('installed_pv_title').innerText = "PV 용량(kW) *";
+				document.getElementById('installed_pcs_title').innerText = "PCS 용량(kW) *";
+				document.getElementById('installed_ess_title').innerText = "ESS 용량(kW) *";
+
+				this.deviceID = "SC" + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9)
+			} else if (this.selectedServicetype == 2) {
+				document.getElementById('installed_pv').classList.add('disabled');
+				document.getElementById('installed_pcs').classList.remove('disabled');
+				document.getElementById('installed_ess').classList.remove('disabled');
+				document.getElementById('installed_pv').readOnly = true;
+				document.getElementById('installed_pcs').readOnly = false;
+				document.getElementById('installed_ess').readOnly = false;
+
+
+				document.getElementById('installed_pv_title').innerText = "PV 용량(kW)";
+				document.getElementById('installed_pcs_title').innerText = "PCS 용량(kW) *";
+				document.getElementById('installed_ess_title').innerText = "ESS 용량(kW) *";
+
+				this.deviceID = "FR" + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9)
+			} else if (this.selectedServicetype == 3) {
+				document.getElementById('installed_pv').classList.add('disabled');
+				document.getElementById('installed_pcs').classList.remove('disabled');
+				document.getElementById('installed_ess').classList.remove('disabled');
+
+				document.getElementById('installed_pv').readOnly = true;
+				document.getElementById('installed_pcs').readOnly = false;
+				document.getElementById('installed_ess').readOnly = false;
+
+
+				document.getElementById('installed_pv_title').innerText = "PV 용량(kW)";
+				document.getElementById('installed_pcs_title').innerText = "PCS 용량(kW) *";
+				document.getElementById('installed_ess_title').innerText = "ESS 용량(kW) *";
+
+				this.deviceID = "PK" + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9)
+			} else {
+				document.getElementById('installed_pv').classList.add('disabled');
+				document.getElementById('installed_pcs').classList.add('disabled');
+				document.getElementById('installed_ess').classList.add('disabled');
+				document.getElementById('installed_pv').readOnly = true;
+				document.getElementById('installed_pcs').readOnly = true;
+				document.getElementById('installed_ess').readOnly = true;
+
+				document.getElementById('installed_pv_title').innerText = "PV 용량(kW)";
+				document.getElementById('installed_pcs_title').innerText = "PCS 용량(kW)";
+				document.getElementById('installed_ess_title').innerText = "ESS 용량(kW)";
+
+				this.deviceID = "DR" + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9) + getRandomInt(0, 9)
+			}
+		},
+		selectAddr: function (data) {
+			this.lat = data.x;
+			this.lon = data.y;
+			this.address = data.road;
+			this.userAddrCode = data.id;
+
+			document.getElementById('userAddress_list_wrap').style.display = "none";
+		},
+		selectRcc: function () {
+			//console.log("selected rcc = " + this.selectedRcc);
+			var idx = Number(this.selectedRcc);
+
+			var data = this.areaCode[idx][idx];
+
+			this.selectedAreaList = [];
+			data.forEach((v, i, arr) => {
+				this.selectedAreaList.push({ id: i, label: v });
+			});
+		},
+		close: function (id) {
+			this.profile_user_name = '';
+			this.profile_email = '';
+			this.profile_pwd = '';
+			this.profile_pwd_confirm = '';
+			this.profile_pwd_new = '';
+			this.profile_pwd_new_confirm = '';
+			document.getElementById(id).style.display = "none";
+		},
+		getAddress: function () {
+			if (this.address_type == undefined || this.address_type == "") {
+				alert('도로명 주소/지번주소 선택해 주세요');
+				return;
+			}
+
+			if (this.address.length > 0) {
+				var url = this.url_address + "&query=" + this.address + "&type=address&size=1000"
+
+				if (this.address_type == "ROAD") {
+					url += "&category=ROAD"
+				} else {
+					url += "&category=PARCEL"
+				};
+				//console.log(url);
+
+				$.ajax({
+					url: url,
+					type: 'get',
+					dataType: 'jsonp',
+					jsonpCallback: "myCallback",
+					success: this.recvAddress,
+					error: function (jqXHR, textStatus, errorThrown) {
+						//console.log('주소 검색 실패(통신에러)');
+						//console.log('getAddress() error');
+						alert('주소 검색 실패(통신에러)');
+					}
+				})
+			} else {
+				alert('주소 입력해 주세요');
+			}
+		},
+		recvAddress: function (data, textStatus, jqXHR) {
+
+			if (data.response.status == "NOT_FOUND") {
+				alert('검색 결과 없습니다');
+			} else {
+				this.recvAddrData = data.response.result.items;
+				this.addressList = [];
+				this.offsetAddr = 0;
+
+				for (var i = this.offsetAddr; i < this.recvAddrData.length && i < (this.offsetAddr + this.limitAddr); i++) {
+					var value = this.recvAddrData[i];
+					this.addAddrRow((i % this.limitAddr), value);
+				}
+				this.openPopup('userAddress_list_wrap');
+			}
+		},
+		addAddrRow: function (idx, value) {
+			this.addressList.push({
+				idx: idx,
+				road: value.address.road,
+				parcel: value.address.parcel,
+				zipcode: value.address.zipcode,
+				address: value.address.road + ", " + value.address.parcel,
+				x: value.point.x,
+				y: value.point.y,
+				id: value.id.substring(0, 10)
+			});
+		},
+		getPreviouseAddr: function () {
+			if ((this.offsetAddr - this.limitAddr) >= 0) {
+				this.offsetAddr -= this.limitAddr;
+
+				this.addressList = [];
+				this.rows = [];
+				for (var i = this.offsetAddr; i < this.recvAddrData.length && i < (this.offsetAddr + this.offsetUser); i++) {
+					var value = this.recvAddrData[i];
+					this.addAddrRow((i % this.limit), value);
+				}
+			} else {
+				alert('데이터가 없습니다.');
+			}
+		},
+		getNextAddr: function () {
+			this.offsetAddr += this.limitAddr;
+
+			if (this.offsetAddr > this.recvAddrData.length) {
+				alert('데이터가 없습니다.')
+			} else {
+				this.addressList = [];
+				for (var i = this.offsetAddr; i < this.recvAddrData.length && i < (this.offsetAddr + this.limitAddr); i++) {
+					var value = this.recvAddrData[i];
+					this.addAddrRow((i % this.limitAddr), value);
+				}
+			}
+		},
+		addRow: function (idx, data) {
+			try {
+				this.rows.push({
+					idx: idx,
+					Name: data.Name,
+					UserName: data.UserName,
+					Email: data.Email,
+					AuthorityLevel: data.AuthorityLevel,
+					DLNo: data.DLNo,
+					deviceID: data.DeviceId,
+					lat: data.Lat,
+					lon: data.Lon,
+					lawCode: data.LawLevel1 + data.LawLevel2 + data.LawLevel3,
+					Rcc: data.Rcc
+				});
+			} catch (e) {
+				//console.log(e);
+			}
+		},
+		removeRow: function (row) {
+			try {
+				this.rows.$remove(row);
+			} catch (error) {
+				//console.log(error);
+			}
+		},
+		updatePwd: function (Email, Password, NewPassword, NewPasswordConfirm) {
+			if (NewPassword == NewPasswordConfirm) {
+				var url = this.url_account_update_pwd;
+				var data = {					Email: Email, Password: Password,
+					ConfirmPassword: Password, NewPassword: NewPassword				};
+				data = JSON.stringify(data);
+				$.ajax({
+					url: url,
+					contentType: 'application/json',
+					data: data,
+					Email: Email,
+					type: 'post',
+					success: this.updatePwdResult,
+					error: function (jqXHR, textStatus, error) {
+						alert('통신에러, 비밀번호 수정 실패');
+					}
+				});
+			} else {
+				alert('새로운 비밀번호가 다릅니다.')
+			}
+		},
+		updatePwdResult: function (data, textStatus, jqXHR) {
+			if (textStatus == 'success') {
+				if (data.errors.length > 0) {
+					var msg = '';
+					data.errors.forEach((v, i) => {
+						msg += v.description + "\n";
+					});
+					alert(msg);
+				} else {
+					alert('수정되었습니다.');
+
+					this.writeLog('비밀번호(' + this.profile_email + ') 수정');
+					this.close('userPwd_wrap');
+
+					location.href = location.href;
+				}
+			} else {
+				alert('비밀번호 수정 실패');
+			}
+		},
+		writeLog: function (log) {
+			var username = Cookie.get('Email');
+			var url = this.url_log_func + '?username=' + username + '&functionname=' + log;
+
+			$.ajax({
+				url: url,
+				type: 'put',
+				success: function (data, textStatus, jqXHR) {
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					alert('통신에러, 기능 로그 서버 통신 실패');
+				}
+			})
+		},
+		createUser: function () {
+			document.getElementById('input_addr').disabled = false;
+			document.getElementById('input_addr').style.background = "#fff";
+			document.getElementById('userDetail_wrap').style.display = "block";
+			this.profile_user_name = '';
+			this.profile_email = '';
+			this.profile_pwd = '';
+			this.profile_pwd_confirm = '';
+			this.lat = '';
+			this.lng = '';
+			this.address = '';
+			this.deviceID = '';
+			this.selectedRcc = '';
+			this.deviceID = '';
+			this.selectedDLLine = '';
+			document.getElementById('btn_update').style.display = 'none';
+			document.getElementById('btn_save').style.display = 'block';
+		},
+		showInfo: function (idx) {
+			// alert(idx)
+			var data = this.rows[idx];
+			this.profile_user_name = data.UserName;
+			this.profile_email = data.Email;
+			document.getElementById('btn_update').style.display = 'block';
+			document.getElementById('btn_save').style.display = 'none';
+		},
+		showSetPwd: function (idx) {
+			//console.log('showSetPwd')
+			var data = this.rows[idx];
+			this.selected_idx = data.idx;
+			var auth_level = data.AuthorityLevel;
+			this.selected_auth = [];
+
+			this.profile_user_name = data.Name;
+			this.profile_email = data.Email;
+
+
+			this.openPopup('userPwd_wrap');
+		},
+		showSetAuth: function (idx) {
+			var data = this.rows[idx];
+			this.selected_idx = data.idx;
+			var auth_level = data.AuthorityLevel;
+			this.selected_auth = [];
+			if (auth_level == 0) {
+				this.auth_menu_1 = false;
+				this.selected_auth.push(1);
+				this.auth_menu_2 = false;
+				this.selected_auth.push(2);
+				this.auth_menu_3 = false;
+				this.selected_auth.push(4);
+				this.auth_menu_4 = false;
+				this.selected_auth.push(8);
+				this.auth_menu_5 = false;
+				this.selected_auth.push(16);
+				this.auth_menu_6 = false;
+				this.selected_auth.push(32);
+				this.auth_menu_7 = false;
+				this.selected_auth.push(64);
+				this.auth_menu_8 = false;
+				this.selected_auth.push(128);
+				this.auth_menu_9 = false;
+				this.selected_auth.push(256);
+				this.auth_menu_10 = false;
+				this.selected_auth.push(512);
+				this.auth_menu_11 = false;
+				this.selected_auth.push(1024);
+			} else {
+				this.auth_menu_1 = (auth_level | 1) === auth_level ? true : false;
+				(this.auth_menu_1 == true) ? this.selected_auth.push(1) : '';
+
+				this.auth_menu_2 = (auth_level | 2) === auth_level ? true : false;
+				(this.auth_menu_2 == true) ? this.selected_auth.push(2) : '';
+
+				this.auth_menu_3 = (auth_level | 4) === auth_level ? true : false;
+				(this.auth_menu_3 == true) ? this.selected_auth.push(4) : '';
+
+				this.auth_menu_4 = (auth_level | 8) === auth_level ? true : false;
+				(this.auth_menu_4 == true) ? this.selected_auth.push(8) : '';
+
+				this.auth_menu_5 = (auth_level | 16) === auth_level ? true : false;
+				(this.auth_menu_5 == true) ? this.selected_auth.push(16) : '';
+
+				this.auth_menu_6 = (auth_level | 32) === auth_level ? true : false;
+				(this.auth_menu_6 == true) ? this.selected_auth.push(32) : '';
+
+				this.auth_menu_7 = (auth_level | 64) === auth_level ? true : false;
+				(this.auth_menu_7 == true) ? this.selected_auth.push(64) : '';
+
+				this.auth_menu_8 = (auth_level | 128) === auth_level ? true : false;
+				(this.auth_menu_8 == true) ? this.selected_auth.push(128) : '';
+
+				this.auth_menu_9 = (auth_level | 256) === auth_level ? true : false;
+				(this.auth_menu_9 == true) ? this.selected_auth.push(256) : '';
+
+				this.auth_menu_10 = (auth_level | 512) === auth_level ? true : false;
+				(this.auth_menu_10 == true) ? this.selected_auth.push(512) : '';
+
+				this.auth_menu_11 = (auth_level | 1024) === auth_level ? true : false;
+				(this.auth_menu_11 == true) ? this.selected_auth.push(1024) : '';
+			}
+
+			document.getElementsByClassName('setup_auth_wrap')[0].style.display = 'block';
+		},
+		closeSetUpAuth: function () {
+			// var data = this.rows[idx];
+			// this.selected_idx = data.idx;
+
+
+			document.getElementsByClassName('setup_auth_wrap')[0].style.display = 'none';
+		},
+		saveSetUpAuth: function () {
+			var new_auth_level = 0;
+			this.selected_auth.forEach((value, idx, array) => {
+				new_auth_level = new_auth_level | value;
+			});
+			this.err_msg = '';
+			var email = this.rows[this.selected_idx].Email;
+			// /api/account/setauthority?email=redwinelove@hotmail.com&value=1024
+			var url = this.url_account_update_auth + "?email=" + email + "&value=" + new_auth_level;
+			$.ajax({
+				url: url,
+				contentType: 'application/json',
+				xhrFields: { withCredentials: true },
+				type: 'put',
+				success: this.recvEditAuthResult,
+				error: function (jqXHR, textStatus, errorThrown) {
+					//console.log('권한 변경 실패');
+					//console.log(jqXHR);
+					this.err_msg = "권한 변경 실패(통신실패)";
+					alert('권한 변경 실패(통신실패)');
+				}
+			});
+		},
+		recvEditAuthResult: function (data, textStatus, jqXHR) {
+			if (data.succeeded == false) {
+				var msg = data.errors[0].description;
+				alert(msg);
+			} else {
+				var new_auth_level = 0;
+
+				this.selected_auth.forEach((value, idx, array) => {
+					new_auth_level = new_auth_level | value;
+				});
+				// Cookie.set('AuthorityLevel', new_auth_level);
+				alert('Save되었습니다.');
+				this.writeLog('권한 수정 설정');
+				location.href = location.href;
+			}
+			this.closeSetUpAuth();
+		},
+		showDelPopup: function (idx) {
+			var data = this.rows[idx];
+			this.selected_idx = data.idx;
+			document.getElementsByClassName('overlay')[0].style.display = 'block';
+			// location.href = location.href;
+		},
+		closeDelPopup: function (data) {
+
+			document.getElementsByClassName('overlay')[0].style.display = 'none';
+		},
+		openPopup: function (id) {
+			document.getElementById(id).style.display = 'block';
+
+		},
+		closePopup: function (id) {
+			document.getElementById(id).style.display = 'none';
+		},
+
+		verifyEmail() {
+			//console.log('verifyEmail')
+			var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if (this.profile_email.match(mailformat)) {
+				return true;
+			} else {
+				alert('유효하지 않은 이메일 형식 입니다.');
+				this.profile_email = '';
+				this.$refs.email.focus();
+				return false;
+			}
+		},
+		verifyPwd: function () {
+			if (this.profile_pwd === this.profile_pwd_confirm) {
+				return;
+			}
+			else {
+				this.profile_pwd = '';
+				this.profile_pwd_confirm = '';
+				alert('비밀번호가 다릅니다.');
+			}
+		},
+		saveUser: function () {
+			if (this.profile_pwd.length > 0 && this.profile_pwd_confirm.length > 0
+				&& this.profile_email.length > 0, this.profile_user_name.length > 0
+				&& this.address.length > 0 && this.selectedRcc > 0) {
+
+				var sendData = {
+					Email: this.profile_email,
+					Password: this.profile_pwd,
+					Username: this.profile_user_name,
+					ConfirmPassword: this.profile_pwd_confirm,
+					Address: this.address,
+					Rcc: this.selectedRcc,
+					Lat: this.lat,
+					lon: this.lon,
+					LawLevel1: this.userAddrCode.substring(0, 2),
+					LawLevel2: this.userAddrCode.substring(2, 4),
+					LawLevel3: this.userAddrCode.substring(4, 10)
+				};
+
+				sendData = JSON.stringify(sendData);
+				var url = this.url_account_create;
+
+				$.ajax({
+					url: url,
+					contentType: 'application/json',
+					xhrFields: { withCredentials: true },
+					type: 'post',
+					data: sendData,
+					success: this.recvSaveUser,
+					error: function (jqXHR, textStatus, errorThrown) {
+						//console.log('saveUser error');
+						//console.log(jqXHR);
+						this.err_msg = '유저 생성 실패(통센에러)';
+						alert('유저 생성 실패')
+					}
+				})
+			}
+		},
+		recvSaveUser: function (data, textStatus, jqXHR) {
+			this.err_msg = '';
+			if (data.succeeded == false) {
+				data.errors.forEach((value, idx, array) => {
+					this.err_msg += value.description;
+				});
+				alert('유저 생성 실패\n' + this.err_msg);
+			} else {
+				this.writeLog('사용자 생성(' + this.profile_email + ')');
+				this.err_msg += '생성되었습니다.';
+				this.profile_user_name = '';
+				this.profile_email = '';
+				this.profile_pwd = '';
+				this.profile_pwd_confirm = '';
+				alert('생성되었습니다.');
+
+				this.close('userDetail_wrap');
+				location.href = location.href;
+			}
+		},
+		clickAuth: function (auth, val) {
+			if (auth == false) {
+				//체크 함
+				this.selected_auth.push(val);
+			} else {
+				//체크 해제 함
+				var idx = this.selected_auth.findIndex(function (item) {
+					return (item === val)
+				});
+				if (idx > -1) {
+					this.selected_auth.splice(idx, 1);
+				}
+			}
+			//console.log('auth_level = ' + this.auth_level);
+		},
+		deleteUser: function () {
+			///api/account/remove?email=redwinelove@hotmail.com
+			var email = this.rows[this.selected_idx].Email;
+			var url = this.url_account_delete + "?email=" + email;
+			$.ajax({
+				url: url,
+				contentType: 'application/json',
+				type: 'delete',
+				email: email,
+				success: this.recvDelUser,
+				error: function (jqXHR, textStatus, errorThrown) {
+					//console.log('deleteUser()');
+					//console.log(jqXHR); 
+					alert('서버 통신/데이터 통신 에러');
+				}
+			});
+			this.closeDelPopup();
+		},
+		recvDelUser: function (data, textStatus, jqXHR) {
+			if (data.succeeded == true) {
+				this.writeLog('사용자 삭제(' + jqXHR.email + ')')
+				alert('삭제 되었습니다.');
+				location.href = location.href;
+			} else {
+				//console.log('recvDelUser');
+				//console.log(data);
+
+				alert('삭제 실패 했습니다.')
+			}
+		},
+		editUser: function (idx) {
+			var row = this.rows[idx];
+		},
+		getUserList: function () {
+
+			this.rows = [];
+			$.ajax({
+				url: this.url_account_list,
+				contentType: 'application/json',
+				xhrFields: { withCredentials: true },
+				beforeSend: function () {
+					// //console.log('before request');
+					$('.progressbar').css('display', 'block');
+				},
+				success: this.recvUserListResult,
+				error: function (jqXHR, textStatus, errorThrown) {
+					//console.log('getUserList error');
+					//console.log(jqXHR);
+					alert('유저 데이터 수신 실패')
+				}
+			})
+		},
+		recvUserListResult: function (data, textStatus, jqXHR) {
+			//console.log('userList cnt = '+data.length);
+
+			this.rows = [];
+			this.offsetUser = 0;
+			this.recvUserData = data;
+
+			for (var i = this.offsetUser; i < data.length && i < (this.offsetUser + this.limitUser); i++) {
+				var value = data[i];
+				this.addRow((i % this.limitUser), value);
+			}
+
+			// data.forEach((value, idx, array) =>{
+			// 	this.addRow(idx, value);
+			// }); 
+		},
+		getPreviouseUser: function () {
+
+			if ((this.offsetUser - this.limitUser) >= 0) {
+				this.offsetUser -= this.limitUser;
+
+				this.rows = [];
+				for (var i = this.offsetUser; i < this.recvUserData.length && i < (this.offsetUser + this.limitUser); i++) {
+					var value = this.recvUserData[i];
+					this.addRow((i % this.limitUser), value);
+				}
+			} else {
+				alert('데이터가 없습니다.')
+			}
+		},
+		getNextUser: function () {
+			this.offsetUser += this.limitUser;
+
+			if (this.offsetUser > this.recvUserData.length) {
+				alert('데이터가 없습니다.')
+			} else {
+				this.rows = [];
+				for (var i = this.offsetUser; i < this.recvUserData.length && i < (this.offsetUser + this.limitUser); i++) {
+					var value = this.recvUserData[i];
+					this.addRow((i % this.limitUser), value);
+				}
+			}
+		},
+	},
+	middleware: 'authenticated',
+	mounted() {
+
+		this.getUserList();
+
+	},
+}
+
+
+</script>
+
+<style>
+.Users {
+	width: 100%;
+	height: 100%;
+}
+.userContents {
+	width: 100%;
+	height: 100%;
+}
+.userList {
+	float: left;
+	width: 95%;
+	height: 80vh;
+	border: 1px solid #3b3e47;
+	border-radius: 0.3125rem;
+	background: #0a1a28;
+	margin: 2rem;
+}
+.table_wrap {
+	height: 78vh;
+}
+#userDetail_wrap {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background: rgba(2, 19, 35, 0.85);
+	top: 0;
+	left: 0;
+}
+.userDetail {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 64rem;
+	height: 57rem;
+	border: 1px solid #3b3e47;
+	border-radius: 0.3125rem;
+	background: #0a1a28;
+	margin: 2rem;
+}
+.tableArea_wrap {
+	padding: 0.5rem;
+	height: 55rem;
+}
+.detailHeader {
+	width: 100%;
+	font-size: 2.5rem;
+	color: white;
+	border-bottom: 1px solid gainsboro;
+	padding: 0.5rem 1rem;
+}
+.detailBody {
+	padding: 1rem 2rem;
+}
+.labelTitle {
+	color: white;
+	font-size: 1.5rem;
+	width: 40%;
+	float: left;
+}
+.labelValue {
+	color: black;
+	font-size: 1.3rem;
+	width: 60%;
+	float: right;
+}
+.labelValue > input[type="text"],
+.labelValue > select {
+	width: 75%;
+	height: 80%;
+	box-sizing: border-box;
+	padding: 0.2rem 0.1rem;
+}
+.labelValue .radioValue {
+	color: white;
+}
+.labelValue .radioValue input[type="radio"] {
+	width: 1rem;
+	height: 1rem;
+	color: beige;
+}
+.valueRow {
+	height: 5rem;
+	padding: 0.5rem;
+}
+.tableRow {
+	padding: 0.5rem;
+	display: inline-block;
+}
+.valueRow::after {
+	clear: both;
+}
+
+.btn {
+	width: 5.8rem;
+	height: 3.125rem;
+	border-radius: 0.1875rem;
+	font-size: 1.0625rem;
+	color: white;
+	text-align: center;
+	background: #2a75ff;
+	float: right;
+	margin: 0 1rem;
+}
+.btn-small {
+	width: 5.8rem;
+	height: 2.125rem;
+	border-radius: 0.1875rem;
+	font-size: 1.0625rem;
+	color: white;
+	text-align: center;
+	background: #2a75ff;
+	float: right;
+	margin: 0 1rem;
+}
+.saveBtn {
+	display: block;
+}
+.updateBtn {
+	display: none;
+}
+.info_select_user {
+	width: 100%;
+}
+.overlay {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.85);
+	z-index: 10000;
+	display: none;
+}
+.del_popup_wrap {
+	width: 30%;
+	height: 10%;
+	padding: 15px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-left: 1%;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	background: white;
+	position: absolute;
+	top: 50%;
+	box-shadow: 5px 5px 5px #000;
+	z-index: 10001;
+}
+.del_popup_wrap input {
+	cursor: pointer;
+}
+.btn-primary {
+	background-color: white;
+	color: black;
+	border: 2px solid #e7e7e7;
+}
+.btn-primary:hover {
+	background-color: #e7e7e7;
+}
+.btn-cancel {
+	background-color: white;
+	color: black;
+	border: 2px solid #555555;
+}
+.btn-cancel:hover {
+	background-color: #555555;
+}
+.profile_data_error {
+	color: red;
+}
+#errMsg {
+	color: red;
+}
+
+.setup_auth_wrap {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.9);
+}
+.setup_auth {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+.setup_label {
+	color: #fff;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	text-align: center;
+}
+.setup_table_wrap {
+	width: 100%;
+	height: 58vh;
+}
+.setup_auth_btn_wrap {
+	display: inline;
+}
+.setup_auth_btn_wrap button {
+	float: right;
+}
+.setup_table_wrap table input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+}
+
+.userAddress_list_wrap {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(2, 19, 35, 0.85);
+	display: none;
+}
+.userAddress_list {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.paging-nav {
+	text-align: right;
+	padding-top: 2px;
+}
+.paging-nav a {
+	margin: auto 1px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 1px 7px;
+	background: #91b9e6;
+	color: white;
+	border-radius: 3px;
+}
+.paging-nav .selected-page {
+	background: #187ed5;
+	font-weight: bold;
+}
+
+.userDetail input[type="password"],
+.userDetail input[type="text"] {
+	width: 19rem;
+	height: 2.125rem;
+	padding: 1.125rem;
+}
+.userDetail select {
+	width: 9.125rem;
+	height: 2rem;
+	margin: 0.3rem;
+}
+.userDetail input[type="radio"] {
+	width: 1.525rem;
+	height: 1.525rem;
+}
+.userDetail .radioValue {
+	margin-bottom: 0.125rem;
+}
+.td_xy_wrap .user_loc_x_y {
+	background: #aaa !important;
+	float: left !important;
+	width: 15.5rem !important;
+	margin: 0 0.125rem;
+}
+.user_loc_x_y::after {
+	clear: both;
+}
+.td_xy_wrap {
+	text-align: center;
+	padding: 0 5rem;
+}
+.disabled {
+	background: #aaa !important;
+}
+.resource_tb_wrap input {
+	width: 15rem;
+	height: 2.125rem;
+	padding: 0.1rem;
+}
+
+.pagination {
+	display: inline-block;
+	bottom: 6vh;
+	position: fixed;
+	right: 4vw;
+}
+.pagination div {
+	color: white;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+.pagination div.active {
+	background-color: #4caf50;
+	color: white;
+}
+.pagination div:hover:not(.active) {
+	background-color: #ddd;
+}
+
+.pagination2 {
+	display: inline-block;
+	position: relative;
+}
+.pagination2 div {
+	color: white;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+.pagination2 div.active {
+	background-color: #4caf50;
+	color: white;
+}
+.pagination2 div:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>

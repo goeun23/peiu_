@@ -1,0 +1,67 @@
+{
+  "sccGroup": [
+    {
+      "id": "3017011000",
+      "cbList": [
+        {
+          "cbID": "a1",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "3017011000_07100001",
+              "Name": "-",
+              "dr": "ess"
+            },
+            {
+              "poleID": "3017011000_07100004",
+              "Name": "-",
+              "dr": "dr"
+            }
+          ]
+        },
+        {
+          "cbID": "a2",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "3017011000_07100006",
+              "Name": [
+                "<-대전/대흥"
+              ],
+              "dr": "ess"
+            },
+            {
+              "poleID": "3017011000_07100008",
+              "Name": "-",
+              "dr": "dr"
+            }
+          ]
+        },
+        {
+          "cbID": "a3",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "3017011000_07100010",
+              "Name": "-",
+              "dr": "ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a4",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "3017011000_07100012",
+              "Name": [
+                "<-대전/어은"
+              ],
+              "dr": "ess"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

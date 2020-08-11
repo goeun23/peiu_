@@ -1,0 +1,47 @@
+{
+  "sccGroup": [
+    {
+      "id": "3011013700",
+      "cbList": [
+        {
+          "cbID": "a1",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "3011013700_07100001",
+              "Name": [
+                "<-충북/옥천",
+                "<-경북/선산"
+              ],
+              "dr": "ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a2",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "3011013700_07100003",
+              "Name": [
+                "<-대전/대흥"
+              ],
+              "dr": "dr"
+            }
+          ]
+        },
+        {
+          "cbID": "a3",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "3011013700_07100006",
+              "Name": "-",
+              "dr": "dr"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

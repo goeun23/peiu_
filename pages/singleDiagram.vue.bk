@@ -1,0 +1,61 @@
+  <template>
+  <div class="col-xs-12 main">
+    <rcc-dlg/>
+    <div class="divBtn">
+      <button>모든노드</button>
+      <button>분산전원</button>
+      <button>#1M.Tr</button>
+      <button>#2M.Tr</button>
+      <button>#3M.Tr</button>
+      <button>#4M.Tr</button>      
+    </div>
+    <scc-dlg/>
+  </div>
+</template>
+<script> 
+    import rccDlg from '~/components/singleLineRcc.vue';
+    import sccDlg from '~/components/singleLineScc.vue';
+    
+        
+  export default {
+    layout: "singleLineDiagram",
+    components: {      
+      sccDlg, rccDlg
+    },
+    head: {
+      link: [{ }],
+      script: [   ]
+    } ,
+    methods :{
+      
+    },
+    mounted() 
+    {
+      
+    } 
+  }
+ 
+
+</script>
+
+<style>
+  .divBtn{
+    width: 100%;
+    background-color: gray;
+    padding-left: 40px;
+  }
+  .divBtn > button{
+    margin: 12px 5px;
+    
+    width : 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    font-size: 12pt;
+  }
+
+  .col-xs-12,
+  .main { 
+    margin: 0px;
+    padding: 0px;
+  }
+
+</style>

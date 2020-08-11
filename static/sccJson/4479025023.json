@@ -1,0 +1,62 @@
+{
+  "sccGroup": [
+    {
+      "id": "4479025023",
+      "cbList": [
+        {
+          "cbID": "a1",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4479025023_07100005",
+              "Name": "-",
+              "dr": "ess"
+            },
+            {
+              "poleID": "4479025029_07100004",
+              "Name": "-",
+              "dr": "ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a2",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4479025021_07100003",
+              "Name": "-",
+              "dr": "ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a3",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4479025021_07100001",
+              "Name": [
+                "<-충남/서산",
+                "<-충남/보령",
+                "<-충남/계룡"
+              ],
+              "dr": "ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a4",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4479025021_07100002",
+              "Name": "-",
+              "dr": "ess"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

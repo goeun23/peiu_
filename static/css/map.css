@@ -1,0 +1,93 @@
+section{
+    background-color: #242424;
+    color: white;
+  }
+  .card{
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    border: 1px solid blue;
+  }
+  .centered{
+    background-color : yellow;
+  }
+  .my-leaflet-map-container img {
+      max-height: none;
+  } 
+  
+  .title {
+    font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
+    display: block;
+    font-weight: 300;
+    font-size: 100px;
+    color: #35495e;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-weight: 300;
+    font-size: 42px;
+    color: #526488;
+    word-spacing: 5px;
+    padding-bottom: 15px;
+  }
+  
+  .links {
+    padding-top: 15px;
+  }
+
+
+  
+  
+.my-div-icon{
+  width : 250px;
+  height: 50px;
+  /* background: blue; */
+  /* border : 0.1px dotted white; */
+  /* margin: 1px; */
+  padding: 0;
+  /* background-color: aliceblue;nu */
+}
+
+.dist-marker {
+font-size: 9px;
+border: 1px solid #777;
+border-radius: 10px;
+text-align: center;
+color: #000;
+background: #000;
+}
+
+.nodeValue{  
+text-align : right; 
+} 
+.nodeInfoDiv > div > * {  
+display: inline-block;
+margin : 0px 2px;
+}
+.nodeInfoDiv > div {
+color : white;  
+width: 200px;
+margin : 0px 20px;
+}
+
+
+
+.nodeHeader{   
+text-align : center; 
+}
+
+.nodeTotalInfoDiv{
+  width: 350px;
+  font-size: 12pt;
+  background: white;
+  /* background-color: transparent; */
+  border-radius: 15px;
+  opacity: 0.5;
+  text-align: center;
+  background-color: #35495e;
+  margin: 0px 2px;
+}
+.nodeTotalInfoDiv > * , .nodeTotalInfoDiv > table > tbody > tr > td{
+  border: 1px solid white;
+}

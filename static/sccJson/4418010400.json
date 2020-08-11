@@ -1,0 +1,44 @@
+{
+  "sccGroup": [
+    {
+      "id": "4418010400",
+      "cbList": [
+        {
+          "cbID": "a1",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4418010400_07100001",
+              "Name": "-",
+              "dr": "pv-ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a2",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4418010400_07100002",
+              "Name": "-",
+              "dr": "pv-ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a3",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4418010500_07100003",
+              "Name": [
+                "<-충남/청양"
+              ],
+              "dr": "pv-ess"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

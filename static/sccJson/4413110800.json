@@ -1,0 +1,47 @@
+{
+  "sccGroup": [
+    {
+      "id": "4413110800",
+      "cbList": [
+        {
+          "cbID": "a1",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4413110800_07100002",
+              "Name": "-",
+              "dr": "ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a2",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4413110100_07100001",
+              "Name": [
+                "<-충남/아산",
+                "<-충남/계룡"
+              ],
+              "dr": "ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a3",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4413110200_07100003",
+              "Name": [
+                "<-경기/안성"
+              ],
+              "dr": "ess"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

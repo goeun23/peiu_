@@ -1,0 +1,34 @@
+@charset "utf-8";
+/****************************************/
+/*	PART: font
+/*	Version: 1.0
+/*	Author: 둘리엄마
+/****************************************/
+
+@font-face { 
+    font-family:'NanumBarunGothic'; 
+    src: url('webfonts/NanumBarunGothic.eot');
+    src: url('webfonts/NanumBarunGothic.eot?#iefix') format('embedded-opentype'),
+         url('webfonts/NanumBarunGothic.woff') format('woff'),
+         url('webfonts/NanumBarunGothic.ttf') format('truetype');
+	font-style:normal;		 
+    font-weight:normal;
+}
+@font-face { 
+    font-family:'NanumBarunGothic'; 
+    src: url('webfonts/NanumBarunGothicBold.eot');
+    src: url('webfonts/NanumBarunGothicBold.eot?#iefix') format('embedded-opentype'),
+         url('webfonts/NanumBarunGothicBold.woff') format('woff'),
+         url('webfonts/NanumBarunGothicBold.ttf') format('truetype');
+	font-style:normal;		 
+    font-weight:bold;
+}
+@font-face { 
+    font-family:'HY헤드라인M'; 
+    src: url('webfonts/H2HDRM.eot');
+    src: url('webfonts/H2HDRM.eot?#iefix') format('embedded-opentype'),
+         url('webfonts/H2HDRM.woff') format('woff'),
+         url('webfonts/H2HDRM.ttf') format('truetype');
+	font-style:normal;		 
+    font-weight:bold;
+}

@@ -1,0 +1,163 @@
+<template>
+  <div>    
+     <!-- Top navigation -->
+    <div class="topnav">
+      <a class="topnav-menu" href="/"><img src="~/assets/images/logo.png" alt="Home" class="logo"></a>
+      <i class="wi wi-day-cloudy-gusts" style="font-size:32px; color:white;"></i>
+
+      <!-- Right-aligned links -->
+      <div class="topnav-right">
+        <a href="#news">Portal</a>
+        <a href="/market">Market</a>
+        <!-- <a href="/map">map</a> -->
+        <!-- <a href="/map2">map2</a> -->
+        <a href="/map6">map-Design1</a>
+        <a href="/line">line</a>
+        <a href="/singleDiagram">단선도</a> 
+        <!-- <a href="/map7">map-Design2</a> -->
+        <a href="/genMnt" class="dropbtn">발전자원 데이터</a>
+        <a href="/page1" class="dropbtn">page1</a>
+        <a href="/page2" class="dropbtn">page2</a>
+        <a href="/page3" class="dropbtn">page3</a>
+          <!-- <div class="dropdown-content">
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+            <a href="#">Link4</a>
+          </div>         -->
+        <!-- <a href="/editor">map-editor</a> -->
+        <!-- <a href="/map-dashboard">map-dashboard</a> -->
+        
+        <a href="/">Login</a>
+        <a href="#about">About</a>
+        <a href="#setting"><i class="material-icons textIcon" style="font-size:30px;color:white;">settings</i></a>
+      </div>
+
+    </div> 
+ 
+    <nuxt/>
+  </div>
+</template>
+
+<style>
+html{
+  height: 100%;
+  width : 100%;
+}
+* { padding: 0; margin: 0; }
+html, body, #fullheight {
+    min-height: 100% !important;
+    height: 100%;
+     background : #242424 !important;
+  color : #ffffff !important;
+}
+ 
+.logo{
+  width: 20%;
+  height: 20%;
+}
+.topnav-menu{
+  width: 10%;
+}
+.textIcon {
+  vertical-align: middle;
+  display: inline;
+  text-align: center;
+}
+html {
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  height: 100%;
+}
+@media (max-width: 600px) {
+    nav, article {
+        width: 100%;
+        height: auto;
+    }
+}
+/* Add a black background color to the top navigation */
+.topnav {
+    position: relative;
+    background-color: #333;
+    overflow: hidden; 
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+
+/* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav-right {
+    float: none;
+    display: block;
+  }
+}
+
+body{
+  width: 100%; height: 100%;margin: 0px;
+}
+header {
+    background-color: #666;
+    padding: 8px;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+} 
+.button--green {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+.button--green:hover {
+  color: #fff;
+  background-color: #3b8070;
+}
+
+.button--grey {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #35495e;
+  color: #35495e;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-left: 15px;
+}
+
+.button--grey:hover {
+  color: #fff;
+  background-color: #35495e;
+} 
+</style>

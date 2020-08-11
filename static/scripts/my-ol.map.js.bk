@@ -1,0 +1,935 @@
+
+var lins = [];
+
+function clear(map, array) {
+  // if (array.length > 1) {
+  //   lins.forEach(function (item, i, arr) {
+  //     item.remove();
+  //   })
+  // }
+  polyline.remove();
+  alert('clear')
+}
+
+var polyline;
+
+function clearRouting() {
+  polyline.remove();
+  alert('clear')
+}
+
+function drawLink(map, fromLat, fromLng, toLat, toLng, fromID, toID) {
+  var latLngs = [
+    [fromLat, fromLng],
+    [toLat, toLng]
+  ];
+  var line = L.polyline(latLngs, {
+    // color: getColor()
+    color : 'green',
+     
+  });
+  
+  line.addTo(map).bindPopup(''+fromID+' : ['+fromLat + ', ' + fromLng+'] -> '+toID+' : ['+toLat+ ', '+toLng+']');
+  
+  return line;
+}
+
+function createMarkerValue(mID, title, unit, type) {
+  var valDiv, valTitle, valVal, valUnit;
+  valDiv = document.createElement('div')
+
+  valTitle = document.createElement('span')
+  valTitle.innerText = title + ' : '
+  valTitle.style.textAlign = "left";
+  valTitle.style.width = '80px'
+  valTitle.style.marginRight = '13px'
+
+  var valVal = document.createElement('span')
+  if (mID == null)
+    mID = (Math.random() * 10).toFixed(1);
+  valVal.id = 'val_'+type+'_'+ mID;   
+  valVal.innerText = '22.21'
+  valVal.style.textAlign = 'right'
+  valVal.style.width = '80px'
+  valVal.style.marginRight = '10px'
+
+  valUnit = document.createElement('span')
+  valUnit.innerText = unit;
+  valUnit.style.textAlign = 'right'
+
+
+  valDiv.appendChild(valTitle);
+  valDiv.appendChild(valVal);
+  valDiv.appendChild(valUnit);
+  return valDiv;
+} 
+
+
+function createMarkerIconImg(type) {
+  var imgDiv = document.createElement('img')
+  // var _type = type.toLowerCase().replace("/(\s*)/g","");
+  var _type = 'wind'
+  if (_type == 'wind')
+    imgDiv.src = '/images/wind.png';
+  else if (_type == 'solar')
+    imgDiv.src = '/images/solar.png';
+  else if (_type == 'battery')
+    imgDiv.src = '/images/battrey.png';
+  else if (_type == 'factory')
+    imgDiv.src = '/images/factory.png';
+  else {
+    imgDiv.src = '/images/error.png';
+    alert('type error = ' + _type)
+  }
+  imgDiv.style.cursor = 'pointer'
+  imgDiv.style.float = 'left';
+  imgDiv.style.height = "100%"
+  return imgDiv
+}
+
+function createMakerImg() {
+  var div = document.createElement('div')
+  div.style.clear = 'left'
+  var imgDiv = document.createElement('img')
+  // imgDiv.src = '/images/map-marker.png';
+  imgDiv.src = '/images/pin.png';
+  imgDiv.style.cursor = 'pointer'
+  imgDiv.style.height = "100%"
+  div.appendChild(imgDiv);
+  return div
+}
+
+function drawVIBox(map, lat, lng, mID, type) {
+
+  var mInfo = document.createElement('div');
+  mInfo.style.backgroundColor = "white";
+  mInfo.id = 'm-info-status' + mID;  
+  
+  var tag1 = createMarkerValue(mID, 'V', 'MW', 'V')
+  var tag2 = createMarkerValue(mID, 'I', 'MW', 'I') 
+ 
+  mInfo.appendChild(tag1);
+  mInfo.appendChild(tag2);
+
+  var divIcon = L.divIcon({
+    className: 'my-div-icon my-div-status my-div-status-'+mID,
+    html: mInfo.innerHTML,
+    iconSize: null,
+    iconAnchor: [30, 62]
+  })
+  var m = L.marker([lat, lng], {
+    icon: divIcon,
+    draggable: false
+  });
+  m._mid = mID;
+  m.addTo(map);
+  return m;
+}
+
+ 
+/////////////////////////////////////
+///////////////getMapStep//////////////////////
+///////몇 단계 인지 값 반환
+function getMapStep(mapLevel)
+{
+  // console.log(mapLevel); 
+  // return 1;
+  // return 1;
+  if(mapLevel >= 16)
+    {     
+      return 1;
+    }//모두 보여주는 맵
+  else if(mapLevel <= 15 && mapLevel > 13)
+    {      
+      return 2;
+    }//2단계 축소한 맵 - 동단위 데이터 맵
+  else if( mapLevel <= 13 && mapLevel > 10)
+    {       
+      return 3;
+    }//3단계 축소한 맵 - 구 별로 축소된 맵?
+  else if(mapLevel <= 10)
+  { 
+    return 4;
+  }//4단계 축소한 맵 - 시 별 데이터
+}
+
+////////////////getMapStep/////////////////////
+///////////////showStatus()////////////////////////
+let fromMap = new HashMap();
+let toMap = new HashMap();
+let nodeMap = new HashMap();
+let groupMap = new HashMap();
+// let groupMap ;
+let addedNode = [];//그릴때 중복 없애기 위한 해쉬맵
+let markerLink = [];
+function showStatus(map, locData)
+{ 
+  let dataMap = new HashMap();  
+  var id, loc, from = '', to ='', type, obj, subnode, code; 
+  //filtering    
+  groupMap.clear();
+   //step1. 클러스터링 하기 위해 최소 정보를 HashMap에 저장         
+   locData.features.forEach(function(data){
+     //1,2,3단계일때 비트 계산하면 되겟다.
+    // code = parseInt(data.properties.id.split('_')[0]);
+    code = parseInt(data.properties.id.toString().substring(0, 10));
+    if(getMapStep(map.getZoom()) == 3){
+      code = parseInt(code.toString().slice(0,4) * 1000000);
+    }else if(getMapStep(map.getZoom()) == 4){
+      code = (data.properties.id.toString());
+      code = parseInt(code.toString().slice(11,13));
+    }
+    id = data.properties.id;
+
+    loc = { lat : data.geometry.coordinates[1], lng : data.geometry.coordinates[0] };
+    from = data.properties.from;
+    to = data.properties.to;
+    subnode = data.properties.subnode;
+    obj = {
+      id : id, loc : loc, from : from, to : to, 
+      type : type, subnode : subnode, code : code
+    };
+    if(groupMap.has(code)){
+      groupMap.get(code).push(loc);
+    }else{
+      var centerPosition = [];
+      centerPosition.push(loc);
+      groupMap.set(code, centerPosition);
+    }      
+  })
+
+  if(getMapStep(map.getZoom()) == 1){
+    dataMap.clear();
+    for(var i=0; i< locData.features.length; i++)
+    {
+      var data = locData.features[i];
+      id = data.properties.id;
+      loc = { lat : data.geometry.coordinates[1], lng : data.geometry.coordinates[0] };
+      from = data.properties.from;
+      to = data.properties.to;
+      type = data.properties.type;    
+      subnode = data.properties.subnode;
+      code = data.properties.code;
+      obj = {
+          loc : loc, from : from, to : to, type : type, subnode : subnode, code : code, id : id
+      }; 
+      dataMap.set(id, obj);
+      // console.log('fromID : '+ from + ",\tid  : "+id +" ( "+data.properties.subnode+")"+",\ttoID : "+to+"");
+    } 
+    
+  }
+  else if(getMapStep(map.getZoom()) > 1)
+  {
+    //연결된 노드가 다른 그룹인지 확인
+    //다른그룹이면 fromMap에 정보 추가
+    fromMap.clear();//초기화
+    var currentGroupCode, toGroupCode, toGroupCodes;
+    var cnt;//, 포함 여부
+    for(var i=0; i< locData.features.length; i++)
+    { 
+      // currentGroupCode = locData.features[i].properties.id.split('_')[0];    
+      currentGroupCode = locData.features[i].properties.id.toString().substring(0,10); 
+      if(getMapStep(map.getZoom()) == 3){
+        currentGroupCode = currentGroupCode.toString().slice(0,4) * 1000000;
+      }else if(getMapStep(map.getZoom()) == 4){ 
+        currentGroupCode = locData.features[i].properties.id.toString(); 
+        currentGroupCode = currentGroupCode.toString().slice(11,13);
+      }
+
+      currentGroupCode = parseInt(currentGroupCode);
+ 
+      if(locData.features[i].properties.to != undefined)
+      { 
+
+        toGroupCodes = locData.features[i].properties.to.toString().indexOf(',');
+        // console.log(currentGroupCode +', ' + toGroupCodes)
+        if(toGroupCodes == -1)
+        {
+          toGroupCode = locData.features[i].properties.to.toString()
+          if(getMapStep(map.getZoom()) == 2){
+            toGroupCode = toGroupCode.toString().slice(0,10);
+          }else if(getMapStep(map.getZoom()) == 3)
+          {
+            toGroupCode = toGroupCode.toString().slice(0,4) * 1000000;
+          }else if(getMapStep(map.getZoom()) == 4){
+            toGroupCode = locData.features[i].properties.to.toString()
+            toGroupCode = toGroupCode.toString().slice(11,13);
+          }
+          toGroupCode = parseInt(toGroupCode);
+          if(fromMap.has(currentGroupCode) == true){
+            var tempList = [];
+            var found = false;
+            var toTempList = fromMap.get(currentGroupCode);
+            var toIdx = 0;
+
+            for(toIdx = 0; toIdx < toTempList.length; toIdx++){
+              if(toTempList[toIdx] == toGroupCode){
+                found = true;
+                break;
+              }
+            } 
+
+            if(found == false){
+              toTempList.push(toGroupCode);
+              fromMap.set(currentGroupCode, toTempList);
+            }
+          }else
+          {
+             var tempList = [];
+             tempList.push(toGroupCode);
+            fromMap.set(currentGroupCode, tempList);
+          }
+          
+        }
+        else
+        {
+          
+          var toGrops = locData.features[i].properties.to.toString().split(',');
+          var toGroupList = [];
+          //  console.log(currentGroupCode +', ' + toGrops)
+           if(getMapStep(map.getZoom()) == 2){
+             toGrops.forEach(function(d){
+               toGroupList.push(parseInt(d.toString().slice(0,10)));
+             }) 
+          }else if(getMapStep(map.getZoom()) == 3)
+          {
+             toGrops.forEach(function(d){
+              //  toGroupList.push(parseInt(d.toString().slice(0,4) * 1000000));
+               toGroupList.push(parseInt(make3GroupNumber(d.toString().slice(0,4) * 1000000)));
+             })  
+          }else if(getMapStep(map.getZoom()) == 4){
+            toGrops.forEach(function(d){
+              //  toGroupList.push(parseInt(d.toString().slice(0,2) * 100000000));
+               toGroupList.push(parseInt(d.toString().slice(11,13)));
+             })  
+          } 
+          if(fromMap.has(currentGroupCode) != true){
+            fromMap.set(currentGroupCode, toGroupList);
+          } 
+          else
+          { 
+
+            var tempArray = fromMap.get(currentGroupCode);
+            var tempId = null;
+            for(var tempI=0; tempI < toGroupList.length; tempI++)
+            {
+              tempArray = fromMap.get(currentGroupCode);
+              tempId = toGroupList[tempI];
+              if(tempArray.indexOf(tempId) == -1){
+                var updatedArr = tempArray.slice();
+                updatedArr.push(tempId);
+                fromMap.set(currentGroupCode, updatedArr)
+                // console.log(tempId +'is not exxited');
+              }
+            }
+          }
+        } 
+      }        
+    }
+    
+    //그룹간의 연결관계를 확인했으니 그리기위한 정보를 dataMap에 저장
+    dataMap.clear();   
+    fromMap.forEach(function(toCodes, fromCode){
+        var toCode, obj, temp;
+        var grpLocs = [];
+        var grpCenter;
+        var toInfos = [];
+        var toInfo;
+        var fromLocCenter, toLocCenter;
+
+        temp = groupMap.get(parseInt(fromCode));
+        for(i=0; i< temp.length; i++){
+          grpLocs.push(temp[i])
+        }
+        fromLocCenter = new L.LatLngBounds(grpLocs).getCenter();   
+        // id = fromCode + '_group';    
+        id = fromCode ;
+        
+        if(toCodes != undefined){
+            obj = {id : id, loc : fromLocCenter, to : toCodes}
+            dataMap.set(obj.id, obj);
+        }else
+        {
+          //to정보 수집
+          for(i=0; i< toCodes.length; i++)
+          {          
+            toCode = parseInt(toCodes[i]);
+            grpLocs =[];
+            //from 정보 수집
+            temp = groupMap.get(parseInt(toCode));
+            for(j =0; j< temp.length; j++){
+              grpLocs.push(temp[j]);
+            }         
+            toLocCenter = new L.LatLngBounds(grpLocs).getCenter();  
+            // toInfo = {id : toCode + '_group', loc : grpCenter};          
+            toInfo = {id : toCode, fromLocCenter : toLocCenter};          
+            toInfos.push(toInfo);
+          }        
+          obj = {id : id, loc : fromLocCenter, to : toInfos}        
+          dataMap.set(obj.id, obj); 
+        }
+          
+      }) 
+  } 
+    // myCnt = 0;
+  //marker
+  addedNode = [];
+  fromMap.clear();
+
+  for(var dIdx = 0; dIdx < dataMap.size; dIdx++)
+  {
+    // console.log('myCnt = ' + myCnt++);
+    var value = dataMap.get(dataMap.keys()[dIdx]);
+    var lng = parseFloat(value.loc.lng);
+    var lat = parseFloat(value.loc.lat);
+    
+    //이미 그려진게 아니라면 그린다
+    
+
+    if(getMapStep(map.getZoom()) == 1)
+    {
+      
+      if(value.id.toString() === '4283025021_06100001'){
+        console.log(value.id);
+      }
+      if(isAddedNode(value.id) != true)
+      {
+        // var circle = L.circle(L.latLng([lat, lng]), {
+        //   color: 'red', fillColor: 'red', fillOpacity: 0.5,
+        //   radius: 10 * map.getZoom()
+        // }).addTo(map).bindPopup('id = '+ value.id + ' loc = [' + lat+', '+ lng + ']'); 
+      
+        // drawVIBox(map, lat, lng, value.id, '');  
+        
+        if(getMapStep(map.getZoom()) > 1){
+          // drawNodeTotalInfoBox(map, lat, lng, value.id);
+        }
+        
+      }
+      showDetailValue(map,dataMap, lat, lng, value.id, value);
+    }
+    else if(getMapStep(map.getZoom()) > 1){     
+      var latlng2;
+      var infoDiv;
+      var m;
+      var _tempIdx;
+      if(value.to !=undefined)
+      {
+        if(value.to instanceof Array)
+        {
+          value.to.forEach(function(toNodes)
+          {
+            var toNode = dataMap.get(toNodes);
+            if(toNode != undefined)
+            {
+              if(!(isAddedNode(toNode.id))) 
+              {  
+                // drawVIBox(map, toNode.loc.lat, toNode.loc.lng, toNode.id, '');
+                // drawNodeTotalInfoBox(map, toNode.loc.lat, toNode.loc.lng, toNode.id); 
+                // var circle = L.circle(L.latLng([toNode.loc.lat, toNode.loc.lng]), {
+                //   color: 'red', fillColor: 'red', fillOpacity: 0.5,
+                //   radius: 10 * map.getZoom()                  
+                // }).addTo(map).bindPopup('id = '+toNode.id + ' loc = [' + toNode.loc.lat +', '+ toNode.loc.lng + ']');          
+                // L.marker({lat, lng}).addTo(map);
+                if(toNode.id == 4155000000)
+                {
+                  console.log('aa')
+                }
+
+                latlng2 = { lat : lat - 0.002, lng : lng};     
+                infoDiv = drawNodeInfoBox(map, latlng2.lat, latlng2.lng, toNode.id);
+                var divIcon = L.divIcon({
+                  className : 'nodeInfoDiv',
+                  html : infoDiv.innerHTML,                  
+                  iconSize : [130,50],
+                  iconAnchor : [0, 48]
+                });        
+                m = L.marker(latlng2, {
+                  icon : divIcon,
+                  draggable : false,
+                }).addTo(map);             
+                L.marker({lat, lng}).addTo(map);  
+              }
+                drawLink(map, lat, lng, toNode.loc.lat, toNode.loc.lng, value.id, toNode.id);               
+            }
+          })   
+        }
+        else
+        {
+        var toValue =   dataMap.get(value.to);
+        var toLng = parseFloat(toValue.loc.lng);
+        var toLat = parseFloat(toValue.loc.lat);
+            if(isAddedNode(toValue.id) !=true)
+            {  
+              // drawVIBox(map, toValue.loc.lat, toValue.loc.lng, toValue.id, '');
+              // drawNodeTotalInfoBox(map, toValue.loc.lat, toValue.loc.lng, toValue.id); 
+              // var circle = L.circle(L.latLng([toValue.loc.lat, toValue.loc.lng]), {
+              //   color: 'red', fillColor: 'red', fillOpacity: 0.5,
+              //   radius: 10 * map.getZoom()
+              // }).addTo(map).bindPopup('id = '+toValue.id + ' loc = [' + toValue.loc.lat +', '+ toValue.loc.lng + ']');          
+              // L.marker({lat, lng}).addTo(map);  
+            }                    
+            drawLink(map, lat, lng, toValue.loc.lat, toValue.loc.lng, value.id, toValue.id);
+        }
+      }
+    } 
+  }  
+}
+
+let myCnt = 0;
+let myCnt1 = 0;
+//////////////showStatus()/////////////////////////
+/// map 1단계에 따른 맵 화면 설정
+function showDetailValue(map, dataMap, lat, lng, key, value)
+{
+  //drawing CB, PV, Wind,Ess 
+  if(typeof value.subnode != 'undefined')
+  {
+    var latlng1, latlng2, latlng3;
+    
+    var infoDiv, m;
+    //console.log('value.subnode = ' + value.subnode);
+    value.subnode.toString().toLowerCase().split(',').forEach(function(data, idx)
+    {
+      if(data == 'cb')
+      {
+        latlng1 = {lat : lat - 0.001, lng : lng};    
+        var icon = L.icon({
+          iconUrl : '/images/marker/cb.png',
+          iconSize: [25, 41],
+          iconAnchor: [12, 30],
+        });    
+        latlng2 = { lat : lat - 0.002, lng : lng};
+        infoDiv = drawNodeInfoBox(map, latlng2.lat, latlng2.lng, key);
+        var divIcon = L.divIcon({
+          className : 'nodeInfoDiv',
+          html : infoDiv.innerHTML,
+          iconSize : [130,50],
+          iconAnchor : [0, 48]
+        });        
+        m = L.marker(latlng2, {
+          icon : divIcon,
+          draggable : false,
+        });
+        m._mid = key;
+        m.addTo(map);
+        m = L.marker(latlng1,{icon : icon, contextmenu: false,}).addTo(map);        
+        // m = L.marker(latlng1).addTo(map);        
+        var link = drawLink(map, lat, lng, latlng1.lat, latlng1.lng, '',''); 
+      } 
+      else if(data == 'pv' || data =='wind' || data =='dr')
+      {        
+        var pvIconUrl  = "/images/marker/pv.png";
+        var windIConUrl = "/images/marker/wind.png";
+        var drIconUrl = "/images/marker/dr.png";
+        var iconUrl;
+        var icon;
+        if(data =='pv')
+        { 
+          icon = L.icon({
+            iconUrl : pvIconUrl,
+            iconSize : [25,41],
+            iconAnchor : [12,30]
+          });
+        }else if(data == 'wind')
+        {
+          icon = L.icon({
+            iconUrl : windIconUrl,
+            iconSize : [25,41],
+            iconAnchor : [12,30]
+          });
+        }else if(data == 'dr')
+        {
+          icon = L.icon({
+            iconUrl : drIconUrl,
+            iconSize : [25,41],
+            iconAnchor : [12,30]
+          });
+        }
+ 
+        
+        m = L.marker(latlng2, {icon : icon, contextmenu:false}).addTo(map).bindPopup("this is "+data+"_"+key);
+        link = drawLink(map, latlng1.lat, latlng1.lng, latlng2.lat, latlng2.lng,'','');        
+      }
+      else if(data == 'ess')
+      {
+        var _tempLatLng;
+        latlng3  = {lat : lat - 0.0033 , lng : lng}; 
+        var icon = L.icon({
+          iconUrl : '/images/marker/ess.png',
+          iconSize : [25, 41],
+          iconAnchor : [12, 30]
+        })
+        
+        m = L.marker(latlng3,
+          {
+            icon : icon,
+            myMarkerID : key,
+            contextmenu: true,
+            contextmenuItems: [{
+              text : '단선도 보기',
+              index : 0,
+              hideOnSelect: 'true',
+              callback: showSinglineDlg
+            }]
+        }
+        ).addTo(map);
+ 
+        if(latlng2 != undefined)
+        {
+          link = drawLink(map, latlng2.lat, latlng2.lng, latlng3.lat, latlng3.lng,'','');
+        } else{
+          link = drawLink(map, latlng1.lat, latlng1.lng, latlng3.lat, latlng3.lng,'','');
+        }
+      }
+    })    
+  }
+ 
+  if(typeof value.to != 'undefined')
+  {
+    var before, after, to;
+    var latlng2, m;
+    // console.log('value.to = '+ value.to)
+    if( value.to.toString().split(',').length > 1){
+
+      value.to.toString().split(',').forEach(function(val, idx)
+      {
+        // to = parseInt(val);
+       
+        to = val;
+        before = dataMap.get(key);
+        after = dataMap.get(to);  
+        //console.log('before = ' + before + ', after =' + after + ', to = ' + to);
+        if(typeof after != 'undefined'){   
+          var coords = [new L.latLng(before.loc.lat, before.loc.lng),
+                        new L.latLng(after.loc.lat, after.loc.lng)];
+          // override defaults
+          // var line = L.polyline(coords, {
+          //   distanceMarkers: { showAll: 15, offset: 100, cssClass: 'some-other-class', iconSize: [16, 16] }
+          // });
+            // map.fitBounds(line.getBounds());
+            // map.addLayer(line);
+            
+          drawLink(map, before.loc.lat, before.loc.lng, after.loc.lat, after.loc.lng, before.id, after.id);
+        }
+      })
+    }else{
+      to = value.to;
+      before = dataMap.get(key);
+      after = dataMap.get(to)    ;
+      //console.log('before = ' + before + ', after =' + after + ', to = ' + to);
+
+      if(typeof after != 'undefined'){   
+        var coords = [new L.latLng(before.loc.lat, before.loc.lng),
+                      new L.latLng(after.loc.lat, after.loc.lng)];
+        // override defaults
+        // var line = L.polyline(coords, {
+        //   distanceMarkers: { showAll: 15, offset: 100, cssClass: 'some-other-class', iconSize: [16, 16] }
+        // });
+          // map.fitBounds(line.getBounds());
+          // map.addLayer(line);
+           
+         drawLink(map, before.loc.lat, before.loc.lng, after.loc.lat, after.loc.lng, before.id, after.id);
+      }
+    }
+  }
+}
+//이미 그린 노드라면 true 리턴
+function isAddedNode(id)
+{
+  var newStatus = false;
+  for(var vIdx = 0; vIdx < addedNode.length; vIdx++){
+    if(addedNode[vIdx] === id)
+    {
+      newStatus = true;
+      // console.log(id + 'has been drawn.')
+      break;
+    }
+  }
+  if(newStatus == false){
+    addedNode.push(id);
+  }
+  return newStatus;
+}
+let _addMarker = [];
+
+////////////nodeInfo////////////////////
+function drawNodeInfoBox(map, lat, lng, id)
+{
+  var div = document.createElement('div');
+  div.className = 'nodeInfoDiv'; 
+  var ul = document.createElement('ul');
+  ul.className="marker-value-list";
+  var li1 = document.createElement('li');
+  var span1 = document.createElement('span');
+  span1.innerText = "발전량 : 23.22MW";
+  span1.id = "gen-"+id;
+  li1.appendChild(span1);
+  
+  var li2 = document.createElement("li");
+  var span2 = document.createElement("span");
+  span2.innerText = "SoC : 23%"  ;
+  span2.id = "soc-"+id;
+  li2.appendChild(span2);
+
+  var li3 = document.createElement("li");
+  var span3 = document.createElement("span");
+  span3.innerText = "유효전력 : 0 kW"  ;
+  span3.id="active-power-"+id;
+  li3.appendChild(span3);
+
+  var li4 = document.createElement("li");
+  var span4 = document.createElement("span");
+  span4.innerText = "이벤트 : 0개"  ;
+  span4.id="evt-"+id;
+  li4.appendChild(span4);
+  
+
+  ul.appendChild(li1);
+  ul.appendChild(li2);
+  ul.appendChild(li3);
+  ul.appendChild(li4);
+  div.appendChild(ul);
+  return div;
+}
+ 
+////////////nodeTotalInfo/////////////////
+
+// Use Leaflet to implement a D3 geometric transformation.
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getColor() {
+  var r = getRandomInt(0, 255);
+  var g = getRandomInt(0, 255);
+  var b = getRandomInt(0, 255);
+  return 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+
+function getBRColor() {
+  if (getRandomInt(0, 255) % 2 == 0) {
+    return '#FF0000';
+  } else {
+    return '#0000FF';
+  }
+}
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+  var radlat1 = Math.PI * lat1 / 180
+  var radlat2 = Math.PI * lat2 / 180
+  var theta = lon1 - lon2
+  var radtheta = Math.PI * theta / 180
+  var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist)
+  dist = dist * 180 / Math.PI
+  dist = dist * 60 * 1.1515
+  if (unit == "K") {
+    dist = dist * 1.609344
+  }
+  if (unit == "N") {
+    dist = dist * 0.8684
+  }
+  return dist
+}
+
+
+
+function drawArrows(map, arrow) {
+  var per = 20;
+  var temp = 0;
+  // while(true)
+  // {
+
+  //   temp += per;
+  //   if(temp >=100)
+  //     return;
+  //   var arrowHead = L.polylineDecorator(arrow, {
+  //     patterns: [{
+  //       offset: temp +'%',
+  //       repeat: 0,
+  //       symbol: L.Symbol.arrowHead({
+  //         pixelSize: 15,
+  //         polygon: false,
+  //         pathOptions: {
+  //           stroke: true
+  //         }
+  //       })
+  //     }]
+  //   });
+  //   arrowHead.addTo(map); 
+  // }
+
+
+  var arrowHead = L.polylineDecorator(arrow, {
+    patterns: [{
+        offset: 0,
+        repeat: 3,
+        symbol: L.Symbol.dash({
+          pixelSize: 10,
+          color: 'red'
+        })
+        // symbol: L.Symbol.arrowHead({
+        //   pixelSize: 15,
+        //   polygon: false,
+        //   pathOptions: {
+        //     stroke: true
+        //   }
+        // })
+      },
+      {
+        offset: 30,
+        repeat: 2,
+        symbol: L.Symbol.arrowHead({
+          pixelSize: 13,
+          polygon: false,
+          pathOptions: {
+            stroke: true,
+            color: 'black'
+          }
+        })
+      }
+    ]
+  });
+  arrowHead.addTo(map);
+}
+
+function __init_migration(map, array) {
+
+  var myData = [];
+
+  for (var i = 0; i < array.length - 1; i++) {
+    from = array[i].geometry.coordinates;
+    to = array[i + 1].geometry.coordinates;
+    var fromLat = from[1];
+    var fromLng = from[0];
+    var toLat = to[1];
+    var toLng = to[0];
+    myData.push({
+      "from": [fromLng, fromLat],
+      "to": [toLng, toLat],
+      "labels": ["a1", "a2"],
+      "color": "#FF00FF"
+    });
+  }
+
+  var migrationLayer = new L.migrationLayer({
+    map: map,
+    data: myData,
+    pulseRadius: 30,
+    pulseBorderWidth: 3,
+    arcWidth: 1,
+    arcLabel: true,
+    arcLabelFont: '10px sans-serif',
+  });
+  migrationLayer.addTo(map);
+  migrationLayer.show();
+
+  
+}
+let migrationlayer ;
+function showCtrlArrow(map, fromToJson){
+  migrationLayer = new L.migrationLayer({
+    map: map,
+    data: fromToJson,
+    pulseRadius: 30,
+    pulseBorderWidth: 3,
+    arcWidth: 1,
+    arcLabel: true,
+    arcLabelFont: '10px sans-serif',
+  });
+  migrationLayer.addTo(map);
+  migrationLayer.show();
+}
+function stopCtrlArrow(map){
+  if(migrationlayer != null){
+    migrationLayer.destroy();
+  }
+}
+
+
+
+
+function showSinglineDlg(e){
+  var essId = e.relatedTarget.options.myMarkerID;
+  location.href = '/lineDiagram?id='+essId;
+}
+
+function getMarkerGroup(map, locData){
+  var code;
+  groupMap = new HashMap();
+  var id, loc, from, to ,subnode, obj, type;
+  //step1. 클러스터링 하기 위해 최소 정보를 HashMap에 저장         
+  locData.features.forEach(function(data){
+    //1,2,3단계일때 비트 계산하면 되겟다.
+   // code = parseInt(data.properties.id.split('_')[0]);
+   code = parseInt(data.properties.id.toString().substring(0, 10));
+   if(getMapStep(map.getZoom()) == 3){
+    //  code = parseInt(code.toString().slice(0,4) * 1000000);
+    code = make3GroupNumber(code);
+   }else if(getMapStep(map.getZoom()) == 4){
+     code = (data.properties.id.toString());
+     code = parseInt(code.toString().slice(11,13));
+   }
+   id = data.properties.id;
+
+   loc = { lat : data.geometry.coordinates[1], lng : data.geometry.coordinates[0] };
+   from = data.properties.from;
+   to = data.properties.to;
+   subnode = data.properties.subnode;
+   obj = {
+     id : id, loc : loc, from : from, to : to, 
+     type : type, subnode : subnode, code : code
+   };
+   if(groupMap.has(code)){
+     groupMap.get(code).push(loc);
+   }else{
+     var centerPosition = [];
+     centerPosition.push(loc);
+     groupMap.set(code, centerPosition);
+   }      
+ })
+  return groupMap;
+}
+function getMarker3Group(locData){
+  var code;
+  groupMap = new HashMap(); 
+  var id, loc, from, to ,subnode, obj, type;
+  //step1. 클러스터링 하기 위해 최소 정보를 HashMap에 저장         
+  locData.features.forEach(function(data)
+  {
+    //1,2,3단계일때 비트 계산하면 되겟다.
+   // code = parseInt(data.properties.id.split('_')[0]);
+   code = parseInt(data.properties.id.toString().substring(0, 10));
+  //  code = parseInt(code.toString().slice(0,4) * 1000000);
+  code = make3GroupNumber(code);
+   id = data.properties.id;
+
+   loc = { lat : data.geometry.coordinates[1], lng : data.geometry.coordinates[0] };
+   from = data.properties.from;
+   to = data.properties.to;
+   subnode = data.properties.subnode;
+  
+   var centerPosition = [];
+   obj = {
+    id : id, loc : loc, from : from, to : to, 
+    type : type, subnode : subnode, code : code ,pos : [],
+    rccIdx : data.properties.id.toString().slice(11,13)
+  };   
+   if(groupMap.has(code))
+   {
+    groupMap.get(code).pos.push(loc);
+    }else{
+      
+      obj.pos.push(loc);
+      groupMap.set(code, obj);
+    }    
+    
+  })
+ return groupMap;
+}
+
+function make3GroupNumber(code){
+  code = parseInt(code.toString().slice(0,4) * 1000000);
+  return code;
+}

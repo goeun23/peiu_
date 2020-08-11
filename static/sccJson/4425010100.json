@@ -1,0 +1,73 @@
+{
+  "sccGroup": [
+    {
+      "id": "4425010100",
+      "cbList": [
+        {
+          "cbID": "a1",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4425010100_07100001",
+              "Name": [
+                "<-충남/청양",
+                "<-충남/천안"
+              ],
+              "dr": "ess"
+            },
+            {
+              "poleID": "4425010100_07100002",
+              "Name": "-",
+              "dr": "dr"
+            }
+          ]
+        },
+        {
+          "cbID": "a2",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4425010100_07100003",
+              "Name": "-",
+              "dr": "dr"
+            },
+            {
+              "poleID": "4425010100_07100004",
+              "Name": "-",
+              "dr": "dr"
+            }
+          ]
+        },
+        {
+          "cbID": "a3",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4425031021_07100006",
+              "Name": [
+                "<-전북/군산"
+              ],
+              "dr": "pv-ess"
+            },
+            {
+              "poleID": "4425031021_07100005",
+              "Name": "-",
+              "dr": "pv-ess"
+            }
+          ]
+        },
+        {
+          "cbID": "a4",
+          "isOpen": false,
+          "poleList": [
+            {
+              "poleID": "4425031021_07100007",
+              "Name": "-",
+              "dr": "pv-ess"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3351 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "A4",
+          "area": "신일",
+          "local": "동서울(서울본부)",
+          "substation": "본부",
+          "Name": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.08263397216797,
+            37.540425948432734
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "A1",
+          "area": "신일",
+          "local": "동서울(서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.09576606750488,
+            37.54587032406914
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "A3",
+          "area": "신일",
+          "local": "동서울(서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.08718299865724,
+            37.53532148519354
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "A2",
+          "area": "신일",
+          "local": "동서울(서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.10280418395995,
+            37.54199124714955
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B5",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.90170288085939,
+            37.52606450059144
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B2",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.88762664794922,
+            37.5249753680482
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B3",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.89183235168458,
+            37.51966561919912
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B6",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation ": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.90264701843262,
+            37.520618678869305
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B1",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.89088821411133,
+            37.534708926123805
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B9",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.91972732543945,
+            37.52579221894634
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B11",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.93225860595703,
+            37.51959754304258
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B7",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.90359115600585,
+            37.50373410549169
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B10",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.92333221435545,
+            37.50366601480266
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": " B4",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.89560890197752,
+            37.508296040190345
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B8",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.91183090209961,
+            37.51340235281265
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "B12",
+          "area": "두마",
+          "local": "영등포(남서울본부)",
+          "substaion": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.93998336791992,
+            37.512857696110274
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "D1",
+          "area": "대화",
+          "local": "신부평(인천본부)",
+          "substaion": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.65657043457031,
+            37.47553925171493
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "D5",
+          "area": "대화",
+          "local": "신부평(인천본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.67459487915038,
+            37.475266785762386
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "D4",
+          "area": "대화",
+          "local": "신부평(인천본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.66051864624023,
+            37.46436733315239
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "C1",
+          "area": "유천",
+          "local": "의정부(경기북부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.03980445861815,
+            37.74296034299409
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "C2",
+          "area": "유천",
+          "local": "의전부(경기북부)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.034912109375,
+            37.738141282210385
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "C3",
+          "area": "월산",
+          "local": "의정부(경기북부)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.05413818359374,
+            37.73379707124429
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "D6",
+          "area": "대화",
+          "local": "신부평(인천본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.67759895324707,
+            37.457009304251244
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "D2",
+          "area": "대화",
+          "local": "신부평(인천본부)",
+          "substaion": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.65511131286623,
+            37.464435459666504
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "D3",
+          "area": "대화",
+          "local": "신부평(인천본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.6511631011963,
+            37.44992311064815
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E8",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.98797607421874,
+            37.89002800137122
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E9",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.2159423828125,
+            37.90736658145496
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E10",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.79296875,
+            37.607704112428394
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E11",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.16650390625,
+            37.54457732085582
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E12",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.3477783203125,
+            37.727280276860036
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E13",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.66912841796875,
+            37.76202988573211
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E14",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.28460693359375,
+            37.35924242260126
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E15",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.71856689453125,
+            37.49447320172351
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E16",
+          "area": "서대전",
+          "local": "신태백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.96026611328125,
+            37.45087706042972
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E17",
+          "area": "서대전",
+          "local": "신태백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.43292236328125,
+            38.0934982133674
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E18",
+          "area": "서대전",
+          "local": "신태백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.32305908203125,
+            38.35458032659834
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E1",
+          "area": "서대전",
+          "local": "신태백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.37548828125,
+            38.17991001446116
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E2",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.48809814453125,
+            38.04160203158016
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E3",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.88085937499999,
+            38.20797181420939
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E4",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.562255859375,
+            37.82280243352756
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E5",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.59521484375,
+            37.63380988687157
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E6",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.1060791015625,
+            37.74465712069939
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "E7",
+          "area": "서대전",
+          "local": "신택백(강원본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.76000976562501,
+            38.07404145941957
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F19",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.49908447265625,
+            36.824676208856175
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F18",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.68997192382812,
+            36.88181755936464
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F17",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.825927734375,
+            36.69485094156225
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F16",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.07174682617188,
+            36.81038419804105
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F15",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.32330322265626,
+            36.629855940857006
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F14",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.6226806640625,
+            36.56260003738545
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F13",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.58148193359375,
+            36.760891249565624
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F12",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.76412963867188,
+            36.849955535919875
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F1",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.9962158203125,
+            36.966352227940526
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F2",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.46200561523436,
+            36.69044623523481
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F3",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.3260498046875,
+            36.88181755936464
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F4",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.30682373046874,
+            36.79498981749727
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F5",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.44689941406249,
+            36.772992477693414
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F6",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.53890991210936,
+            36.91256828285194
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F7",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.66113281249999,
+            36.79169061907076
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F8",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.54714965820312,
+            36.64858894203172
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F9",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.71881103515625,
+            36.69044623523481
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F10",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.62130737304688,
+            36.972935408083124
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "F11",
+          "area": "대덕",
+          "local": "청원(충북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.45788574218749,
+            36.961963124877656
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G12",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.30304718017578,
+            36.34803833812561
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G11",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.30545043945311,
+            36.32867932165893
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G13",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.32536315917969,
+            36.36296914865995
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G14",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.34184265136719,
+            36.34610265300638
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G15",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.3305130004883,
+            36.3176148663942
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G16",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.36793518066405,
+            36.32674315538623
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G17",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.34184265136719,
+            36.29216065850774
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G18",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.39299774169923,
+            36.30710217895976
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G19",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.43179321289064,
+            36.311805398567465
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G20",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.4585723876953,
+            36.31623169903713
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G21",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.47848510742189,
+            36.32314729038526
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G22",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.44861602783203,
+            36.330892024202235
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G23",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.47333526611328,
+            36.34333730507727
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G24",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.41016387939453,
+            36.33946565299958
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G25",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.4359130859375,
+            36.351080031803
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G26",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.43350982666016,
+            36.37126280583509
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G27",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.40432739257812,
+            36.36131031114272
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G28",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.3813247680664,
+            36.36075735744602
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G29",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.38716125488281,
+            36.33725319397006
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G10",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.41291046142578,
+            36.32729635065908
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G9",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.35557556152344,
+            36.38066121521225
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G8",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.3857879638672,
+            36.38922936340128
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G7",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.41188049316405,
+            36.39917828607653
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G6",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.36999511718751,
+            36.40912593529671
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G5",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.39986419677734,
+            36.42017738514984
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G4",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.41531372070311,
+            36.44172318922345
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G3",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.37857818603516,
+            36.436199194192895
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G2",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.3212432861328,
+            36.39116397587157
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "G1",
+          "area": "둔산",
+          "local": "신계룡(대전충남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.34287261962889,
+            36.41851976791566
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H5",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.001953125,
+            35.871246850027966
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H6",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.83853149414061,
+            35.926868653041375
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H7",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.05963134765625,
+            36.02244668175846
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H8",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.22030639648438,
+            35.91685961322499
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H9",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.11318969726562,
+            35.74762682821177
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H10",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.76986694335938,
+            35.69299463209881
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H11",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.86599731445311,
+            35.80110774881785
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H12",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.91818237304689,
+            35.94465937365276
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H13",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.88522338867186,
+            36.0624217151089
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H14",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.00469970703125,
+            36.09904766316007
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H15",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.1063232421875,
+            35.89016264832639
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H16",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.98822021484375,
+            35.735365718650236
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H17",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.87698364257812,
+            35.73090666520053
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H18",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.7822265625,
+            35.652832827451654
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H19",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.0294189453125,
+            35.82226734114509
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H20",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.0458984375,
+            35.97022651867593
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H21",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.94564819335936,
+            36.02688935430189
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H22",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.79321289062501,
+            36.006895355244666
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H23",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.69708251953124,
+            36.030221194310705
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H1",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.78771972656249,
+            36.13565654678543
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H2",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.22442626953124,
+            36.092389668927595
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H3",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.27386474609374,
+            35.83228833783694
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "H4",
+          "area": "덕진",
+          "local": "군산(전북본부)",
+          "subsatation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.04727172851562,
+            35.67849408943879
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I5",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.47274780273438,
+            35.865682520284096
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I6",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.58467102050778,
+            35.89961885334198
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I7",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.54759216308594,
+            35.846204289521964
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I8",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.49403381347656,
+            35.828948146199636
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I9",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.5187530517578,
+            35.89461276785913
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I10",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.5565185546875,
+            35.930204718146754
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I11",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.61419677734375,
+            35.85343961959182
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I12",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.638916015625,
+            35.8940565165966
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I13",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.6602020263672,
+            35.852326534859166
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I14",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.53042602539062,
+            35.80723347379414
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I1",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.60389709472656,
+            35.81948350640237
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I2",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.5626983642578,
+            35.922976399188535
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I3",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.6066436767578,
+            35.9285367031886
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "I4",
+          "area": "송강",
+          "local": "대구(대구경북본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.6560821533203,
+            35.92464453144099
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J3",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.09656524658203,
+            35.193169818192025
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J4",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.1109848022461,
+            35.18166571475282
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J5",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.07270431518552,
+            35.169598685900546
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J6",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.0625762939453,
+            35.18811943674936
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J7",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.0951919555664,
+            35.21252670530206
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J8",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.12128448486328,
+            35.22304481741484
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J9",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.0720176696777,
+            35.224447129379925
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J10",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.08506393432617,
+            35.23286049226909
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J11",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.06652450561523,
+            35.14195002102899
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J12",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.03837203979492,
+            35.15724917448209
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J13",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.1190528869629,
+            35.16258214808429
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J1",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.1710662841797,
+            35.170019658918186
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "J2",
+          "area": "가수원",
+          "local": "북부산(부산울산)",
+          "substation": ""
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            129.09931182861328,
+            35.12622679400415
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K9",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.37387084960938,
+            35.209721645221386
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K13",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.46176147460938,
+            35.178298352001214
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K10",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.6553955078125,
+            35.24449753934067
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K11",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.52630615234375,
+            35.291589484566124
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K1",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.67462158203125,
+            35.14461705293515
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K2",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.6553955078125,
+            35.3509759564216
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K3",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.72817993164062,
+            35.3285710912542
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K4",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.50021362304688,
+            35.40024478679507
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K5",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.38897705078125,
+            35.35993616287676
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K6",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.31756591796875,
+            35.29719384502174
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K7",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.24066162109375,
+            35.2355245419696
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K8",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.2818603515625,
+            35.15472290705944
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "K12",
+          "area": "둔지",
+          "local": "서마산(경남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            128.49746704101562,
+            35.20355017191464
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L22",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.77261352539061,
+            35.1255247934279
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L21",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.87698364257812,
+            35.205233347514536
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L20",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.98410034179688,
+            35.21533166846627
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L19",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.95663452148438,
+            35.15360009635797
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L18",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.85638427734375,
+            35.049111000569276
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L17",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.98272705078125,
+            35.060352812431496
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L16",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.67648315429688,
+            35.04573815523954
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L15",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.62704467773438,
+            35.19625600786368
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L14",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.80007934570312,
+            35.24113278166642
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L13",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.95938110351561,
+            35.345375322554474
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L12",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.65313720703126,
+            34.77433178948767
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L11",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.80694580078124,
+            34.786739162702524
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L10",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.98822021484375,
+            34.81493079738035
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L9",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.95114135742188,
+            34.689686347589344
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L8",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.65725708007812,
+            34.66032236481892
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L7",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.88796997070312,
+            34.864524651614815
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L6",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.61605834960936,
+            34.84085858477277
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L5",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.79321289062501,
+            34.908457853981375
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L4",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            126.53366088867188,
+            34.655803905058974
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L3",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.12142944335938,
+            34.813803317113155
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L2",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.38098144531249,
+            35.04798673426734
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "marker-color": "#7e7e7e",
+          "marker-size": "medium",
+          "marker-symbol": "",
+          "id": "L1",
+          "area": "유성",
+          "local": "신광주(광주전남본부)",
+          "substation": "본부"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            127.45513916015625,
+            34.972625651697065
+          ]
+        }
+      }
+    ]
+  }
+  

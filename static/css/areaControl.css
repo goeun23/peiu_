@@ -1,0 +1,9 @@
+/* .areaCtrlAnimation{stroke:yellow; stroke-dasharray: 20;stroke-width: 5; stroke-dashoffset:0;} */
+/* #animationGroup{stroke:yellow; stroke-dasharray: 20;stroke-width: 5; stroke-dashoffset:0;}  */
+
+.point_event .data_table,.areaControl_table .data_table{width:100%;color:#fff}
+.areaControl_table tbody th{background:#1b354d;padding:0.25rem 0; border-bottom: 2px solid #394554;border: 2px solid #394554;font-size: 1.475rem;line-height: 2.75rem;color:#fff}
+.areaControl_table tbody td{padding: 0.25rem 0;border-bottom: 1px solid #bdc2cb;font-size: 0.875rem;line-height: 1.75rem;width:'*';}
+
+.point_event .data_table thead th{background:#1b354d;padding:0.25rem 0; border-bottom: 2px solid #394554;border: 2px solid #394554;font-size: 1.075rem;line-height: 1rem;color:#fff};
+.point_event .data_table tbody td{padding: 0.25rem 0;border-bottom: 1px solid #bdc2cb;font-size: 0.875rem;line-height: 1.75rem;width:'*';}
