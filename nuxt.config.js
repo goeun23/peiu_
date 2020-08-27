@@ -153,19 +153,8 @@ module.exports = {
     //www.peiu.co.kr
     // baseURL: (process.env.NODE_ENV === 'test' ? 'http://localhost' : 'http://www.peiu.co.kr'),
     // baseURL : 'http://www.peiu.co.kr',
-    url_user_Asset : 'https://www.peiu.co.kr:3021/api/contract/getAsset',
-    url_stat : 'https://www.peiu.co.kr:3021/api/statistics/gettrenddatabyrcc?rccCode=',
-    url_history_rcc : 'https://www.peiu.co.kr:3021/api/contract/getsitedbyrcc',
-    url_allstat : 'https://www.peiu.co.kr:3021/api/statistics/allstat',
-    url_accum_data:'http://175.207.238.104:8047/query.json',
-    url_ESS_Stat_new : 'https://www.peiu.co.kr:3021/api/pms/stat',
-    url_ESS_Stat: "https://www.peiu.co.kr:3021/api/ESS/stat",
-    url_account_create: "https://www.peiu.co.kr:3021/api/contract/register",
-    url_login: "https://www.peiu.co.kr:3021/api/auth/login",
-    url_drill: "http://www.peiu.co.kr:8047/query.json",
-    url_address: "http://api.vworld.kr/req/search?key=E322024D-A139-32F2-BD73-C42F2942DC5E&request=search",
-    url_asset_update: "https://www.peiu.co.kr:3021/api/contract/AppendAsset?",
-    url_asset_servicelist: "https://www.peiu.co.kr:3021/api/contract/getservicelist"
+    //url_user_Asset : 'https://www.peiu.co.kr:3021/api/contract/getAsset',
+   
   },
   NODE_ENV : "production"
 };
