@@ -11,22 +11,17 @@
 </template>
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined
-const cookieparser = process.client ? require('cookieparser') : undefined
 
-// import dashBoard from '~/components/dashBoard.vue';
-import globalMenu from '~/components/globalMenu.vue';
-import globalState from '~/components/globalState.vue';
-import globalFooter from '~/components/footer.vue'
-// import footer from '~/components/footer.vue';
+import globalMenu from '~/components/common/global/GlobalMenu';
+import globalState from '~/components/common/global/GlobalState';
 
 export default {
 	layout: 'common',
 	components: {
-		// dashBoard,footer
-		// dashBoard,
+		
 		globalMenu,
 		globalState,
-		globalFooter
+		
 	},
 	head: {
 		link: [],

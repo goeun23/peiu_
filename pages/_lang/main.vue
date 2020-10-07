@@ -9,56 +9,55 @@
             <ul class="local_info_chart">
                 <rcc-monitor 
                 lienChartId='rcc1LineChart' color='/images/contents/ico_local_bul1.png'
-                rccId ='rcc1' liId='area1'  href='1' rccName='경기'/>
+                rccId='rcc1' liId='area1'  href='1' rccName='경기'/>
                 <rcc-monitor 
                 lienChartId='rcc9LineChart'  color='/images/contents/ico_local_bul2.png'
-                rccId ='rcc9' liId='area9'  href='9' rccName='강원'/>
+                rccId='rcc9' liId='area9'  href='9' rccName='강원'/>
                 <rcc-monitor 
                 lienChartId='rcc2LineChart'  color='/images/contents/ico_local_bul3.png'
-                rccId ='rcc2' liId='area2'  href='2' rccName='인천'/>
+                rccId='rcc2' liId='area2'  href='2' rccName='인천'/>
                 <rcc-monitor 
                 lienChartId='rcc10LineChart'  color='/images/contents/ico_local_bul4.png'
-                rccId ='rcc10' liId='area10'  href='10' rccName='충북'/>
+                rccId='rcc10' liId='area10'  href='10' rccName='충북'/>
                 <rcc-monitor 
                 lienChartId='rcc3LineChart'  color='/images/contents/ico_local_bul5.png'
-                rccId ='rcc3' liId='area3'  href='3' rccName='서울'/>
+                rccId='rcc3' liId='area3'  href='3' rccName='서울'/>
                 <rcc-monitor 
                 lienChartId='rcc11LineChart'  color='/images/contents/ico_local_bul6.png'
-                rccId ='rcc11' liId='area11'  href='11' rccName='경북'/>
+                rccId='rcc11' liId='area11'  href='11' rccName='경북'/>
                 <rcc-monitor 
                 lienChartId='rcc4LineChart'  color='/images/contents/ico_local_bul7.png'
-                rccId ='rcc4' liId='area4'  href='4' rccName='대전'/>
+                rccId='rcc4' liId='area4'  href='4' rccName='대전'/>
                 <rcc-monitor 
                 lienChartId='rcc12LineChart'  color='/images/contents/ico_local_bul8.png'
-                rccId ='rcc12' liId='area12'  href='12' rccName='대구'/>
+                rccId='rcc12' liId='area12'  href='12' rccName='대구'/>
                 <rcc-monitor 
                 lienChartId='rcc5LineChart'  color='/images/contents/ico_local_bul9.png'
-                rccId ='rcc5' liId='area5'  href='5' rccName='충남'/>
+                rccId='rcc5' liId='area5'  href='5' rccName='충남'/>
                 <rcc-monitor 
                 lienChartId='rcc13LineChart'  color='/images/contents/ico_local_bul10.png'
-                rccId ='rcc13' liId='area13'  href='13' rccName='울산'/>
+                rccId='rcc13' liId='area13'  href='13' rccName='울산'/>
                 <rcc-monitor 
                 lienChartId='rcc6LineChart'  color='/images/contents/ico_local_bul11.png'
-                rccId ='rcc6' liId='area6'  href='6' rccName='전북'/>
+                rccId='rcc6' liId='area6'  href='6' rccName='전북'/>
                 <rcc-monitor
                 lienChartId='rcc14LineChart'  color='/images/contents/ico_local_bul12.png'
-                rccId ='rcc14' liId='area14'  href='14' rccName='부산'/>
+                rccId='rcc14' liId='area14'  href='14' rccName='부산'/>
                 <rcc-monitor 
                 lienChartId='rcc7LineChart'  color='/images/contents/ico_local_bul13.png'
-                rccId ='rcc7' liId='area7'  href='7' rccName='전남'/>
+                rccId='rcc7' liId='area7'  href='7' rccName='전남'/>
                 <rcc-monitor 
                 lienChartId='rcc15LineChart'  color='/images/contents/ico_local_bul14.png'
-                rccId ='rcc15' liId='area15'  href='15' rccName='경남'/>
+                rccId='rcc15' liId='area15'  href='15' rccName='경남'/>
                 <rcc-monitor 
                 lienChartId='rcc8LineChart'  color='/images/contents/ico_local_bul15.png'
-                rccId ='rcc8' liId='area8'  href='8' rccName='광주'/>
+                rccId='rcc8' liId='area8'  href='8' rccName='광주'/>
                 <rcc-monitor 
                 lienChartId='rcc16LineChart'  color='/images/contents/ico_local_bul16.png'
-                rccId ='rcc16' liId='area16'  href='16' rccName='제주'/>
+                rccId='rcc16' liId='area16'  href='16' rccName='제주'/>
             </ul>
             <!--// local_info_chart -->
-            <div class="temp" style=" background-color: #000d4c; width: 98rem; height: 100%; margin-left: 47rem; position: absolute; opacity: 0.2;
-            "></div>
+            <div class="temp" style=" background-color: #000d4c; width: 98rem; height: 100%; margin-left: 47rem; position: absolute; opacity: 0.2;"></div>
             <div class="main_mid_cont">
                 <div id="dashboardMap" class="main_map_area">
                     <div class="dddd"></div>
@@ -73,9 +72,9 @@
 </template>
 <script>
 const Cookie = process.client ? require("js-cookie") : undefined;
-import statusBottom from '~/components/statusbottomNew.vue'
-import rccMonitor from '~/components/charttest.vue'
-import statusTop from '~/components/statusTop.vue'
+import statusBottom from '~/components/Main/MainStatusBottom'
+import rccMonitor from '~/components/Main/MainRccMonitor'
+import statusTop from '~/components/Main/MainStatusTop.vue'
 export default{
     middleware: 'authenticated',
     layout: 'common',
@@ -469,61 +468,61 @@ export default{
         clearInterval(this.smp_interval);
     },
     mounted() {
-        // 한번만 받아오는 데이터 
-        this.getInstalledInfo();
+        // // 한번만 받아오는 데이터 
+        //this.getInstalledInfo();
       
         
-        // 지도 초기화 
-        this.initMap()
+        // // 지도 초기화 
+        // this.initMap()
 
-        // 금일 누적 방전,충전,발전, 예상, 누적 수익금
-        this.getAccumData();
-        this.getChartDataByrcc();
+        // // 금일 누적 방전,충전,발전, 예상, 누적 수익금
+        // this.getAccumData();
+        // this.getChartDataByrcc();
 
-        // 1분마다 업데이트
-        this.todayInterval = setInterval(() =>{
-            this.getAccumData();
-            this.getChartDataByrcc();
-        },60000)
+        // // 1분마다 업데이트
+        // this.todayInterval = setInterval(() =>{
+        //     this.getAccumData();
+        //     this.getChartDataByrcc();
+        // },60000)
 
-        // 1시간마다 업데이트
-        this.kpxData();
-        this.smp_interval = setInterval(() => {
-			this.kpxData();
-        }, 600000);
+        // // 1시간마다 업데이트
+        // this.kpxData();
+        // this.smp_interval = setInterval(() => {
+		// 	this.kpxData();
+        // }, 600000);
 
-        //global menu
-        if($nuxt.$route.path === '/main'){
-            // hide menu
-            $('#header').css('position','absolute');
-            $('#header').css('top','-5.9rem'); 
-            $('#header').css('width','100%');
-            $('#header').css('z-index',999);
-        }	
-        //document.onkeydown = KeyPress;
+        // //global menu
+        // if($nuxt.$route.path === '/main'){
+        //     // hide menu
+        //     $('#header').css('position','absolute');
+        //     $('#header').css('top','-5.9rem'); 
+        //     $('#header').css('width','100%');
+        //     $('#header').css('z-index',999);
+        // }	
+        // //document.onkeydown = KeyPress;
 
-        // 상단메뉴 마우스오버 이벤트
-        $("#header").mouseover(function(){
-            // showing global menu
-            //$('#header').css('position','relative');
-            $('#header').animate({top:'0rem'});
-            // reset timeout func
-            clearTimeout(timeout);
-        });
-        // 상단메뉴 마우스리브 이벤트
-        $("#header").mouseleave(function() {
-            // hide global menu
-            $('#header').animate({top : '-5.9rem'});
-            // reset timeout func
-            clearTimeout(timeout);
-        });
-        // 누적발전량, 누적충전량 마우스 오버 이벤트
-        $(".cont_head").mouseover(function(){
-           // show global menu
-           $('#header').animate({top:'0rem'});
-           // reset timeout func
-            clearTimeout(timeout);
-        });
+        // // 상단메뉴 마우스오버 이벤트
+        // $("#header").mouseover(function(){
+        //     // showing global menu
+        //     //$('#header').css('position','relative');
+        //     $('#header').animate({top:'0rem'});
+        //     // reset timeout func
+        //     clearTimeout(timeout);
+        // });
+        // // 상단메뉴 마우스리브 이벤트
+        // $("#header").mouseleave(function() {
+        //     // hide global menu
+        //     $('#header').animate({top : '-5.9rem'});
+        //     // reset timeout func
+        //     clearTimeout(timeout);
+        // });
+        // // 누적발전량, 누적충전량 마우스 오버 이벤트
+        // $(".cont_head").mouseover(function(){
+        //    // show global menu
+        //    $('#header').animate({top:'0rem'});
+        //    // reset timeout func
+        //     clearTimeout(timeout);
+        // });
     },
 }
 

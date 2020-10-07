@@ -36,7 +36,6 @@ var RccList =  {
     "14"  : '부산',
     "15"  : '경남',
     "16"  : '제주',
-
 }
 
 function rccFormating(addr){

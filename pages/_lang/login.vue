@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import API from '@/api/index'
 export default {
     //layout : 'common',
     data(){
@@ -83,6 +84,7 @@ export default {
         ]
     },
     methods: {
+        
         changeLanguage(val){
          
             $(".lang").removeClass('is_active')
@@ -96,27 +98,32 @@ export default {
             this.userPassword = 'power211219/'
         },
         Submit(){
+            API.get('post')
+                .then(response => {
+                    console.log(response)
+            })
 
             // 입력받은 아이디를 소문자로 변환
             var userid = this.userId;
             this.userId = userid.toLowerCase();
             
-            var data = {
-                Email : this.userId, 
-                Password : this.userPassword, 
-                RememberMe : false
-            }
-            
-            data = JSON.stringify(data);
-            var url = 'https://www.peiu.co.kr:3020/api/auth/login'
-            $.ajax({
-                type: "post",
-                url: url,
-                data: data,
-                contentType: 'application/json',
-                success: this.successLogin,
-                error : this.LoginFailed
-            })
+            // var data = {
+            //     Email : this.userId, 
+            //     Password : this.userPassword, 
+            //     RememberMe : false
+            // }
+            // console.log(this.$router)
+            location.href = '/main'
+            // data = JSON.stringify(data);
+            // var url = 'https://www.peiu.co.kr:3020/api/auth/login'
+            // $.ajax({
+            //     type: "post",
+            //     url: url,
+            //     data: data,
+            //     contentType: 'application/json',
+            //     success: this.successLogin,
+            //     error : this.LoginFailed
+            // })
         },
         LoginFailed(err){
         
@@ -165,6 +172,10 @@ export default {
       
     },
     mounted() {
+        API.get('posts')
+        .then(response => {
+            console.log(response)
+        })
         $(document).ready(function(){
             var loginBg = [
                 '/images/bg_login1.jpg', 

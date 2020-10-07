@@ -1,11 +1,37 @@
 import Vuex from 'vuex'
-const cookieparser = process.server ? require('cookieparser') : undefined
 
 
 // 스토어 생성 함수 정의
 const store = () => new Vuex.Store({
   // store 변수
   state: {
+    rccList :  {
+      "0"  : "전국",
+      "1"  : '경기',
+      "2"  : '인천',
+      "3"  : '서울',
+      "4"  : '대전',
+      "5"  : '충남',
+      "6"  : '전북',
+      "7"  : '전남',
+      "8"  : '광주',
+      "9"  : '강원',
+      "10"  : '충북',
+      "11"  : '경북',
+      "12"  : '대구',
+      "13"  : '울산',
+      "14"  : '부산',
+      "15"  : '경남',
+      "16"  : '제주',
+    },
+    serviceCode : { // 로그인 권한 별 서비스 코드
+      "1" : "스케줄링(전력거래)",
+      "2" : "스케줄링(PPA)",    
+      "4" : "DR",
+      "8" : "Peak-Cut",
+      "16" : "전력품질(FR)",
+      "32" : "전력품질(VR)"
+    },
     counter: 0,
     token : null,
     dt : null,
@@ -30,7 +56,6 @@ const store = () => new Vuex.Store({
     // locales: ['kr', 'en'],
     // locale: 'kr',
     authenticated : false,
-    authLevel : 0,
     requestedID : 0,
     clickedAreaMarkers : []
   },  

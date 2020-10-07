@@ -9,14 +9,14 @@ var cookieparser = require('cookieparser')
 export default function ({ store, redirect, req }) {
   // 로그 기록이 cmd에 찍힘 
   
-  if(req.headers == undefined){
-    console.log('req.header undefined')
-  }
-  var cookie = cookieparser.parse(req.headers.cookie);
-  // // 아예 쿠키에 토큰이 없으면, 
-  if (cookie.token == undefined) {
-      return redirect("/");
-  }
+  // if(req.headers == undefined){
+  //   console.log('req.header undefined')
+  // }
+  // var cookie = cookieparser.parse(req.headers.cookie);
+  // // // 아예 쿠키에 토큰이 없으면, 
+  // if (cookie.token == undefined) {
+  //     return redirect("/");
+  // }
 }
   
 

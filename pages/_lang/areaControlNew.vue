@@ -509,7 +509,7 @@
 
 <script>
 const Cookie = process.client ? require('js-cookie') : undefined
-import aidiModal from "~/components/AIDI_test.vue";
+import aidiModal from "~/components/AreaControl/AIDI_modal";
 
 export default {
     middleware: 'authenticated',

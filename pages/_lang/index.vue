@@ -1,21 +1,16 @@
 <template>
   <div class="cont_body" id = "body">
-	  <statusTop/>
+	  
 	</div>
 </template>
 <script>
 	// import { cube } from '~/assets/my-module';
-	import rccMonitor from '~/components/rccMonitorCard.vue'
-	import statusTop from '~/components/statusTop.vue'
-	import statusBottom from '~/components/statusBotton.vue'
+	
 	// import locData from '~/scripts/data/markerLocInfo';
 	
   export default {
     layout: "index",
-		components: 
-		{
-		 rccMonitor,  statusTop, statusBottom, 
-		},
+		
 		head : 
 		{
       	link : [ 

@@ -111,11 +111,17 @@ module.exports = {
   },
   // plugins: ['~/plugins/i18n.js'],
   plugins: [
-    
+    "~/plugins/axios.js",
     "~/plugins/i18n.js",
     // '~/plugins/myAuth.js'
   
   ],
+
+
+  modules: [
+    '@nuxtjs/axios',
+  ],
+
   // modules:[ 'cookie-universal-nuxt'],
   // plugins: ['~/plugins/i18n.js', { src: '~/plugins/p21CtrlDlg', ssr: false }],
   /*

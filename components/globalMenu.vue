@@ -168,16 +168,21 @@ export default {
             this.ctrl_temp = Number(resp.temp).toFixed(0)
             this.ctrl_hum = resp.humidity
             this.ctrl_cloud = resp.clouds
-		}
+        }, 
+        menuList(){
+            const level = 2;
+            
+        }
     },
     beforeMount() {
-        this.checkAuth();
+        //this.checkAuth();
+        this.menuList()
     },
     mounted() {
-        this.changeLanguage(null, getCookie('lang'))
-        this.checkAuth();
-        this.setCtrlCenterData();
-        this.user = getCookie('username')+'( '+getCookie('userId')+')님, 환영합니다.'
+        // this.changeLanguage(null, getCookie('lang'))
+        // this.checkAuth();
+        // this.setCtrlCenterData();
+        // this.user = getCookie('username')+'( '+getCookie('userId')+')님, 환영합니다.'
     },
 }
 </script>
