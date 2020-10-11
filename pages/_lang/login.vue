@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import API from '@/api/index'
+
 export default {
     //layout : 'common',
     data(){
@@ -98,11 +98,7 @@ export default {
             this.userPassword = 'power211219/'
         },
         Submit(){
-            API.get('post')
-                .then(response => {
-                    console.log(response)
-            })
-
+            
             // 입력받은 아이디를 소문자로 변환
             var userid = this.userId;
             this.userId = userid.toLowerCase();
@@ -172,10 +168,7 @@ export default {
       
     },
     mounted() {
-        API.get('posts')
-        .then(response => {
-            console.log(response)
-        })
+        
         $(document).ready(function(){
             var loginBg = [
                 '/images/bg_login1.jpg', 
@@ -185,9 +178,6 @@ export default {
             var bgIdx = parseInt(Math.random() * 10)%1;
             $(".layer").css({"background":"url("+loginBg[bgIdx]+") center center no-repeat","background-size":"cover"});
         });
-
-       
-
         $(document.body).delegate('#confirm', 'click', function() { 
             
             confirmAlert();
