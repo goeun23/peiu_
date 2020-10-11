@@ -1,5 +1,4 @@
-
 <script>
-    import index from '~/pages/_lang/login'
+    import index from '~/pages/Login/index.vue'
 	export default index
 </script>

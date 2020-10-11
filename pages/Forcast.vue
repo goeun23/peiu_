@@ -1,4 +1,4 @@
 <script>
-    import forcast from '~/pages/_lang/forcast'
+    import forcast from '~/pages/Forcast/index.vue'
 	export default forcast
 </script>

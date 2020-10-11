@@ -1,4 +1,4 @@
 <script>
-	import stat from '~/pages/_lang/StatHistory'
+	import stat from '~/pages/StatHistory/index.vue'
 	export default stat
 </script>

@@ -1,4 +1,4 @@
 <script>
-	import Manage from '~/pages/_lang/manage'
+	import Manage from '~/pages/Manage/index.vue'
 	export default Manage
 </script>

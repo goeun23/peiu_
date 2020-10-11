@@ -1,4 +1,4 @@
 <script>
-    import Login from '~/pages/_lang/login'
+    import Login from '~/pages/Login/index.vue'
 	export default Login
 </script>
