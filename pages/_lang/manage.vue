@@ -28,9 +28,9 @@
 
 
 <script>
-import manageUser from "~/components/manage-user.vue";
-import manageSite from "~/components/manage-site.vue";
-import manageCollector from '~/components/manage-collector.vue';
+import manageUser from "~/components/Manage/manage-user.vue";
+import manageSite from "~/components/Manage/manage-site.vue";
+import manageCollector from '~/components/Manage/manage-collector.vue';
 
 export default {
     components: {

@@ -497,7 +497,7 @@
     <!--// cont_body -->
 </template>
 <script>
-import marketCard from '~/components/marketCard.vue'
+import marketCard from '~/components/Market/marketCard.vue'
 const Cookie = process.client ? require('js-cookie') : undefined
 let cnt;
 export default {

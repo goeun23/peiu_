@@ -23,10 +23,10 @@
     </div>
 </template>
 <script>
-import userInfo from "~/components/setting-userinfo.vue";
-import accPopup from "~/components/setting-popup.vue";
-import userMsg from "~/components/setting-message.vue";
-import userDevInfo from "~/components/setting-devinfo.vue"
+import userInfo from "~/components/Settings/setting-userinfo.vue";
+import accPopup from "~/components/Settings/setting-popup.vue";
+import userMsg from "~/components/Settings/setting-message.vue";
+import userDevInfo from "~/components/Settings/setting-devinfo.vue"
 export default{
     layout: 'common',
     components: {

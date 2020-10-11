@@ -114,8 +114,8 @@
 <script>
 
 const Cookie = process.client ? require('js-cookie') : undefined
-import statHistoryStat from '~/components/StatHistory-stat.vue'
-import statHistoryHistory from '~/components/StatHistory-history.vue'
+import statHistoryStat from '~/components/StatHistory/StatHistory-stat.vue'
+import statHistoryHistory from '~/components/StatHistory/StatHistory-history.vue'
 
 export default {
     layout: 'common',
