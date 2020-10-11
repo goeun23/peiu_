@@ -121,6 +121,11 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
   ],
+  axios: {
+    // 모듈 설정
+    baseURL: 'https://ireporter-endpoint.herokuapp.com/api/v2/'
+
+  },
 
   // modules:[ 'cookie-universal-nuxt'],
   // plugins: ['~/plugins/i18n.js', { src: '~/plugins/p21CtrlDlg', ssr: false }],
