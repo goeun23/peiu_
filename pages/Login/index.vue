@@ -67,7 +67,7 @@ export default {
     //layout : 'common',
     data(){
         return{
-          
+            posts : [],
             username : "",
             selectedLang : "한국어",
             userId : "",
@@ -164,8 +164,29 @@ export default {
             }
             
         },
-       
+       async createPost() {
+        const result = await this.$axios.create({
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+        })
+        console.log(result)
+        // Fix ids to be unique
+        this.posts.push({ ...result, id: Number(this.posts.slice(-1)[0].id) + 1 })
+        }, 
+  
       
+    },
+    computed: {
+        slicedPosts() {
+            console.log(this.posts)
+        return this.posts.slice(-3)
+        }
+    },
+    async asyncData(ctx) {
+        return {
+        posts: await ctx.app.$axios.index()
+        }
     },
     mounted() {
         

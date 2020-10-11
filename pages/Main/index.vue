@@ -85,11 +85,11 @@ export default{
 
             // leaflet.js 
             { src : "https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"},
-            { src: "/scripts/map/leaflet.migrationLayer.js" },
+            { src: "/scripts/leaflet/leaflet.migrationLayer.js" },
             
-            { src: "/scripts/map/leaflet.textpath.js" },
+            { src: "/scripts/leaflet/leaflet.textpath.js" },
             { src: "/scripts/map/p21-ctrlAnimation.js" },
-            { src: "/scripts/map/leaflet.curve.js" },
+            { src: "/scripts/leaflet/leaflet.curve.js" },
 
             // chart.js 플러그인
             { src: "/scripts/Chart.bundle.js" },

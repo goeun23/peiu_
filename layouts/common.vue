@@ -1,12 +1,12 @@
 <template>
-     <div id="wrapper">
-    <div id="wrapper_body">
-        <global-menu/>
-        <div id="contents">
-            <global-state/>
-            <nuxt/>
+    <div id="wrapper">
+        <div id="wrapper_body">
+            <global-menu/>
+            <div id="contents">
+                <global-state/>
+                <nuxt/>
+            </div>
         </div>
-    </div>
     </div> 
 </template>
 <script>
@@ -18,10 +18,8 @@ import globalState from '~/components/common/global/GlobalState';
 export default {
 	layout: 'common',
 	components: {
-		
 		globalMenu,
 		globalState,
-		
 	},
 	head: {
 		link: [],
@@ -31,10 +29,8 @@ export default {
 			{ src: "/scripts/helper.js" },
 		]
 	},
-	
     beforeDestroy() {
         clearInterval(this.interval1);
-        
     },
 	data() {
 		return {
