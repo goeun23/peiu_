@@ -1,4 +1,4 @@
 <script>
-	import login from '~/pages/_lang/systemLog'
-	export default login
+	import systemLog from '~/pages/System/systemLog.vue'
+	export default systemLog
 </script>

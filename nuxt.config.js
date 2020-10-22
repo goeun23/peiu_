@@ -28,6 +28,7 @@ module.exports = {
         integrity: "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==",
         crossorigin: ""
       },
+      { rel: "stylesheet", href: "/css/reset.css" },
       { rel: "stylesheet", href: "/css/webfonts.css" },
       { rel: "stylesheet", href: "/css/common.css" },
       { rel: "stylesheet", href: "/css/layout.css" },
@@ -64,7 +65,7 @@ module.exports = {
       
       { src: "https://code.jquery.com/jquery-3.3.1.min.js" },
       {src : "/scripts/jquery/core/jquery-ui.min.js"},
-      { src: "/scripts/jquery/core/perfect-scrollbar.js" },
+      { src: "/scripts/scrollbar/perfect-scrollbar.js" },
       { src: "/scripts/jquery/core/html5.js" },
       { src: "/scripts/jquery/core/jquery-modernizr.js" },
       { src: "/scripts/jquery/core/jquery.easing.1.3.js" },
@@ -111,7 +112,7 @@ module.exports = {
   },
   // plugins: ['~/plugins/i18n.js'],
   plugins: [
-    "~/plugins/axios.js",
+    "~/plugins/repository",
     "~/plugins/i18n.js",
     // '~/plugins/myAuth.js'
   
@@ -123,7 +124,9 @@ module.exports = {
   ],
   axios: {
     // 모듈 설정
-    baseURL: 'https://ireporter-endpoint.herokuapp.com/api/v2/'
+    baseURL: 'https://jsonplaceholder.typicode.com/',
+    //baseURL: 'https://www.peiu.co.kr:3077', 
+    contentType : "application/json",
 
   },
 

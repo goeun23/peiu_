@@ -1,4 +1,4 @@
 <script>
-	import statusMap from '~/pages/_lang/statusMap'
+	import statusMap from '~/pages/StatusMap/index.vue'
 	export default statusMap
 </script>

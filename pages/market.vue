@@ -1,4 +1,4 @@
 <script>
-	import market from '~/pages/_lang/marketNew'
-	export default market
+	import Market from '~/pages/Market/index.vue'
+	export default Market
 </script>

@@ -1,4 +1,4 @@
 <script>
-	import areaControl from '~/pages/_lang/areaControlNew'
+	import areaControl from '~/pages/AreaControl/index.vue'
 	export default areaControl
 </script>
