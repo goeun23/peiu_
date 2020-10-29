@@ -32,6 +32,9 @@ const store = () => new Vuex.Store({
       "16" : "전력품질(FR)",
       "32" : "전력품질(VR)"
     },
+    deviceCode : {
+      '0' : 'PCS',  '1' : 'BMS', '2' : 'PV'
+    },
     counter: 0,
     token : null,
     dt : null,
@@ -143,7 +146,15 @@ const store = () => new Vuex.Store({
     // loadedLocalLang(state){
     //   return state.locale;
     // }
-   
+    rccList(state){
+      return state.rccList;
+    }, 
+    serviceCode(state){
+      return state.serviceCode;
+    }, 
+    deviceCode(state){
+      return state.deviceCode;
+    }
   }
 })
 
