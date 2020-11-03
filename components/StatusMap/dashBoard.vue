@@ -127,13 +127,7 @@ export default {
 
   components: {},
   head: {
-    link: [
-      // {rel : "stylesheet", href : "/css/webfonts.css"},
-      // {rel : "stylesheet", href : "/css/common.css"},
-      // {rel : "stylesheet", href : "/css/layout.css"},
-      // {rel : "stylesheet", href : "/css/cmpt.css"},
-      // {rel : "stylesheet", href : "/css/contents.css"}
-    ]
+   
   },
   mounted() {}
 };

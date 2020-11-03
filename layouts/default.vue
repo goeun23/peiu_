@@ -37,7 +37,7 @@ export default {
 		]
 	},
 	beforeDestroy() {
-			clearInterval(this.interval1);
+		clearInterval(this.interval1);
 	},
 	data(){
 		return {
@@ -105,7 +105,6 @@ export default {
 		},
 		mounted(){
 				
-
         // var lang = getCookie('lang')
         // console.log(lang)
         // if(lang == null){
@@ -134,14 +133,3 @@ export default {
 	
 }
 </script> 
-<style >
- #wrapper{
-	/*position: relative;
-     width: 192rem;
-    height: 108rem;
-    overflow: hidden;  */
-    background: #1A2031;
-}   
-
-
-</style>

@@ -520,10 +520,7 @@ export default {
         //jejuDiagram,
     },
     head:{
-        link:[
-          //  {rel:"stylesheet", href:"/css/layout.css"},
-          
-        ],
+        
         script: [
             { src: "/scripts/areaControl/diagram.js" },
             { src: "/scripts/areaControl/data.js" },

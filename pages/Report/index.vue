@@ -273,12 +273,7 @@ export default{
 		}
 	},
     head: {
-    link: [
-        { rel: "stylesheet", href: "/css/common.css" },
-        { rel: "stylesheet", href: "/css/layout.css" },
-        { rel: "stylesheet", href: "/css/contents.css" },
-        { rel: "stylesheet", href: "/css/jquery-ui.css" },
-    ],
+    
     script:[
       
         { src : "/scripts/jquery/core/jquery-ui.min.js"},

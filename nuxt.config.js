@@ -20,7 +20,6 @@ module.exports = {
     ],
     link: [
       /* peiu_toc */
-      { rel: "stylesheet", href: "/css/layout.css" },
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
