@@ -114,7 +114,7 @@ export default {
                 return false;
             }                            
             else {
-                return;
+                return true;
             }
                
         },
