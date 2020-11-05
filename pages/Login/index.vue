@@ -28,7 +28,7 @@
                                 <span class="txt">{{$t("links.save_login")}}</span>
                             </label>
                         </div>
-                        <div class="failLogin" style='text-align : left; color: #ec0037; font-weight:bold'></div>
+                        <div class="failLogin" style='text-align : left; color: #ec0037; font-weight:bold'>{{error}}</div>
                         <div class="login_btn">
                             <a  @click='Submit()'  href="#" style="width:100%;" class="layout_login btn btn_login"><span>{{$t("links.login")}}</span></a>
                         </div>
@@ -67,12 +67,12 @@ export default {
     //layout : 'common',
     data(){
         return{
-            posts : [],
             username : "",
             selectedLang : "한국어",
             userId : "",
             userPassword : "",
-    
+            error : "", 
+            validateResult : false
         }
     },
     head: {
@@ -107,7 +107,28 @@ export default {
             this.userId = 'power21@power21.co.kr'
             this.userPassword = 'power211219/'
         },
+        formValidateCheck(){
+            // 이메일 유효성 체크                
+            var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+            if(!reg_email.test(this.userId) || (!this.userId)) {                            
+                this.validateResult = false;
+            }                            
+            else {
+                this.validateResult = true;
+            }
+            return this.validateResult;       
+        },
         async Submit(){
+
+            await this.formValidateCheck();
+
+            if(!this.validateResult)
+            {
+                this.errer = "이메일 형식이 유효하지 않습니다."
+                return;
+            }
+            
+
             
             // 입력받은 아이디를 소문자로 변환
             var userid = this.userId;
@@ -128,6 +149,12 @@ export default {
                 await this.successLogin();
                 // 리다이렉팅 
                 return this.$router.push('main');
+            }else{
+                if(err.responseText == ""){
+                this.error = '로그인 서버 에러: 관리자 문의'
+                }else{
+                    this.error = JSON.parse(err.responseText).result['errors'][0].description
+                }
             }
 
             // 권한별 첫번째 페이지 이동
@@ -145,7 +172,11 @@ export default {
             //     error : this.LoginFailed
             // })
         },
-        async setOwnerSite(){
+       
+        async successLogin(data){
+            //var resp = data;
+
+            // 데이터 세팅 
             // 소유 사이트 번호 세팅
             let OwnerSiteNumbyrcc = await this.$Api.getOwnerSiteNum('rcc')
             let OwnerSiteNumbyagg = await this.$Api.getOwnerSiteNum('agg')
@@ -155,23 +186,6 @@ export default {
             let OwnerSiteFacilitybyrcc = await this.$Api.getOwnerFaciility('rcc');
             let OwnerSiteFacilitybyagg = await this.$Api.getOwnerFaciility('agg');
             let OwnerSiteFacilitybysite = await this.$Api.getOwnerFaciility('site');
-            
-            // 소유 자원 갯수 
-        },
-        LoginFailed(err){
-        
-            if(err.responseText == ""){
-                $(".failLogin").text('로그인 서버 에러: 관리자 문의')
-            }else{
-                $(".failLogin").text(JSON.parse(err.responseText).result['errors'][0].description)
-            }
-            
-        },
-        async successLogin(data){
-            //var resp = data;
-
-            // 데이터 세팅 
-            await this.setOwnerSite();
 
             const resp = {
                 'token' : 'kl;ks;lkd;a',
@@ -243,22 +257,7 @@ export default {
         }) 
     },
 }
-function alertPop(icoTyp,btnTyp,alertCont){//팝업 열림 (팝업 아이콘 모양:숫자, 버튼 갯수:숫자, 얼럿 내용:변수)
-    var btnCont;
-    var closeBtn;
-    closeBtn = '<button type="button" id="cancel" class="btn btn_size_free btn_color_blue"><span>취소</span></button>';
-    var alertBody = '<div id="alert_wrap" class="alert_ico_typ'+icoTyp+' alert_btn_typ1">';
-        alertBody += '		<div class="alert_dim">';
-        alertBody += '			<div class="alert_body">';
-        alertBody += '				<div class="alert_icon"></div>';
-        alertBody += '				<div class="alert_txt">'+alertCont+'</div>';
-        alertBody += '				<div class="alert_btn_wrap"><button type="button" id="confirm" class="btn btn_size_free btn_color_blue"><span>확인</span></button></div>';
-        alertBody += '				<div class="alert_btn_wrap">'+closeBtn+'</div>';
-        alertBody += '			</div>';
-        alertBody += '		</div>';
-        alertBody += '	</div>';
-    $(".wrapper").append(alertBody);
-}
+
 function confirmAlert(){//얼럿 확인
 
     var email = $( '#userEmail' ).val()
