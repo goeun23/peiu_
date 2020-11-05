@@ -709,14 +709,14 @@ function errorpoup(msg){
         $("#alert_wrap").focus();
     })
 
-    $("#alert_wrap").on('keypress', function(event) {
+    // $("#alert_wrap").on('keypress', function(event) {
         
-        // space : 32 enter : 13
-        if(event.keyCode == 32 || event.keyCode == 13){
-            confirmAlert();
-        }
+    //     // space : 32 enter : 13
+    //     if(event.keyCode == 32 || event.keyCode == 13){
+    //         confirmAlert();
+    //     }
 
-    })
+    // })
 }
 
 function convert(p, t){
@@ -757,12 +757,12 @@ function convert(p, t){
 
 }
 
-function closeAlert(){//얼럿팝업 닫기
-    $("#alert_wrap").remove();
-}
-function confirmAlert(){//얼럿 확인
-    $("#alert_wrap").remove();
-}
+// function closeAlert(){//얼럿팝업 닫기
+//     $("#alert_wrap").remove();
+// }
+// function confirmAlert(){//얼럿 확인
+//     $("#alert_wrap").remove();
+// }
 function unix_timestamp(t){
     // yyyy-mm-dd
     if(t == 0){

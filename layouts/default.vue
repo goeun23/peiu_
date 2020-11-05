@@ -4,14 +4,15 @@
 			<nuxt/>
 		</div>
 		<div v-else id="wrapper" :class="wrapperClass">
-				<div id="wrapper_body">
-						<global-menu/>
-						<div id="contents">
-							<global-state/>
-							<nuxt/>
-						</div>
-				</div>
+			<div id="wrapper_body">
+				<global-menu/>
+				<div id="contents">
+					<global-state/>
+					<nuxt/>
+				</div>	
+			</div>
 		</div> 
+		<popup-alert/>
 	</div>
 </template>
 
@@ -22,13 +23,15 @@ const Cookie = process.client ? require('js-cookie') : undefined
 import globalMenu from '~/components/common/global/GlobalMenu';
 import globalState from '~/components/common/global/GlobalState';
 
-
+// popup
+import popupAlert from '~/components/common/popup/PopupAlert' 
 
 export default {
 	layout: 'default',
 	components: {
 		globalMenu,
 		globalState,
+		popupAlert
 	},
 	head: {
 		link: [],

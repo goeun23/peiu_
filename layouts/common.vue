@@ -6,7 +6,9 @@
                 <global-state/>
                 <nuxt/>
             </div>
+            <popup-alert/>
         </div>
+        
     </div> 
 </template>
 <script>
@@ -15,11 +17,15 @@ const Cookie = process.client ? require('js-cookie') : undefined
 import globalMenu from '~/components/common/global/GlobalMenu';
 import globalState from '~/components/common/global/GlobalState';
 
+// popup
+import popupAlert from '~/components/common/popup/PopupAlert' 
+
 export default {
 	layout: 'common',
 	components: {
 		globalMenu,
-		globalState,
+        globalState,
+        popupAlert
 	},
 	head: {
 		link: [],
@@ -45,6 +51,8 @@ export default {
 		// }
 	},
 	methods: {
+
+        
 		
 		logout: function (event) {	
 			sessionStorage.clear();

@@ -34,7 +34,7 @@
                         </div>
                         <div class="etc_link">
                             <a onClick="location.href='https://www.peiu.co.kr:1010/register'" class="flL">{{$t("links.regist")}}</a>
-                            <a href="/findpassword" class="flR">{{$t("links.forgetpassword")}}</a>
+                            <a @click="openPopup" class="flR">{{$t("links.forgetpassword")}}</a>
                         </div>
                     </div>
                 </div>
@@ -84,6 +84,16 @@ export default {
         ]
     },
     methods: {
+
+        openPopup(){
+            const popup = {
+                iconTyp : 2, 
+                btnTyp : 2,
+                msg : '비밀번호 초기화를 진행하시겠습니까?'
+            }
+
+            this.$nuxt.$emit('open:alertPopup', popup)
+        },
         
         changeLanguage(val){
          
@@ -120,12 +130,6 @@ export default {
                 return this.$router.push('main');
             }
 
-
-
-            
-            
-
-            
             // 권한별 첫번째 페이지 이동
             //this.redirectByLevel();
 
