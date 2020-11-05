@@ -111,20 +111,22 @@ export default {
             // 이메일 유효성 체크                
             var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
             if(!reg_email.test(this.userId) || (!this.userId)) {                            
-                this.validateResult = false;
+                return false;
             }                            
             else {
-                this.validateResult = true;
+                return;
             }
-            return this.validateResult;       
+               
         },
         async Submit(){
 
-            await this.formValidateCheck();
+            this.validateResult = await this.formValidateCheck();
 
-            if(!this.validateResult)
+
+            if(!this.validateResult) 
             {
-                this.errer = "이메일 형식이 유효하지 않습니다."
+                
+                this.error = "이메일 형식이 유효하지 않습니다."
                 return;
             }
             
@@ -151,7 +153,7 @@ export default {
                 return this.$router.push('main');
             }else{
                 if(err.responseText == ""){
-                this.error = '로그인 서버 에러: 관리자 문의'
+                    this.error = '로그인 서버 에러: 관리자 문의'
                 }else{
                     this.error = JSON.parse(err.responseText).result['errors'][0].description
                 }
