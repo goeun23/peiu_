@@ -22,6 +22,8 @@ const Cookie = process.client ? require('js-cookie') : undefined
 import globalMenu from '~/components/common/global/GlobalMenu';
 import globalState from '~/components/common/global/GlobalState';
 
+
+
 export default {
 	layout: 'default',
 	components: {
@@ -100,34 +102,35 @@ export default {
             $nuxt.$emit('status-count-sites', resp.length)
 		},
 		getGlobalData(){
-				// 금월 누적 충,방,발전량, 수익금
-				this.getMonthlyAccumData();
+			// 금월 누적 충,방,발전량, 수익금
+			this.getMonthlyAccumData();
 		},
 		mounted(){
+
 				
-        // var lang = getCookie('lang')
-        // console.log(lang)
-        // if(lang == null){
-        //     this.$i18n.locale = 'ko'
-        // }else{
-        //     this.$i18n.locale = lang
-        // }
+			// var lang = getCookie('lang')
+			// console.log(lang)
+			// if(lang == null){
+			//     this.$i18n.locale = 'ko'
+			// }else{
+			//     this.$i18n.locale = lang
+			// }
 
-        // 소유 사이트 번호 세팅
-        getownersitelist();
-        // 소유 사이트(단위별) 설치용량 세팅
-        getownerfacilitylist();
+			// // 소유 사이트 번호 세팅
+			// getownersitelist();
+			// // 소유 사이트(단위별) 설치용량 세팅
+			// getownerfacilitylist();
 
-        this.getSiteCount();
+			// this.getSiteCount();
 
-        // 누적데이터 수신(1분마다 업데이트)
-        this.getGlobalData();
-        this.interval1 = setInterval(() => {
-            this.getGlobalData();
-        }, 60000);
+			// 누적데이터 수신(1분마다 업데이트)
+			// this.getGlobalData();
+			// this.interval1 = setInterval(() => {
+			// 	this.getGlobalData();
+			// }, 60000);
 
-        
-		window.addEventListener('beforeunload',this.logout);
+			
+			window.addEventListener('beforeunload',this.logout);
 		}
 	}
 	

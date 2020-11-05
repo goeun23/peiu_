@@ -46,7 +46,7 @@
 			<li class="top_chart_list_typ8">
 				<div class="txt_wrap">
 					<span class="tit">{{$t("statusTop.average_SOC")}}</span>
-					<span class="txt"><span id ="avgsoc" class="amount">{{today_avg_soc}}</span> %</span>
+					<span class="txt"><span id="avgsoc" class="amount">{{today_avg_soc}}</span> %</span>
 				</div>
 			</li>
 			<li class="top_chart_list_typ9">
@@ -158,6 +158,8 @@ export default {
 	}
 };
 </script>
+
+
 <style lang="">
 .top_chart_area > ul > li.top_chart_list_typ9 {
     width: 19.8rem;

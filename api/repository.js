@@ -5,6 +5,25 @@ export default $axios => resource => ({
     return $axios.$get(`${resource}`)
   },
 
+  async Login(params){
+    // 로그인 요청
+    var result = await $axios.$get(`${resource}`)
+    result = { status : 200, message : '성공' }
+    return result;
+  },
+
+  async getOwnerSiteNum(type){
+    // 소유한 사이트 번호 
+    const result = await type;
+    return result;
+  },
+
+  async getOwnerFaciility(type){
+    // 소유한 설치용량
+    const result = await type;
+    return result;
+  },
+
   show(id) {
     return $axios.$get(`${resource}/${id}`)
   },

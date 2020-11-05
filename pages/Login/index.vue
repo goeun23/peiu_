@@ -97,7 +97,7 @@ export default {
             this.userId = 'power21@power21.co.kr'
             this.userPassword = 'power211219/'
         },
-        Submit(){
+        async Submit(){
             
             // 입력받은 아이디를 소문자로 변환
             var userid = this.userId;
@@ -109,7 +109,27 @@ export default {
             //     RememberMe : false
             // }
             // console.log(this.$router)
-            location.href = '/main'
+            //location.href = '/main'
+            // 로그인 성공시
+
+            const result = await this.$Api.Login();
+
+            if(result.status == 200){
+                await this.successLogin();
+                // 리다이렉팅 
+                return this.$router.push('main');
+            }
+
+
+
+            
+            
+
+            
+            // 권한별 첫번째 페이지 이동
+            //this.redirectByLevel();
+
+
             // data = JSON.stringify(data);
             // var url = 'https://www.peiu.co.kr:3020/api/auth/login'
             // $.ajax({
@@ -121,6 +141,19 @@ export default {
             //     error : this.LoginFailed
             // })
         },
+        async setOwnerSite(){
+            // 소유 사이트 번호 세팅
+            let OwnerSiteNumbyrcc = await this.$Api.getOwnerSiteNum('rcc')
+            let OwnerSiteNumbyagg = await this.$Api.getOwnerSiteNum('agg')
+            let OwnerSiteNumbysite = await this.$Api.getOwnerSiteNum('site')
+
+            // 소유 사이트(단위별) 설치용량 세팅
+            let OwnerSiteFacilitybyrcc = await this.$Api.getOwnerFaciility('rcc');
+            let OwnerSiteFacilitybyagg = await this.$Api.getOwnerFaciility('agg');
+            let OwnerSiteFacilitybysite = await this.$Api.getOwnerFaciility('site');
+            
+            // 소유 자원 갯수 
+        },
         LoginFailed(err){
         
             if(err.responseText == ""){
@@ -130,38 +163,47 @@ export default {
             }
             
         },
-        successLogin(data){
-            var resp = data;
+        async successLogin(data){
+            //var resp = data;
 
-            setCookie("token", resp.token, 1);
-            setCookie('username',resp.user.firstName, 1)
-            setCookie('userType',resp.user.userType, 1)
-            setCookie('userId', this.userId, 1);
-            this.loginFailedCount = 0;
-            this.$store.commit('setAuth', resp.token)
-            var level = getCookie('userType')
-            if(this.userId == 'c02@google.co.kr'){
-                location.href = '/areaControl'
-                return;
+            // 데이터 세팅 
+            await this.setOwnerSite();
+
+            const resp = {
+                'token' : 'kl;ks;lkd;a',
+                'username' : 'allen', 
+                'userType' : 3, 
+                'userId' : 'allen.cge'
             }
 
-            if(this.$store.state.auth != null){
-                if(level == 2){
-                    location.href = '/main'
-                }
-                else if(level == 3){
-                    location.href = '/manage'
-                }
-                else if(level == 0){
-                    location.href = '/areaControl'
-                }
-                else if(level == 1){
-                    location.href = '/statusMap'
-                }
-                else if(level == 5){
-                    location.href = '/stat'
-                }
-            }
+            this.$store.commit('setAuthLevel', resp.userType)
+            this.$store.commit('setToken', resp.token)
+            this.$store.commit('setUserName', resp.username)
+
+            
+            // var level = getCookie('userType')
+            // if(this.userId == 'c02@google.co.kr'){
+            //     location.href = '/areaControl'
+            //     return;
+            // }
+
+            // if(this.$store.state.auth != null){
+            //     if(level == 2){
+            //         location.href = '/main'
+            //     }
+            //     else if(level == 3){
+            //         location.href = '/manage'
+            //     }
+            //     else if(level == 0){
+            //         location.href = '/areaControl'
+            //     }
+            //     else if(level == 1){
+            //         location.href = '/statusMap'
+            //     }
+            //     else if(level == 5){
+            //         location.href = '/stat'
+            //     }
+            // }
             
         },
   
@@ -170,7 +212,9 @@ export default {
     },
     
     mounted() {
-        
+ 
+		  
+
         $(document).ready(function(){
             var loginBg = [
                 '/images/bg_login1.jpg', 

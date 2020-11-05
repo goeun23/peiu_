@@ -39,6 +39,8 @@ const store = () => new Vuex.Store({
     token : null,
     dt : null,
     auth : null,
+    userName : null,
+
     nuxtauth : null,
     active_powerMW : null,//globalState.vue - 금월 누적 발전량
     accum_chargingMW : null,//globalState.vue -금월 누적 충전량
@@ -97,9 +99,17 @@ const store = () => new Vuex.Store({
       //   state.locale = locale  
       // }
     },
-    setAuth(state, token){
-      state.auth = token;
+    setAuthLevel(state, payload){
+      state.auth = payload;
     },
+    setToken(state, payload){
+      state.token = payload;
+    },
+    
+    setUserName(state, payload){
+      state.userName = payload;
+    },
+
     nuxtAuth(state, auth){
       state.nuxtauth = auth;
       state.authenticated = true;
@@ -107,6 +117,7 @@ const store = () => new Vuex.Store({
   }, 
   // action (비동기처리 => 쓰기 값을 커밋)
   actions : {
+    
     //nuxtServerlnit ({commit},{req}){
 
       // let auth = null

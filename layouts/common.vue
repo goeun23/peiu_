@@ -106,21 +106,21 @@ export default {
         //     this.$i18n.locale = lang
         // }
 
-        // 소유 사이트 번호 세팅
-        getownersitelist();
-        // 소유 사이트(단위별) 설치용량 세팅
-        getownerfacilitylist();
+        // // 소유 사이트 번호 세팅
+        // getownersitelist();
+        // // 소유 사이트(단위별) 설치용량 세팅
+        // getownerfacilitylist();
 
-        this.getSiteCount();
+        // this.getSiteCount();
 
-        // 누적데이터 수신(1분마다 업데이트)
-        this.getGlobalData();
-        this.interval1 = setInterval(() => {
-            this.getGlobalData();
-        }, 60000);
+        // // 누적데이터 수신(1분마다 업데이트)
+        // this.getGlobalData();
+        // this.interval1 = setInterval(() => {
+        //     this.getGlobalData();
+        // }, 60000);
 
         
-		window.addEventListener('beforeunload',this.logout);
+		//window.addEventListener('beforeunload',this.logout);
 	},
 }
 
