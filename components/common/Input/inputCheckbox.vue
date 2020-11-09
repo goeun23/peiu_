@@ -7,8 +7,6 @@
 </template>
 
 
-
-
 <script>
 export default{
     props : {
@@ -78,9 +76,7 @@ export default{
         }, 
        
     }, 
-    mounted(){
-        console.log('is-right' ? 'flR' : false)
-    }
+    
 
 }
 </script>
