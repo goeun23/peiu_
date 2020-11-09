@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div v-if="routeName == 'index' || routeName == 'Login'">
+		<div v-if="routeName == 'index' || routeName == 'Login' || routeName =='login'">
 			<nuxt/>
 		</div>
 		<div v-else id="wrapper" :class="wrapperClass">
