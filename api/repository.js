@@ -8,7 +8,7 @@ export default $axios => resource => ({
   async Login(params){
     // 로그인 요청
     var result = await $axios.$get(`${resource}`)
-    result = { status : 200, message : '성공' }
+    result = { status : 200, message : '성공' , data : { level : 2, id :'power21@power21.com', name : 'cge' } }
     return result;
   },
 

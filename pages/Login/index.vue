@@ -70,11 +70,11 @@ export default {
         
         changeLanguage(val){
          
-            $(".lang").removeClass('is_active')
-            $("#"+val).addClass('is_active')
+            // $(".lang").removeClass('is_active')
+            // $("#"+val).addClass('is_active')
 			
-            this.$i18n.locale = val;
-			setCookie('lang', val);
+            // this.$i18n.locale = val;
+			// setCookie('lang', val);
 		},
         autofilled(){
             this.userId = 'power21@power21.co.kr'
@@ -102,25 +102,19 @@ export default {
                 return;
             }
             
-            // 입력받은 아이디를 소문자로 변환
-            var userid = this.userId;
-            this.userId = userid.toLowerCase();
             
-            // var data = {
-            //     Email : this.userId, 
-            //     Password : this.userPassword, 
-            //     RememberMe : false
-            // }
-            // console.log(this.$router)
-            //location.href = '/main'
-            // 로그인 성공시
-
-            const result = await this.$Api.Login();
-
+            const data = {
+                Email : this.userId.toLowerCase(), 
+                Password : this.userPassword, 
+                RememberMe : false
+            }
+            
+            const result = await this.$Api.Login(data);
             if(result.status == 200){
                 await this.successLogin();
                 // 리다이렉팅 
-                return this.$router.push('main');
+                const res = result.data;
+                this.redirectByLevel(res.level);
             }else{
                 if(err.responseText == ""){
                     this.error = '로그인 서버 에러: 관리자 문의'
@@ -128,21 +122,24 @@ export default {
                     this.error = JSON.parse(err.responseText).result['errors'][0].description
                 }
             }
-
-            // 권한별 첫번째 페이지 이동
-            //this.redirectByLevel();
-
-
-            // data = JSON.stringify(data);
-            // var url = 'https://www.peiu.co.kr:3020/api/auth/login'
-            // $.ajax({
-            //     type: "post",
-            //     url: url,
-            //     data: data,
-            //     contentType: 'application/json',
-            //     success: this.successLogin,
-            //     error : this.LoginFailed
-            // })
+        },
+        redirectByLevel(level){
+            switch(level){
+                // 설비운영
+                case 0 : return this.$router.push('areaControl')
+                
+                // 계통지리정보
+                case 1 : return this.$router.push('statusMap')
+                
+                // 메인
+                case 2 : return this.$router.push('main')
+                
+                // 관리자 페이지
+                case 3 : return this.$router.push('manage')
+                
+                // 통계/이력조회
+                case 5 : return this.$router.push('stat')
+            }
         },
        
         async successLogin(data){
@@ -169,62 +166,22 @@ export default {
             this.$store.commit('setAuthLevel', resp.userType)
             this.$store.commit('setToken', resp.token)
             this.$store.commit('setUserName', resp.username)
-
-            
-            // var level = getCookie('userType')
-            // if(this.userId == 'c02@google.co.kr'){
-            //     location.href = '/areaControl'
-            //     return;
-            // }
-
-            // if(this.$store.state.auth != null){
-            //     if(level == 2){
-            //         location.href = '/main'
-            //     }
-            //     else if(level == 3){
-            //         location.href = '/manage'
-            //     }
-            //     else if(level == 0){
-            //         location.href = '/areaControl'
-            //     }
-            //     else if(level == 1){
-            //         location.href = '/statusMap'
-            //     }
-            //     else if(level == 5){
-            //         location.href = '/stat'
-            //     }
-            // }
-            
         },
-  
-  
-      
     },
-    
     mounted() {
- 
-		  
-
         $(document).ready(function(){
-            var loginBg = [
-                '/images/bg_login1.jpg', 
-                // '/images/bg_login2.jpg', 
-                // '/images/bg_login3.jpg'
-                ]
+            var loginBg = ['/images/bg_login1.jpg']
             var bgIdx = parseInt(Math.random() * 10)%1;
             $(".layer").css({"background":"url("+loginBg[bgIdx]+") center center no-repeat","background-size":"cover"});
         });
         $(document.body).delegate('#confirm', 'click', function() { 
-            
             confirmAlert();
         }) 
         $(document.body).delegate('#cancel', 'click', function() { 
-            
             $("#alert_wrap").remove();
         }) 
 
         $(document.body).delegate('._loginpopup', 'click', function() { 
-            
             $("._loginpopup").remove();
         }) 
     },
