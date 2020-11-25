@@ -17,7 +17,6 @@
   "dependencies": {
     "@aspnet/signalr": "^1.0.3",
     "@nuxtjs/axios": "^5.12.2",
-    "JSON": "^1.0.0",
     "apexcharts": "^3.11.2",
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
@@ -31,9 +30,9 @@
     "file-server": "^2.0.1",
     "fs": "0.0.1-security",
     "hashmap": "^2.4.0",
-    "heapdump": "^0.3.15",
     "jquery": "^3.4.1",
     "js-cookie": "^2.2.1",
+    "JSON": "^1.0.0",
     "leaflet": "^1.6.0",
     "leaflet-polylinedecorator": "^1.6.0",
     "leaflet-toolbar": "^0.4.0-alpha.1",

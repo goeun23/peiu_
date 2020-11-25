@@ -1,5 +1,41 @@
 <template>
-    <li :id="liId" :class="{is_disabled : disabled}">
+    <ul class="local_info_chart">
+        <li  v-for='item in monitorArray' :key="item.id" :class="{is_disabled : disabled}">
+            <dl>
+                <dt>
+                    <button @click="hrefStatusMap($event)"  :value='item.id' style="button" class="local_name">
+                        
+                        <img :src="`/images/contents/ico_local_bul${item.id}.png`" class="local_bul" />{{item.rccName}}</button>
+                    <ul>
+                        <li><span class="tit">발전: </span>
+                            <span class="txt"><span>{{pvpwr}}</span> MWp</span>
+                        </li>
+                        <li>
+                            <span class="tit">유효: </span>
+                            <span class="txt"><span>{{actpwr}}</span> MW</span>
+                        </li>
+                        <li>
+                            <span @click="hrefEvent($event)" :id="href" class="txt" value='이벤트'>{{txtevent}}</span>
+                        </li>
+                        <li :class="weather"><span class="hide">날씨</span></li>
+                    </ul>
+                </dt>
+                <dd>
+                    <!-- <div style="width:32rem; height:7rem; float:left; margin-top: 1.5rem; margin-left: 2rem;"> 
+                        <canvas :id="lienChartId" ></canvas>
+                    </div>
+                    <div class="batB_wrap" style='float:right;'>
+                        <span id='soc_gauge' :class="battery">
+                            <span class="per_wrap">
+                                <span>{{avg_soc}}</span>
+                            </span>
+                        </span>
+                    </div> -->
+                </dd>
+            </dl>  
+        </li>
+    </ul>
+    <!-- <li :id="liId" :class="{is_disabled : disabled}">
         <dl>
             <dt>
                 <button @click="hrefStatusMap($event)"  :value='href' style="button" class="local_name">
@@ -24,12 +60,13 @@
                 </div>
             </dd>
         </dl>
-    </li>
+    </li> -->
 </template>
 <script>
 export default {
     layout: "rccMonitor",
     props:{
+        monitorArray : {type :Array},
         rccName: { type: String },
         lienChartId: { type: String },
         rccId: null,
@@ -302,39 +339,39 @@ export default {
         this.$nuxt.$off(this.rccId + "-WheatherByRcc");
     },
    mounted() {
-        //this.rccList = getRccList();
-        var lineChartId = this.lienChartId;
-        var rccId = this.rccId;
+        // //this.rccList = getRccList();
+        // var lineChartId = this.lienChartId;
+        // var rccId = this.rccId;
         
-        this.initLineChart(lineChartId)
-        this.$nuxt.$on(this.rccId + "-installedPV", data => {
-            // rcc 그래프 최대값 설정
-            this.SetChartValue(data)
-        });
-        this.$nuxt.$on(this.rccId+"-PreData", data => {
-            // 현재시간의 예측 값
-            this.updatePreChart(data)
-        });
-        // 현재시간 00분부터 1분전 까지의 pv(1분마다 업데이트)
-        this.$nuxt.$on(this.rccId + "-currentPV", data => {
-            this.updateCurrentChartData(data)
-        });
+        // this.initLineChart(lineChartId)
+        // this.$nuxt.$on(this.rccId + "-installedPV", data => {
+        //     // rcc 그래프 최대값 설정
+        //     this.SetChartValue(data)
+        // });
+        // this.$nuxt.$on(this.rccId+"-PreData", data => {
+        //     // 현재시간의 예측 값
+        //     this.updatePreChart(data)
+        // });
+        // // 현재시간 00분부터 1분전 까지의 pv(1분마다 업데이트)
+        // this.$nuxt.$on(this.rccId + "-currentPV", data => {
+        //     this.updateCurrentChartData(data)
+        // });
 
-        //1분마다 업데이트
-        this.$nuxt.$on(this.rccId + "-activePower", data => {
-            // 상단 SOC, PV, ACTPWR, rcc차트 pv
-            this.updatetopValue(data)
-        });
-        this.$nuxt.$on(this.rccId + "-EventByRcc", data => {
-            // 상단 값 이벤트건
-            this.updateEvt(data)
+        // //1분마다 업데이트
+        // this.$nuxt.$on(this.rccId + "-activePower", data => {
+        //     // 상단 SOC, PV, ACTPWR, rcc차트 pv
+        //     this.updatetopValue(data)
+        // });
+        // this.$nuxt.$on(this.rccId + "-EventByRcc", data => {
+        //     // 상단 값 이벤트건
+        //     this.updateEvt(data)
 
-        });
-        this.$nuxt.$on(this.rccId + "-WheatherByRcc", data => {
-            // 날씨
-            this.weather = "icon_weather type"+ data;
+        // });
+        // this.$nuxt.$on(this.rccId + "-WheatherByRcc", data => {
+        //     // 날씨
+        //     this.weather = "icon_weather type"+ data;
 
-        });
+        // });
 
    },
 }
