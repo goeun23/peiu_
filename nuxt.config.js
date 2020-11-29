@@ -1,4 +1,4 @@
-var webpack = require('webpack')
+var webpack = require("webpack");
 
 module.exports = {
   // loading: true,
@@ -6,17 +6,15 @@ module.exports = {
    ** Headers of the page
    */
   build: {
-    vendor: ["axios", "babel-polyfill"]
+    vendor: ["axios", "babel-polyfill"],
   },
 
   head: {
     title: "PEI U Project of P21",
     meta: [
-   
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "Pei U" }
-      
+      { hid: "description", name: "description", content: "Pei U" },
     ],
     link: [
       /* peiu_toc */
@@ -24,8 +22,9 @@ module.exports = {
       {
         rel: "stylesheet",
         href: "https://unpkg.com/leaflet@1.5.1/dist/leaflet.css",
-        integrity: "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==",
-        crossorigin: ""
+        integrity:
+          "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==",
+        crossorigin: "",
       },
       { rel: "stylesheet", href: "/css/reset.css" },
       { rel: "stylesheet", href: "/css/webfonts.css" },
@@ -43,27 +42,27 @@ module.exports = {
       // }
     ],
     script: [
-      // 로드시간 감축을 위해서 일단 주석 처리 스크립트 
+      // 로드시간 감축을 위해서 일단 주석 처리 스크립트
       //{ src: "/scripts/jqGrid/p21-custom-paging.js" },
       // main.vue로 이동
       // { src: "/scripts/Chart.bundle.js" },
       // { src : "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"},
-      
+
       // 계통도 관련 스크립트
       //{ src: "https://d3js.org/d3-selection-multi.v1.min.js" },
       //{ src: "/scripts/line/common.js" },
       //{ src: "/scripts/line/rccLine2.js" },
       //{ src: "/scripts/line/sccLine.js" },
       //{ src: "https://d3js.org/d3.v5.min.js" },
-      
+
       // 용도 알수 없는 스크립트 주석처리
       //{ src: "/scripts/colors.js" },
       //{ src: "/scripts/my-ol.map.js" },
       //******************************* */
       // jquery
-      
+
       { src: "https://code.jquery.com/jquery-3.3.1.min.js" },
-      {src : "/scripts/jquery/core/jquery-ui.min.js"},
+      { src: "/scripts/jquery/core/jquery-ui.min.js" },
       { src: "/scripts/scrollbar/perfect-scrollbar.js" },
       { src: "/scripts/jquery/core/html5.js" },
       { src: "/scripts/jquery/core/jquery-modernizr.js" },
@@ -71,12 +70,15 @@ module.exports = {
       { src: "/scripts/jquery/core/utils.js" },
       // import common script
       // * table
-      {src : "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"},
-			{src : "/scripts/table/jquery.tablesort.js"},
+      {
+        src:
+          "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js",
+      },
+      { src: "/scripts/table/jquery.tablesort.js" },
       // * hashmap
       { src: "/scripts/plugins/hashmap.js" },
       // * cookie
-      { src : "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"},
+      { src: "https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js" },
       // * custom common script
       { src: "/scripts/script_common.js" },
       { src: "/scripts/helper.js" },
@@ -101,32 +103,28 @@ module.exports = {
       // (계통지리정보)
       //{ src: "/scripts/data/address.js" },
       //{ src: "/scripts/data/regCode.js" },
-    ]
+    ],
   },
   router: {
     //middleware: ["i18n", "authenticated"]
     //middleware: ['i18n',"authenticated"]
     //middleware : ['authenticated']
-    middleware : ['i18n']
+    middleware: ["i18n"],
   },
   // plugins: ['~/plugins/i18n.js'],
   plugins: [
     "~/plugins/repository",
     "~/plugins/i18n.js",
     // '~/plugins/myAuth.js'
-  
   ],
 
-
-  modules: [
-    '@nuxtjs/axios',
-  ],
+  modules: ["@nuxtjs/axios"],
   axios: {
     // 모듈 설정
-    baseURL: 'https://jsonplaceholder.typicode.com/',
-    //baseURL: 'https://www.peiu.co.kr:3077', 
-    contentType : "application/json",
-
+    //baseURL: 'https://jsonplaceholder.typicode.com/',
+    baseURL: "https://www.peiu.co.kr:3077",
+    Authorization: "Bearer 123",
+    contentType: "application/json!!!!!!!!!!!!!!!!",
   },
 
   // modules:[ 'cookie-universal-nuxt'],
@@ -149,15 +147,15 @@ module.exports = {
           enforce: "pre",
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
         });
       }
-    }
+    },
   },
   generate: {
     minify: {
-      collapseWhitespace: false
-    }
+      collapseWhitespace: false,
+    },
   },
   env: {
     // get selected user assets
@@ -167,7 +165,6 @@ module.exports = {
     // baseURL: (process.env.NODE_ENV === 'test' ? 'http://localhost' : 'http://www.peiu.co.kr'),
     // baseURL : 'http://www.peiu.co.kr',
     //url_user_Asset : 'https://www.peiu.co.kr:3021/api/contract/getAsset',
-   
   },
-  NODE_ENV : "production"
+  NODE_ENV: "production",
 };
