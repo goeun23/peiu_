@@ -1,153 +1,10 @@
 <template>
-  <!-- cont_body -->
   <div class="cont_body">
-    <!-- <div class="cont_body" style=" padding: 0 !important "> -->
     <statusTop />
     <!-- main_cont_wrap -->
     <div class="main_cont_wrap">
-      <!-- local_info_chart -->
-      <ul class="local_info_chart">
-        <rcc-monitor
-          lienChartId="rcc1LineChart"
-          color="/images/contents/ico_local_bul1.png"
-          rccId="rcc1"
-          liId="area1"
-          href="1"
-          rccName="경기"
-        />
-        <rcc-monitor
-          lienChartId="rcc9LineChart"
-          color="/images/contents/ico_local_bul2.png"
-          rccId="rcc9"
-          liId="area9"
-          href="9"
-          rccName="강원"
-        />
-        <rcc-monitor
-          lienChartId="rcc2LineChart"
-          color="/images/contents/ico_local_bul3.png"
-          rccId="rcc2"
-          liId="area2"
-          href="2"
-          rccName="인천"
-        />
-        <rcc-monitor
-          lienChartId="rcc10LineChart"
-          color="/images/contents/ico_local_bul4.png"
-          rccId="rcc10"
-          liId="area10"
-          href="10"
-          rccName="충북"
-        />
-        <rcc-monitor
-          lienChartId="rcc3LineChart"
-          color="/images/contents/ico_local_bul5.png"
-          rccId="rcc3"
-          liId="area3"
-          href="3"
-          rccName="서울"
-        />
-        <rcc-monitor
-          lienChartId="rcc11LineChart"
-          color="/images/contents/ico_local_bul6.png"
-          rccId="rcc11"
-          liId="area11"
-          href="11"
-          rccName="경북"
-        />
-        <rcc-monitor
-          lienChartId="rcc4LineChart"
-          color="/images/contents/ico_local_bul7.png"
-          rccId="rcc4"
-          liId="area4"
-          href="4"
-          rccName="대전"
-        />
-        <rcc-monitor
-          lienChartId="rcc12LineChart"
-          color="/images/contents/ico_local_bul8.png"
-          rccId="rcc12"
-          liId="area12"
-          href="12"
-          rccName="대구"
-        />
-        <rcc-monitor
-          lienChartId="rcc5LineChart"
-          color="/images/contents/ico_local_bul9.png"
-          rccId="rcc5"
-          liId="area5"
-          href="5"
-          rccName="충남"
-        />
-        <rcc-monitor
-          lienChartId="rcc13LineChart"
-          color="/images/contents/ico_local_bul10.png"
-          rccId="rcc13"
-          liId="area13"
-          href="13"
-          rccName="울산"
-        />
-        <rcc-monitor
-          lienChartId="rcc6LineChart"
-          color="/images/contents/ico_local_bul11.png"
-          rccId="rcc6"
-          liId="area6"
-          href="6"
-          rccName="전북"
-        />
-        <rcc-monitor
-          lienChartId="rcc14LineChart"
-          color="/images/contents/ico_local_bul12.png"
-          rccId="rcc14"
-          liId="area14"
-          href="14"
-          rccName="부산"
-        />
-        <rcc-monitor
-          lienChartId="rcc7LineChart"
-          color="/images/contents/ico_local_bul13.png"
-          rccId="rcc7"
-          liId="area7"
-          href="7"
-          rccName="전남"
-        />
-        <rcc-monitor
-          lienChartId="rcc15LineChart"
-          color="/images/contents/ico_local_bul14.png"
-          rccId="rcc15"
-          liId="area15"
-          href="15"
-          rccName="경남"
-        />
-        <rcc-monitor
-          lienChartId="rcc8LineChart"
-          color="/images/contents/ico_local_bul15.png"
-          rccId="rcc8"
-          liId="area8"
-          href="8"
-          rccName="광주"
-        />
-        <rcc-monitor
-          lienChartId="rcc16LineChart"
-          color="/images/contents/ico_local_bul16.png"
-          rccId="rcc16"
-          liId="area16"
-          href="16"
-          rccName="제주"
-        />
-      </ul>
-      <!--// local_info_chart -->
-      <div
-        class="temp"
-        style="
-          background-color: #000d4c;
-          width: 98rem;
-          height: 100%;
-          margin-left: 47rem;
-          position: absolute;
-          opacity: 0.2;
-        "
-      ></div>
+      <rcc-monitor :MainrccList="MainrccList" />
+      <div class="temp"></div>
       <div class="main_mid_cont">
         <div id="dashboardMap" class="main_map_area">
           <div class="dddd"></div>
@@ -158,12 +15,12 @@
     </div>
     <!--// main_cont_wrap -->
   </div>
-  <!--// cont_body -->
 </template>
 <script>
 const Cookie = process.client ? require("js-cookie") : undefined;
 import statusBottom from "~/components/Main/MainStatusBottom";
-import rccMonitor from "~/components/Main/MainRccMonitor";
+//import rccMonitor from "~/components/Main/MainRccMonitor";
+import rccMonitor from "~/components/Main/MainRccCard";
 import statusTop from "~/components/Main/MainStatusTop.vue";
 export default {
   middleware: "authenticated",
@@ -176,7 +33,6 @@ export default {
       // leaflet.js
       { src: "https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" },
       { src: "/scripts/leaflet/leaflet.migrationLayer.js" },
-
       { src: "/scripts/leaflet/leaflet.textpath.js" },
       { src: "/scripts/map/p21-ctrlAnimation.js" },
       { src: "/scripts/leaflet/leaflet.curve.js" },
@@ -195,8 +51,14 @@ export default {
     clearInterval(this.interval1);
     clearInterval(this.smp_interval);
   },
+  async created() {
+    this.MainrccList = this.$store.getters.MainrccList;
+    // '전국' 삭제
+  },
   data() {
     return {
+      rccMonitorCard: [],
+      rccColorList: [],
       todayInterval: null,
       map: null,
       jejuMap: null,
@@ -664,6 +526,14 @@ function KeyPress(e) {
 </script>
 
 <style>
+.temp {
+  background-color: #000d4c;
+  width: 98rem;
+  height: 100%;
+  margin-left: 47rem;
+  position: absolute;
+  opacity: 0.2;
+}
 .innerMap {
   width: 12vw;
   height: 14vh;
