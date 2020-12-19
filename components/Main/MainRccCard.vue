@@ -5,7 +5,7 @@
       <li
         v-for="(item, index) in MainrccList"
         :key="index"
-        :class="{ is_disabled: disabled }"
+        :class="{ is_disabled: false }"
       >
         <dl>
           <dt>
@@ -23,22 +23,14 @@
             <ul>
               <li>
                 <span class="tit">발전: </span>
-                <span class="txt"
-                  ><span>-</span> MWp</span
-                >
+                <span class="txt"><span>-</span> MWp</span>
               </li>
               <li>
                 <span class="tit">유효: </span>
-                <span class="txt"
-                  ><span>-</span> MW</span
-                >
+                <span class="txt"><span>-</span> MW</span>
               </li>
               <li>
-                <span
-                  @click="hrefEvent($event)"
-                  :id="href"
-                  class="txt"
-                  value="이벤트"
+                <span @click="hrefEvent($event)" class="txt" value="이벤트"
                   >-</span
                 >
               </li>
@@ -46,16 +38,17 @@
             </ul>
           </dt>
           <dd>
-            <!-- <div style="width:32rem; height:7rem; float:left; margin-top: 1.5rem; margin-left: 2rem;"> 
-                        <canvas :id="lienChartId" ></canvas>
-                    </div>
-                    <div class="batB_wrap" style='float:right;'>
-                        <span id='soc_gauge' :class="battery">
-                            <span class="per_wrap">
-                                <span>{{avg_soc}}</span>
-                            </span>
-                        </span>
-                    </div> -->
+            <div class="main-rcc-card-chart">
+              <div id="chartdiv"></div>
+              <!-- <div :id="`lienChartId${item.rcc}`"></div> -->
+            </div>
+            <div class="batB_wrap" style="float: right">
+              <span id="soc_gauge" :class="battery">
+                <span class="per_wrap">
+                  <span>999</span>
+                </span>
+              </span>
+            </div>
           </dd>
         </dl>
       </li>
@@ -66,9 +59,29 @@
 
 
 <script>
+//import MainRealtimeMap from "~/components/common/Chart/chartRealtime.vue";
 export default {
+  components: {
+    //MainRealtimeMap,
+  },
+  head: {
+    script: [],
+  },
   props: {
-    MainrccList: { type: Object },
+    MainrccList: { type: Array },
+  },
+  data() {
+    return { battery: "" };
   },
 };
 </script>
+
+<style scoped>
+.main-rcc-card-chart {
+  width: 32rem;
+  height: 7rem;
+  float: left;
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+}
+</style>

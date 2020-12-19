@@ -5,6 +5,14 @@ const store = () =>
   new Vuex.Store({
     // store 변수
     state: {
+      menuListbyLevel: [],
+      menuList: {
+        0: [4, 6, 8, 12, 14],
+        1: ["gismap", 4, 6, 8, 12, 14],
+        2: ["gismap", 4, 6, 8, 11, 12, 14, 15],
+        3: [15],
+        5: [8],
+      },
       MainrccList: [
         { rcc: 1, name: "경기", color: "1" },
         { rcc: 2, name: "인천", color: "3" },
@@ -24,23 +32,23 @@ const store = () =>
         { rcc: 16, name: "제주", color: "16" },
       ],
       rccList: {
-        "O": "전국",
-        "1": "경기",
-        "2": "인천",
-        "3": "서울",
-        "4": "대전",
-        "5": "충남",
-        "6": "전북",
-        "7": "전남",
-        '8': "광주",
-        "9": "강원",
-        "10": "충북",
-        '11': "경북",
-        '12': "대구",
-        '13': "울산",
-        '14': "부산",
-        '15': "경남",
-        '16': "제주",
+        O: "전국",
+        1: "경기",
+        2: "인천",
+        3: "서울",
+        4: "대전",
+        5: "충남",
+        6: "전북",
+        7: "전남",
+        8: "광주",
+        9: "강원",
+        10: "충북",
+        11: "경북",
+        12: "대구",
+        13: "울산",
+        14: "부산",
+        15: "경남",
+        16: "제주",
       },
       serviceCode: {
         // 로그인 권한 별 서비스 코드
@@ -140,6 +148,9 @@ const store = () =>
       nuxtAuth(state, auth) {
         state.nuxtauth = auth;
         state.authenticated = true;
+      },
+      setMenuList(state, level) {
+        state.menuListbyLevel = state.menuList[level];
       },
     },
     // action (비동기처리 => 쓰기 값을 커밋)

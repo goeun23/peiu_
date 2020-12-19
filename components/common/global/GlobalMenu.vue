@@ -9,11 +9,11 @@
         </ul>
         <ul>
           <li>
-            <a v-if="containMain" id="gnav-main" class="home"></a>
+            <a v-if="containMain" id="gnav-main" class="home" href="/main"></a>
           </li>
-          <li v-for="(item, index) in menuList" :id="item.id" :key="index">
-            <a class="menuStyle btnCursor" :href="item.href">
-              <span>{{ item.text }}</span>
+          <li v-for="(item, index) in menuList" :id="item" :key="index">
+            <a class="menuStyle btnCursor" :href="menu[item].href">
+              <span>{{ menu[item].text }}</span>
             </a>
           </li>
         </ul>
@@ -24,6 +24,7 @@
         <ul>
           <li style="padding-left: 0.8rem">
             <marquee
+              class="marquee-tag"
               width="77rem;"
               loop="-1"
               direction="left"
@@ -77,20 +78,17 @@ const Cookie = process.client ? require("js-cookie") : undefined;
 export default {
   data() {
     return {
-      containMain: false,
-      menu_gismap: {
-        id: "menu_gismap",
-        href: "/statusMap",
-        text: "계통지리정보",
+      menu: {
+        gismap: { href: "/statusMap", text: "계통지리정보" },
+        4: { href: "/areaControl", text: "설비운영" },
+        6: { href: "/forcast", text: "예측" },
+        8: { href: "/stat", text: "통계/이력조회" },
+        11: { href: "/market", text: "마켓" },
+        12: { href: "/SearchEvent", text: "이벤트" },
+        14: { href: "/report", text: "보고서" },
+        15: { href: "/manage", text: "관리자전용" },
       },
-      menu4: { id: "menu4", href: "/areaControl", text: "설비운영" },
-      menu6: { id: "menu6", href: "/prediction", text: "예측" },
-      menu8: { id: "menu8", href: "/stat", text: "통계/이력조회" },
-      menu11: { id: "menu11", href: "/market", text: "마켓" },
-      menu12: { id: "menu12", href: "/SearchEvent", text: "이벤트" },
-      menu14: { id: "menu14", href: "/report", text: "보고서" },
-      menu15: { id: "menu15", href: "/manage", text: "관리자전용" },
-      menuList: [],
+      containMain: true,
       user: "",
       ctrl_temp: "",
       ctrl_hum: "",
@@ -167,66 +165,14 @@ export default {
       this.ctrl_hum = resp.humidity;
       this.ctrl_cloud = resp.clouds;
     },
-    setList(level) {
-      var menu = [];
-
-      // 2레벨만 메인페이지 노출
-      if (level == 2) {
-        this.containMain = true;
-      } else {
-        this.containMain = false;
-      }
-
-      // 레벨별 페이지 노출
-      switch (level) {
-        case 3:
-          return (menu = [this.menu15]);
-          break;
-        case 5:
-          return (menu = [this.menu8]);
-          break;
-        case 2:
-          return (menu = [
-            this.menu_gismap,
-            this.menu4,
-            this.menu6,
-            this.menu8,
-            this.menu11,
-            this.menu12,
-            this.menu14,
-            this.menu15,
-          ]);
-          break;
-        case 1:
-          return (menu = [
-            this.menu_gismap,
-            this.menu4,
-            this.menu6,
-            this.menu8,
-            this.menu12,
-            this.menu14,
-          ]);
-          break;
-        case 0:
-          return (menu = [
-            this.menu4,
-            this.menu6,
-            this.menu8,
-            this.menu12,
-            this.menu14,
-          ]);
-          break;
-        default:
-          break;
-      }
-    },
-    setMenuList() {
-      const level = 2;
-      this.menuList = this.setList(level);
-    },
   },
-  created() {
-    this.setMenuList();
+  async created() {
+    await this.$store.commit("setMenuList", 2);
+  },
+  computed: {
+    menuList() {
+      return this.$store.state.menuListbyLevel;
+    },
   },
   beforeMount() {
     //this.checkAuth();
@@ -243,5 +189,7 @@ export default {
 <style>
 .language {
   width: 10rem !important;
+}
+.marquee-tag {
 }
 </style>

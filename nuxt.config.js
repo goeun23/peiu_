@@ -59,8 +59,8 @@ module.exports = {
       //{ src: "/scripts/colors.js" },
       //{ src: "/scripts/my-ol.map.js" },
       //******************************* */
-      // jquery
 
+      // jquery
       { src: "https://code.jquery.com/jquery-3.3.1.min.js" },
       { src: "/scripts/jquery/core/jquery-ui.min.js" },
       { src: "/scripts/scrollbar/perfect-scrollbar.js" },
@@ -160,7 +160,7 @@ module.exports = {
   env: {
     // get selected user assets
     browser: true,
-    node: true,
+    node: "empty",
     //www.peiu.co.kr
     // baseURL: (process.env.NODE_ENV === 'test' ? 'http://localhost' : 'http://www.peiu.co.kr'),
     // baseURL : 'http://www.peiu.co.kr',

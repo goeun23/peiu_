@@ -37,9 +37,17 @@ export default {
       { src: "/scripts/map/p21-ctrlAnimation.js" },
       { src: "/scripts/leaflet/leaflet.curve.js" },
 
+      // amchart
+      { src: "https://cdn.amcharts.com/lib/4/core.js" },
+      { src: "https://cdn.amcharts.com/lib/4/charts.js" },
+      { src: "https://cdn.amcharts.com/lib/4/themes/dark.js" },
+      { src: "https://cdn.amcharts.com/lib/4/themes/animated.js" },
+
       // chart.js 플러그인
       { src: "/scripts/charts/Chart.bundle.js" },
       { src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" },
+
+      // amchart 스크립트
     ],
   },
   components: {
