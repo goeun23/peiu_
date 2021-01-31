@@ -99,7 +99,10 @@ export default {
   methods: {
     moveto(path) {
       if (this.$route.path !== path) {
-        return this.$router.push(path);
+        
+        location.href = path;
+        //return (location.href = location.href + path);
+        //return this.$router.push(path);
       }
     },
     changeLanguage(e, value) {
@@ -199,5 +202,4 @@ export default {
 .language {
   width: 10rem !important;
 }
-
 </style>
