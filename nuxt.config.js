@@ -6,7 +6,7 @@ module.exports = {
    ** Headers of the page
    */
   build: {
-    vendor: ["axios", "babel-polyfill"],
+    vendor: ["axios", "babel-polyfill"]
   },
 
   head: {
@@ -14,24 +14,25 @@ module.exports = {
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "Pei U" },
+      { hid: "description", name: "description", content: "Pei U" }
     ],
     link: [
-      /* peiu_toc */
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
         rel: "stylesheet",
-        href: "https://unpkg.com/leaflet@1.5.1/dist/leaflet.css",
+        href: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css",
         integrity:
-          "sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==",
-        crossorigin: "",
+          "sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==",
+        crossorigin: ""
       },
+      /* peiu_toc */
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+
       { rel: "stylesheet", href: "/css/reset.css" },
       { rel: "stylesheet", href: "/css/webfonts.css" },
       { rel: "stylesheet", href: "/css/common.css" },
       { rel: "stylesheet", href: "/css/layout.css" },
-      { rel: "stylesheet", href: "/css/cmpt.css" },
-      { rel: "stylesheet", href: "/css/contents.css" },
+      //{ rel: "stylesheet", href: "/css/cmpt.css" },
+      { rel: "stylesheet", href: "/css/contents.css" }
       //  {rel : "stylesheet", href : "/css/jquery-ui.min.css"} ,
       //calendar
       //{ rel: "stylesheet", href: "/css/calendar/fullcalendar.min.css" },
@@ -42,6 +43,13 @@ module.exports = {
       // }
     ],
     script: [
+      {
+        src: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js",
+        integrity:
+          "sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==",
+        crossorigin: ""
+      },
+      { src: "/scripts/data/statusMapLatLng.js" },
       // 로드시간 감축을 위해서 일단 주석 처리 스크립트
       //{ src: "/scripts/jqGrid/p21-custom-paging.js" },
       // main.vue로 이동
@@ -60,6 +68,15 @@ module.exports = {
       //{ src: "/scripts/my-ol.map.js" },
       //******************************* */
 
+      // filters
+      { src: "./filters" },
+
+      // amchart
+      { src: "https://cdn.amcharts.com/lib/4/core.js" },
+      { src: "https://cdn.amcharts.com/lib/4/charts.js" },
+      { src: "https://cdn.amcharts.com/lib/4/themes/dark.js" },
+      { src: "https://cdn.amcharts.com/lib/4/themes/animated.js" },
+
       // jquery
       { src: "https://code.jquery.com/jquery-3.3.1.min.js" },
       { src: "/scripts/jquery/core/jquery-ui.min.js" },
@@ -71,8 +88,7 @@ module.exports = {
       // import common script
       // * table
       {
-        src:
-          "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js",
+        src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"
       },
       { src: "/scripts/table/jquery.tablesort.js" },
       // * hashmap
@@ -82,7 +98,7 @@ module.exports = {
       // * custom common script
       { src: "/scripts/script_common.js" },
       { src: "/scripts/helper.js" },
-      { src: "/scripts/utils.js" },
+      { src: "/scripts/utils.js" }
       // signalR(계통지리정보, 설비운영)
       //{ src : "/scripts/signalr/signalr.js" },
       // leaflet 1.5.1(메인, 계통지리로 분리)
@@ -103,18 +119,18 @@ module.exports = {
       // (계통지리정보)
       //{ src: "/scripts/data/address.js" },
       //{ src: "/scripts/data/regCode.js" },
-    ],
+    ]
   },
   router: {
     //middleware: ["i18n", "authenticated"]
     //middleware: ['i18n',"authenticated"]
     //middleware : ['authenticated']
-    middleware: ["i18n"],
+    middleware: ["i18n"]
   },
   // plugins: ['~/plugins/i18n.js'],
   plugins: [
     "~/plugins/repository",
-    "~/plugins/i18n.js",
+    "~/plugins/i18n.js"
     // '~/plugins/myAuth.js'
   ],
 
@@ -124,7 +140,7 @@ module.exports = {
     //baseURL: 'https://jsonplaceholder.typicode.com/',
     baseURL: "https://www.peiu.co.kr:3077",
     Authorization: "Bearer 123",
-    contentType: "application/json!!!!!!!!!!!!!!!!",
+    contentType: "application/json!!!!!!!!!!!!!!!!"
   },
 
   // modules:[ 'cookie-universal-nuxt'],
@@ -147,24 +163,24 @@ module.exports = {
           enforce: "pre",
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
-          exclude: /(node_modules)/,
+          exclude: /(node_modules)/
         });
       }
-    },
+    }
   },
   generate: {
     minify: {
-      collapseWhitespace: false,
-    },
+      collapseWhitespace: false
+    }
   },
   env: {
     // get selected user assets
     browser: true,
-    node: "empty",
+    node: "empty"
     //www.peiu.co.kr
     // baseURL: (process.env.NODE_ENV === 'test' ? 'http://localhost' : 'http://www.peiu.co.kr'),
     // baseURL : 'http://www.peiu.co.kr',
     //url_user_Asset : 'https://www.peiu.co.kr:3021/api/contract/getAsset',
   },
-  NODE_ENV: "production",
+  NODE_ENV: "production"
 };

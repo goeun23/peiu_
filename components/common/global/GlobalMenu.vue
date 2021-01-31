@@ -12,7 +12,7 @@
             <a v-if="containMain" id="gnav-main" class="home" href="/main"></a>
           </li>
           <li v-for="(item, index) in menuList" :id="item" :key="index">
-            <a class="menuStyle btnCursor" :href="menu[item].href">
+            <a class="menuStyle btnCursor" @click="moveto(menu[item].href)">
               <span>{{ menu[item].text }}</span>
             </a>
           </li>
@@ -29,7 +29,7 @@
               loop="-1"
               direction="left"
               style="color: #bfccdc; font-size: 1.3rem"
-              ><li>{{ user }}</li></marquee
+              ><li>{{ userName }}</li></marquee
             >
           </li>
           <li style="padding-left: 0.8rem">
@@ -97,6 +97,11 @@ export default {
     };
   },
   methods: {
+    moveto(path) {
+      if (this.$route.path !== path) {
+        return this.$router.push(path);
+      }
+    },
     changeLanguage(e, value) {
       if (value == undefined) {
         // 셀렉트 박스 선택으로 들어온 경우
@@ -173,6 +178,10 @@ export default {
     menuList() {
       return this.$store.state.menuListbyLevel;
     },
+    userName() {
+      console.log(this.$store.getters.userName);
+      return this.$store.getters.userName;
+    },
   },
   beforeMount() {
     //this.checkAuth();
@@ -190,6 +199,5 @@ export default {
 .language {
   width: 10rem !important;
 }
-.marquee-tag {
-}
+
 </style>

@@ -1,16 +1,18 @@
 <template>
   <div class="cont_body">
-    <statusTop />
+    <StatusTop :statusTop="dailyAccum" />
     <!-- main_cont_wrap -->
     <div class="main_cont_wrap">
-      <rcc-monitor :MainrccList="MainrccList" />
-      <div class="temp"></div>
+      <RccMonitor :MainrccList="MainrccList" />
+
       <div class="main_mid_cont">
-        <div id="dashboardMap" class="main_map_area">
-          <div class="dddd"></div>
-          <div id="jejuMap" class="innerMap"></div>
+        <div class="main_map_area" id="dashboardMap">
+          <div id="jejuMap"></div>
         </div>
-        <statusBottom />
+        <!-- <div class="dddd"></div>
+        <div id="jejuMap" class="innerMap"></div> -->
+
+        <StatusBottom />
       </div>
     </div>
     <!--// main_cont_wrap -->
@@ -18,57 +20,93 @@
 </template>
 <script>
 const Cookie = process.client ? require("js-cookie") : undefined;
-import statusBottom from "~/components/Main/MainStatusBottom";
+import StatusBottom from "~/components/Main/MainStatusBottom";
 //import rccMonitor from "~/components/Main/MainRccMonitor";
-import rccMonitor from "~/components/Main/MainRccCard";
-import statusTop from "~/components/Main/MainStatusTop.vue";
+import RccMonitor from "~/components/Main/MainRccCard";
+import StatusTop from "~/components/Main/MainStatusTop.vue";
 export default {
   middleware: "authenticated",
   layout: "common",
   head: {
+    link: [
+      // {
+      //   rel: "stylesheet",
+      //   href: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.css",
+      //   integrity:
+      //     "sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==",
+      //   crossorigin: "",
+      // },
+    ],
     script: [
       // 지도영역 색 지정
-      { src: "/scripts/data/statusMapLatLng.js" },
-
+      //{ src: "/scripts/data/statusMapLatLng.js" },
       // leaflet.js
-      { src: "https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" },
-      { src: "/scripts/leaflet/leaflet.migrationLayer.js" },
-      { src: "/scripts/leaflet/leaflet.textpath.js" },
-      { src: "/scripts/map/p21-ctrlAnimation.js" },
-      { src: "/scripts/leaflet/leaflet.curve.js" },
-
-      // amchart
-      { src: "https://cdn.amcharts.com/lib/4/core.js" },
-      { src: "https://cdn.amcharts.com/lib/4/charts.js" },
-      { src: "https://cdn.amcharts.com/lib/4/themes/dark.js" },
-      { src: "https://cdn.amcharts.com/lib/4/themes/animated.js" },
-
-      // chart.js 플러그인
-      { src: "/scripts/charts/Chart.bundle.js" },
-      { src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" },
-
+      // {
+      //   src: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.js",
+      //   integrity:
+      //     "sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==",
+      //   crossorigin: "",
+      // },
+      //{ src: "https://unpkg.com/leaflet@1.7.1/dist/leaflet.j" },
+      // { src: "/scripts/leaflet/leaflet.migrationLayer.js" },
+      // { src: "/scripts/leaflet/leaflet.textpath.js" },
+      // { src: "/scripts/map/p21-ctrlAnimation.js" },
+      // { src: "/scripts/leaflet/leaflet.curve.js" },
+      // // chart.js 플러그인
+      // { src: "/scripts/charts/Chart.bundle.js" },
+      // { src: "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" },
       // amchart 스크립트
     ],
   },
   components: {
-    statusTop,
-    statusBottom,
-    rccMonitor,
+    StatusTop,
+    StatusBottom,
+    RccMonitor,
   },
   beforeDestroy() {
     clearInterval(this.interval1);
     clearInterval(this.smp_interval);
   },
   async created() {
+    Promise.all([this.setStatusTop(), this.setStatusBottom(), this.setMain()]);
+  },
+  async mounted() {
+    // rcclist 세팅
     this.MainrccList = this.$store.getters.MainrccList;
-    // '전국' 삭제
+
+    // 메인 페이지 leaflet 지도 세팅
+    await Promise.all([this.initMap("dashboardMap"), this.initMap("jejuMap")]);
   },
   data() {
     return {
+      // 설치용량
+      facility: {
+        rccPV: [], // rcc pv 설치용량
+        totalPV: 0,
+        totalEss: 0,
+      },
+      // 금일 누적
+      dailyAccum: {
+        chg: 0,
+        dcg: 0,
+        pv: 0,
+        revenueForcast: 0,
+        revenue: 0,
+        soc: 0,
+        countofAgg: 0,
+        countofEvent: 0,
+      },
+      mapTileStyle:
+        "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png",
+      map: {
+        dashboardMap: null,
+        jejuMap: null,
+      },
+      MainrccList: [],
       rccMonitorCard: [],
       rccColorList: [],
       todayInterval: null,
-      map: null,
+      //map: null,
       jejuMap: null,
       markerGroup: null,
       markerImgMap: null,
@@ -110,6 +148,42 @@ export default {
     };
   },
   methods: {
+    async setStatusTop() {
+      try {
+        console.log(
+          "commit",
+          await this.$store.commit("InformationOwner", "sitebyrcc")
+        );
+        console.log("allen", this.locData);
+      } catch (e) {
+        return;
+      }
+
+      //var data = await this.$store.commit("InformationOwner", "sitebyrcc");
+      //console.log("main", data);
+      // Promise.all(this.$store.commit("InformationOwner", "sitebyrcc")).then(
+      //   (data) => {
+      //     console.log(data);
+      //   }
+      // );
+      // agg 수는 vue -> store에서 가져옴
+    },
+    setStatusBottom() {
+      //this.kpxData()
+    },
+    setMain() {
+      this.setRccCard();
+      this.setMap();
+    },
+    setRccCard() {
+      // rcc 카드 데이터 세팅
+      // this.rccCard = {
+      //   rcc
+      // }
+    },
+    setMap() {
+      // 메인 지도 데이터 세팅
+    },
     initMaker(map, jeju, locData) {
       // init marker
       var code;
@@ -197,7 +271,6 @@ export default {
       // 금일 예상 수익금
       this.$nuxt.$emit("daily-predict-income", forcast.toFixed(0));
     },
-
     setActPwrAni(data) {
       // for line-animation map
       _aniMap = data;
@@ -369,29 +442,11 @@ export default {
         $nuxt.$emit("rcc" + resp[i].rcc + "-installedPV", f.sumofpvcapacity);
       }
     },
-    initMap() {
-      var level = 8;
-      //해상도 level 9로 조정
-      if (window.innerWidth > 1920) {
-        level = 9;
-      }
-      // set map tile style
-      var cartodbUrl =
-        "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}{r}.png";
-      // land
-      this.map = L.map("dashboardMap").setView([36.279707, 127.847817], level);
-      // jeju
-      this.jejuMap = L.map("jejuMap").setView([33.386949, 126.548782], level);
+    initMap(mapid) {
+      this.map[`${mapid}`] = L.map(mapid).setView(setView[`${mapid}`], 8);
 
-      // prevent dragging
-      this.map.dragging.disable();
-      this.jejuMap.dragging.disable();
-
-      // set Map Options
-      var koreaMap = this.map;
-      var jejuMap = this.jejuMap;
-
-      L.tileLayer(cartodbUrl, {
+      var map = this.map[`${mapid}`];
+      L.tileLayer(this.mapTileStyle, {
         attributionControl: false,
         maxZoom: level,
         minZoom: level,
@@ -399,28 +454,13 @@ export default {
         noMoveStart: true,
         zoomControl: false,
         reuseTiles: true,
-      }).addTo(koreaMap);
-      koreaMap.zoomControl.remove();
-      koreaMap.setMaxBounds([
-        [37.993998198369574, 131.27563476562503],
-        [34.52692430140103, 124.41741943359376],
-      ]);
+      }).addTo(map);
 
-      L.tileLayer(cartodbUrl, {
-        attributionControl: false,
-        maxZoom: level,
-        minZoom: level,
-        preferCanvas: true,
-        noMoveStart: true,
-        zoomControl: false,
-        reuseTiles: true,
-      }).addTo(jejuMap);
-      jejuMap.zoomControl.remove();
+      map.setMaxBounds(MaxBound[`${mapid}`]);
+      map.dragging.disable();
+      map.zoomControl.remove();
 
-      koreaMap.doubleClickZoom.disable();
-      jejuMap.doubleClickZoom.disable();
-
-      // change background color
+      //change background color
       var korea = {
         type: "Feature",
         id: "KOR",
@@ -435,7 +475,7 @@ export default {
         },
         geometry: {
           type: "Polygon",
-          coordinates: RegionJson,
+          coordinates: AreaJson[`${mapid}`],
         },
       };
 
@@ -443,70 +483,70 @@ export default {
         style: function (feature) {
           return feature.properties && feature.properties.style;
         },
-      }).addTo(this.map);
+      }).addTo(map);
 
       // init marker
-      this.initMaker(koreaMap, jejuMap);
+      //this.initMaker(koreaMap, jejuMap);
     },
   },
-  beforeDestroy() {
-    // $off method will turned off the event listner
-    this.$nuxt.$off("line-animation");
-    // clear interval
-    clearInterval(this.todayInterval);
-    clearInterval(this.smp_interval);
-  },
-  mounted() {
-    //var resp = _ajax("i", "owner", "sitebyrcc", null, null);
-    // // 한번만 받아오는 데이터
-    //this.getInstalledInfo();
-    // // 지도 초기화
-    // this.initMap()
-    // // 금일 누적 방전,충전,발전, 예상, 누적 수익금
-    // this.getAccumData();
-    // this.getChartDataByrcc();
-    // // 1분마다 업데이트
-    // this.todayInterval = setInterval(() =>{
-    //     this.getAccumData();
-    //     this.getChartDataByrcc();
-    // },60000)
-    // // 1시간마다 업데이트
-    // this.kpxData();
-    // this.smp_interval = setInterval(() => {
-    // 	this.kpxData();
-    // }, 600000);
-    // //global menu
-    // if($nuxt.$route.path === '/main'){
-    //     // hide menu
-    //     $('#header').css('position','absolute');
-    //     $('#header').css('top','-5.9rem');
-    //     $('#header').css('width','100%');
-    //     $('#header').css('z-index',999);
-    // }
-    // //document.onkeydown = KeyPress;
-    // // 상단메뉴 마우스오버 이벤트
-    // $("#header").mouseover(function(){
-    //     // showing global menu
-    //     //$('#header').css('position','relative');
-    //     $('#header').animate({top:'0rem'});
-    //     // reset timeout func
-    //     clearTimeout(timeout);
-    // });
-    // // 상단메뉴 마우스리브 이벤트
-    // $("#header").mouseleave(function() {
-    //     // hide global menu
-    //     $('#header').animate({top : '-5.9rem'});
-    //     // reset timeout func
-    //     clearTimeout(timeout);
-    // });
-    // // 누적발전량, 누적충전량 마우스 오버 이벤트
-    // $(".cont_head").mouseover(function(){
-    //    // show global menu
-    //    $('#header').animate({top:'0rem'});
-    //    // reset timeout func
-    //     clearTimeout(timeout);
-    // });
-  },
+  // beforeDestroy() {
+  //   // $off method will turned off the event listner
+  //   this.$nuxt.$off("line-animation");
+  //   // clear interval
+  //   clearInterval(this.todayInterval);
+  //   clearInterval(this.smp_interval);
+  // },
+  //mounted() {
+  //var resp = _ajax("i", "owner", "sitebyrcc", null, null);
+  // // 한번만 받아오는 데이터
+  //this.getInstalledInfo();
+  // // 지도 초기화
+  // this.initMap()
+  // // 금일 누적 방전,충전,발전, 예상, 누적 수익금
+  // this.getAccumData();
+  // this.getChartDataByrcc();
+  // // 1분마다 업데이트
+  // this.todayInterval = setInterval(() =>{
+  //     this.getAccumData();
+  //     this.getChartDataByrcc();
+  // },60000)
+  // // 1시간마다 업데이트
+  // this.kpxData();
+  // this.smp_interval = setInterval(() => {
+  // 	this.kpxData();
+  // }, 600000);
+  // //global menu
+  // if($nuxt.$route.path === '/main'){
+  //     // hide menu
+  //     $('#header').css('position','absolute');
+  //     $('#header').css('top','-5.9rem');
+  //     $('#header').css('width','100%');
+  //     $('#header').css('z-index',999);
+  // }
+  // //document.onkeydown = KeyPress;
+  // // 상단메뉴 마우스오버 이벤트
+  // $("#header").mouseover(function(){
+  //     // showing global menu
+  //     //$('#header').css('position','relative');
+  //     $('#header').animate({top:'0rem'});
+  //     // reset timeout func
+  //     clearTimeout(timeout);
+  // });
+  // // 상단메뉴 마우스리브 이벤트
+  // $("#header").mouseleave(function() {
+  //     // hide global menu
+  //     $('#header').animate({top : '-5.9rem'});
+  //     // reset timeout func
+  //     clearTimeout(timeout);
+  // });
+  // // 누적발전량, 누적충전량 마우스 오버 이벤트
+  // $(".cont_head").mouseover(function(){
+  //    // show global menu
+  //    $('#header').animate({top:'0rem'});
+  //    // reset timeout func
+  //     clearTimeout(timeout);
+  // });
+  //},
 };
 
 let _showMenu = true;
@@ -550,5 +590,8 @@ function KeyPress(e) {
   bottom: 0;
   right: 0;
   outline: 0.1px dotted #4b5a6c;
+}
+#mapid {
+  height: 180px;
 }
 </style>

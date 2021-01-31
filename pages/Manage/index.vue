@@ -18,9 +18,9 @@
                 </ul>
             </div>
             <div class="tab_cont">
-                <manage-user/>
+                <!-- <manage-user/>
                 <manage-site/>
-                <manage-collector/>
+                <manage-collector/> -->
             </div>
         </div>
     </div>
@@ -348,37 +348,37 @@ export default {
     },
     mounted() {
         
-        this.showmenu('usermanagement');
+        // this.showmenu('usermanagement');
 
-        this.checkAuth();
+        // this.checkAuth();
 
-        // 라디오 버튼중 '전체' 선택 활성화
-        $("input:radio[name='selRadio']:radio[value='null']").prop('checked', true); 
-        this.getdata(null)
-        new PerfectScrollbar('tbody');
-        $( "#expire" ).datepicker();
+        // // 라디오 버튼중 '전체' 선택 활성화
+        // $("input:radio[name='selRadio']:radio[value='null']").prop('checked', true); 
+        // this.getdata(null)
+        // new PerfectScrollbar('tbody');
+        // $( "#expire" ).datepicker();
         
-		$(".btn_management").on("click",function(){
-			$("#popup_wrap").css("display","block");
-        });
+		// $(".btn_management").on("click",function(){
+		// 	$("#popup_wrap").css("display","block");
+        // });
         
-		$(".btn_search").on("click",function(){
-			$("#popup_wrap2").css("display","block");
-        });
+		// $(".btn_search").on("click",function(){
+		// 	$("#popup_wrap2").css("display","block");
+        // });
         
-		$(".layer_popup .btn_wrap .btn").on("click",function(){
-			$(this).closest(".layer_popup").css("display","none");
-        });
+		// $(".layer_popup .btn_wrap .btn").on("click",function(){
+		// 	$(this).closest(".layer_popup").css("display","none");
+        // });
 
-        $(".iscorrect_switch_land_island").on("click",function(){//육지, 제주 선택 스위치
-            if($(this).hasClass("on_land")){
-                $(this).removeClass("on_land").addClass("on_island");
-                $(this).val("미승인");
-            }else{
-                $(this).removeClass("on_island").addClass("on_land");
-                $(this).val("승인");
-            }
-        });
+        // $(".iscorrect_switch_land_island").on("click",function(){//육지, 제주 선택 스위치
+        //     if($(this).hasClass("on_land")){
+        //         $(this).removeClass("on_land").addClass("on_island");
+        //         $(this).val("미승인");
+        //     }else{
+        //         $(this).removeClass("on_island").addClass("on_land");
+        //         $(this).val("승인");
+        //     }
+        // });
       
     },
 }

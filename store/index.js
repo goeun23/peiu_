@@ -1,4 +1,5 @@
 import Vuex from "vuex";
+import $axios from "@/api/repository";
 
 // 스토어 생성 함수 정의
 const store = () =>
@@ -11,7 +12,7 @@ const store = () =>
         1: ["gismap", 4, 6, 8, 12, 14],
         2: ["gismap", 4, 6, 8, 11, 12, 14, 15],
         3: [15],
-        5: [8],
+        5: [8]
       },
       MainrccList: [
         { rcc: 1, name: "경기", color: "1" },
@@ -29,7 +30,7 @@ const store = () =>
         { rcc: 13, name: "울산", color: "10" },
         { rcc: 14, name: "부산", color: "12" },
         { rcc: 15, name: "경남", color: "14" },
-        { rcc: 16, name: "제주", color: "16" },
+        { rcc: 16, name: "제주", color: "16" }
       ],
       rccList: {
         O: "전국",
@@ -48,7 +49,7 @@ const store = () =>
         13: "울산",
         14: "부산",
         15: "경남",
-        16: "제주",
+        16: "제주"
       },
       serviceCode: {
         // 로그인 권한 별 서비스 코드
@@ -57,12 +58,12 @@ const store = () =>
         4: "DR",
         8: "Peak-Cut",
         16: "전력품질(FR)",
-        32: "전력품질(VR)",
+        32: "전력품질(VR)"
       },
       deviceCode: {
         0: "PCS",
         1: "BMS",
-        2: "PV",
+        2: "PV"
       },
       counter: 0,
       token: null,
@@ -91,9 +92,23 @@ const store = () =>
       // locale: 'kr',
       authenticated: false,
       requestedID: 0,
-      clickedAreaMarkers: [],
+      clickedAreaMarkers: []
     },
     mutations: {
+      async getOwnerSiteNum(state, token) {
+        const result = await this.$Api.getOwnerSiteNum("rcc");
+        console.log(result);
+      },
+      async InformationOwner(state, payload) {
+        try {
+          const result = await this.$Api.InformationOwner(payload);
+          console.log("store", result);
+          return result;
+        } catch (e) {
+          return Promise.reject(e);
+        }
+      },
+
       // 함수
       setToken(state, token) {
         state.token = token;
@@ -142,6 +157,7 @@ const store = () =>
       },
 
       setUserName(state, payload) {
+        console.log(payload);
         state.userName = payload;
       },
 
@@ -151,7 +167,7 @@ const store = () =>
       },
       setMenuList(state, level) {
         state.menuListbyLevel = state.menuList[level];
-      },
+      }
     },
     // action (비동기처리 => 쓰기 값을 커밋)
     actions: {
@@ -189,6 +205,9 @@ const store = () =>
       // loadedLocalLang(state){
       //   return state.locale;
       // }
+      userName(state) {
+        return state.userName;
+      },
       rccList(state) {
         return state.rccList;
       },
@@ -200,8 +219,8 @@ const store = () =>
       },
       deviceCode(state) {
         return state.deviceCode;
-      },
-    },
+      }
+    }
   });
 
 export default store;

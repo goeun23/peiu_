@@ -121,10 +121,8 @@ export default {
 
       const result = await this.$Api.Login(data);
       if (result.status == 200) {
-        await this.successLogin();
+        await this.successLogin(result.data);
         // 리다이렉팅
-        const res = result.data;
-        this.redirectByLevel(res.level);
       } else {
         if (err.responseText == "") {
           this.error = "로그인 서버 에러: 관리자 문의";
@@ -160,29 +158,31 @@ export default {
     },
 
     async successLogin(data) {
-      //var resp = data;
-
-      // 데이터 세팅
-      // 소유 사이트 번호 세팅
-      let OwnerSiteNumbyrcc = await this.$Api.getOwnerSiteNum("rcc");
-      let OwnerSiteNumbyagg = await this.$Api.getOwnerSiteNum("agg");
-      let OwnerSiteNumbysite = await this.$Api.getOwnerSiteNum("site");
-
-      // 소유 사이트(단위별) 설치용량 세팅
-      let OwnerSiteFacilitybyrcc = await this.$Api.getOwnerFaciility("rcc");
-      let OwnerSiteFacilitybyagg = await this.$Api.getOwnerFaciility("agg");
-      let OwnerSiteFacilitybysite = await this.$Api.getOwnerFaciility("site");
-
       const resp = {
-        token: "kl;ks;lkd;a",
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6ImIyNmJhY2NhLThkOWUtNGY0NS05MDc0LWU4MzZjMTZiNDNhMiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiLsnbTsnbjsnZEwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiaHR0cHM6Ly93d3cucGVpdS5jby5rci93cy8yMDE5LzA5L2lkZW50aXR5L3JvbGVzL3N1cGVydmlzb3IiLCJTaXRlSWRzQnlSY2MiOiIxOjcxLDE6MTM4LDE6MjI3NDQyNzAwLDE6MTAyMDE0MjYwMywxOjExMjY0NjU2MDcsNDoxNjAsNDo2MjIyNDc3MTgsNDoxMzE2MTIyMDIwLDQ6MTMxNjEyMzMxNCw1OjEwNyw1OjEzNyw1OjYyMjI0MDM4Nyw2OjMsNjo5Nyw2OjE2Miw2OjEyMTYxMTM2OTMsNjoxMjE2MTEzNzAwLDY6MTIxNjExMzcxOSw2OjEyMTYxMTUxNzQsNzozMSw3OjMzLDc6MTIzLDc6MzIyMTMxNTU0LDc6MzMzODYzMjcwLDk6MSw5OjIsOToxMzYsOTo3MTAwNTE0NDAsOTo3MTAwNTM2OTgsOTo3MTAwNTQ3MjIsOToxNzE0NzIwNDk3LDk6MTcxNDcyMDUzMCwxMDo2MSwxMDoxMTksMTA6MTUwLDEwOjE2MSwxMDoxMzE2MTE4MDgwLDEwOjEzMTYxMjMzMDUsMTA6MTMxNjEyMzQyMSwxMDoxMzIxOTY1NDA0LDExOjksMTE6OTYsMTE6MTA0LDExOjE0NywxMToxNDgsMTE6MTQ5LDExOjUyNjMwNzIyOCwxMTo1MjYzMDczNzEsMTI6NTI2MzE1NzI3LDEzOjQyMjIwMzExOCwxMzo0MjIyMDMzNzgsMTM6NDIyMjAzNjI2LDEzOjQzMTA5MTAxNiwxNDo3MCwxNTo5NSwxNToxMTYsMTU6MTI5LDE1OjQyMjIwNjk5MCwxNTo5MTcxMDk5NzksMTY6NiIsImV4cCI6MTYzOTkwNTcwNSwiaXNzIjoiaHR0cHM6Ly93d3cucGVpdS5jby5rciIsImF1ZCI6InBvd2VyMjFAcG93ZXIyMS5jby5rciJ9.P6ofkzvDMjSt3ldpGbzMwjeXthhTCE8y2bpwzafnyew",
         username: "allen",
-        userType: 3,
+        userType: 2,
         userId: "allen.cge",
       };
-
       this.$store.commit("setAuthLevel", resp.userType);
       this.$store.commit("setToken", resp.token);
       this.$store.commit("setUserName", resp.username);
+
+      Promise.all([
+        // 타입별 사이트 번호
+        this.$store.commit('getOwnerSiteNum', 'rcc'),
+        this.$Api.getOwnerSiteNum("rcc"),
+        this.$Api.getOwnerSiteNum("agg"),
+        this.$Api.getOwnerSiteNum("site"),
+
+        // 타입별 설치용량
+        this.$Api.getOwnerFaciility("rcc"),
+        this.$Api.getOwnerFaciility("agg"),
+        this.$Api.getOwnerFaciility("site"),
+      ]).then((res) => {
+        this.redirectByLevel(resp.userType);
+      });
     },
   },
   mounted() {
