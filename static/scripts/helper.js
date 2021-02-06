@@ -449,6 +449,8 @@ function _ajax(category, resource, type, period, id, date) {
   // date : 보고서에서 특정일 조회 용도로 받음, 아닌경우 현재(오늘)
   var request = seturl(category, resource, type, period, id, date);
   var url = "https://www.peiu.co.kr:3077" + request;
+  console.log("_ajax", url);
+  return;
   var token = Cookies.get("token");
   var data;
   $.ajax({

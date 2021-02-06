@@ -4,7 +4,7 @@
     <!-- main_cont_wrap -->
     <div class="main_cont_wrap">
       <RccMonitor :MainrccList="MainrccList" />
-
+      <!-- 차트 -->
       <div class="main_mid_cont">
         <div class="main_map_area" id="dashboardMap">
           <div id="jejuMap"></div>
@@ -73,7 +73,6 @@ export default {
   async mounted() {
     // rcclist 세팅
     this.MainrccList = this.$store.getters.MainrccList;
-
     // 메인 페이지 leaflet 지도 세팅
     await Promise.all([this.initMap("dashboardMap"), this.initMap("jejuMap")]);
   },
@@ -154,7 +153,6 @@ export default {
           "commit",
           await this.$store.commit("InformationOwner", "sitebyrcc")
         );
-        console.log("allen", this.locData);
       } catch (e) {
         return;
       }
@@ -408,7 +406,6 @@ export default {
       $nuxt.$emit("statustop-total-eventCount", EventByAll);
       this.setActPwrAni(aniMap);
     },
-
     getInstalledInfo() {
       // agg수
       var resp = _ajax("i", "owner", "agg");

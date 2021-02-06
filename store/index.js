@@ -95,6 +95,8 @@ const store = () =>
       clickedAreaMarkers: []
     },
     mutations: {
+      // 데이터 API Data ... 
+      // 고객정보 API User ...
       async getOwnerSiteNum(state, token) {
         const result = await this.$Api.getOwnerSiteNum("rcc");
         console.log(result);
@@ -108,7 +110,16 @@ const store = () =>
           return Promise.reject(e);
         }
       },
-
+      async DataMonthlyAccm() {
+        try {
+          const result = await this.$Api.DataMonthlyAccm();
+          console.log("store", result);
+          return result;
+        } catch (e) {
+          return Promise.reject(e);
+        }
+      },
+      
       // 함수
       setToken(state, token) {
         state.token = token;

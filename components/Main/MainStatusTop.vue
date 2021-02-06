@@ -90,11 +90,12 @@ export default {
       type: Object,
     },
   },
-  // filters: {
-  //   COMMA(won) {
-  //     return won.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  //   },
-  // },
+  filters: {
+    COMMA(won) {
+      won = 9999;
+      return won.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+  },
 };
 </script>
 
